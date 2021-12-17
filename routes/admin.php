@@ -8,4 +8,5 @@ Route::get('/admin/users', [UsersController::class, 'index'])
             ->name('admin.users');
 
 Route::delete('/admin/users/{user}', [UsersController::class, 'destroy'])
-            ->middleware(['auth']);
+            ->middleware(['auth'])
+            ->name('admin.users.destroy');

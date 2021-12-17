@@ -59,7 +59,7 @@
                                                 </td>
                                                 <td class="px-4 py-3 border">
                                                     <div class="flex items-center text-sm">
-                                                        <form action="{{ url('/admin/users/' . $user->id) }}" method="POST">
+                                                        <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
                                                             @csrf
                                                             {{ method_field('DELETE') }}
                                                             <x-button class="ml-4" onclick="return confirm('¿Quieres borrar el usuario');">
