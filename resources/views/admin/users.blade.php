@@ -21,6 +21,7 @@
                                             <th class="px-4 py-3">Fecha de verificación</th>
                                             <th class="px-4 py-3">Fecha de creación</th>
                                             <th class="px-4 py-3">Fecha de actualización</th>
+                                            <th class="px-4 py-3">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white">
@@ -54,6 +55,17 @@
                                                 <td class="px-4 py-3 border">
                                                     <div class="flex items-center text-sm">
                                                         <p class="font-semibold text-black">{{ $user['updated_at'] }}</p>
+                                                    </div>
+                                                </td>
+                                                <td class="px-4 py-3 border">
+                                                    <div class="flex items-center text-sm">
+                                                        <form action="{{ url('/admin/users/' . $user->id) }}" method="POST">
+                                                            @csrf
+                                                            {{ method_field('DELETE') }}
+                                                            <x-button class="ml-4" onclick="return confirm('¿Quieres borrar el usuario');">
+                                                                {{ __('Borrar') }}
+                                                            </x-button>
+                                                        </form>
                                                     </div>
                                                 </td>
                                             </tr>

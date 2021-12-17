@@ -6,3 +6,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/admin/users', [UsersController::class, 'index'])
             ->middleware(['auth'])
             ->name('admin.users');
+
+Route::delete('/admin/users/{user}', [UsersController::class, 'destroy'])
+            ->middleware(['auth']);

@@ -80,11 +80,13 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  string $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(string $id)
     {
-        //
+        User::destroy($id);
+        
+        return redirect(url('/admin/users'));
     }
 }
