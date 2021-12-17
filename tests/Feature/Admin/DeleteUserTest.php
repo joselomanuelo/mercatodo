@@ -29,10 +29,10 @@ class DeleteUserTest extends TestCase
 
         $user = User::factory()->create();
 
-        $response = $this->delete('/admin/users/' . $user->id);
+        $response = $this->delete(route('admin.users.destroy', $user));
 
         $this->assertDeleted($user);
 
-        $response->assertRedirect('/admin/users');
+        $response->assertRedirect(route('admin.users'));
     }
 }

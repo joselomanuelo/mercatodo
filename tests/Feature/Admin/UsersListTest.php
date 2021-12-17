@@ -26,9 +26,9 @@ class ListUsersTest extends TestCase
 
         $this->assertAuthenticated();
 
-        $response = $this->get('/admin/users');
+        $response = $this->get(route('admin.users'));
 
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     /**
@@ -38,8 +38,8 @@ class ListUsersTest extends TestCase
      */
     public function test_unauthenticated_user_cant_render_users_list_screen()
     {
-        $response = $this->get('admin/users');
+        $response = $this->get(route('admin.users'));
 
-        $response->assertRedirect('login/');
+        $response->assertRedirect(route('login'));
     }
 }
