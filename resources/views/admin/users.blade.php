@@ -25,51 +25,54 @@
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white">
-                                        @foreach ($users as $user)
-                                            <tr class="text-gray-700">
-                                                <td class="px-4 py-3 border">
-                                                    <div class="flex items-center text-sm">
-                                                        <p class="font-semibold text-black">{{ $user['id'] }}</p>
-                                                    </div>
-                                                </td>
-                                                <td class="px-4 py-3 border">
-                                                    <div class="flex items-center text-sm">
-                                                        <p class="font-semibold text-black">{{ $user['name'] }}</p>
-                                                    </div>
-                                                </td>
-                                                <td class="px-4 py-3 border">
-                                                    <div class="flex items-center text-sm">
-                                                        <p class="font-semibold text-black">{{ $user['email'] }}</p>
-                                                    </div>
-                                                </td>
-                                                <td class="px-4 py-3 border">
-                                                    <div class="flex items-center text-sm">
-                                                        <p class="font-semibold text-black">{{ $user['email_verified_at'] }}</p>
-                                                    </div>
-                                                </td>
-                                                <td class="px-4 py-3 border">
-                                                    <div class="flex items-center text-sm">
-                                                        <p class="font-semibold text-black">{{ $user['created_at'] }}</p>
-                                                    </div>
-                                                </td>
-                                                <td class="px-4 py-3 border">
-                                                    <div class="flex items-center text-sm">
-                                                        <p class="font-semibold text-black">{{ $user['updated_at'] }}</p>
-                                                    </div>
-                                                </td>
-                                                <td class="px-4 py-3 border">
-                                                    <div class="flex items-center text-sm">
-                                                        <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
-                                                            @csrf
-                                                            {{ method_field('DELETE') }}
-                                                            <x-button class="ml-4" onclick="return confirm('¿Quieres borrar el usuario');">
-                                                                {{ __('Borrar') }}
-                                                            </x-button>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                        <div class="container">
+                                            @foreach ($users as $user)
+                                                <tr class="text-gray-700">
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <p class="font-semibold text-black">{{ $user['id'] }}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <p class="font-semibold text-black">{{ $user['name'] }}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <p class="font-semibold text-black">{{ $user['email'] }}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <p class="font-semibold text-black">{{ $user['email_verified_at'] }}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <p class="font-semibold text-black">{{ $user['created_at'] }}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <p class="font-semibold text-black">{{ $user['updated_at'] }}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
+                                                                @csrf
+                                                                {{ method_field('DELETE') }}
+                                                                <x-button class="ml-4" onclick="return confirm('¿Quieres borrar el usuario');">
+                                                                    {{ __('Borrar') }}
+                                                                </x-button>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </div>
+                                        {{ $users->links() }}
                                     </tbody>
                                 </table>
                             </div>

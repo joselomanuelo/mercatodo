@@ -15,8 +15,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        User::factory()->count(50)->create();
-        $users = User::paginate(15);
+        $users = User::paginate(50);
+        
         return view('admin.users', [
             'users' => $users
         ]);        
