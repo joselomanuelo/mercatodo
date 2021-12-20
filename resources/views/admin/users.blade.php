@@ -18,10 +18,9 @@
                                             <th class="px-4 py-3">Id</th>
                                             <th class="px-4 py-3">Nombre</th>
                                             <th class="px-4 py-3">Email</th>
-                                            <th class="px-4 py-3">Fecha de verificación</th>
-                                            <th class="px-4 py-3">Fecha de creación</th>
-                                            <th class="px-4 py-3">Fecha de actualización</th>
-                                            <th class="px-4 py-3">Acciones</th>
+                                            <th class="px-4 py-3">Ver</th>
+                                            <th class="px-4 py-3">Editar</th>
+                                            <th class="px-4 py-3">Borrar</th>
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white">
@@ -30,32 +29,42 @@
                                                 <tr class="text-gray-700">
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $user['id'] }}</p>
+                                                            <p class="font-semibold text-black">{{ $user->id }}</p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $user['name'] }}</p>
+                                                            <p class="font-semibold text-black">{{ $user->name }}</p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $user['email'] }}</p>
+                                                            <p class="font-semibold text-black">{{ $user->email }}</p>
+                                                        </div>
+                                                    </td>
+                                                    <!--<td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <p class="font-semibold text-black">{{ $user->email_verified_at }}</p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $user['email_verified_at'] }}</p>
+                                                            <p class="font-semibold text-black">{{ $user->created_at }}</p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $user['created_at'] }}</p>
+                                                            <p class="font-semibold text-black">{{ $user->updated_at }}</p>
+                                                        </div>
+                                                    </td>-->
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <x-button-link href="{{ route('admin.users.show', $user) }}">Ver</x-button-link>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $user['updated_at'] }}</p>
+                                                            <x-button-link href="{{ route('admin.users.edit', $user) }}">Editar</x-button-link>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
@@ -63,7 +72,7 @@
                                                             <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
                                                                 @csrf
                                                                 {{ method_field('DELETE') }}
-                                                                <x-button class="ml-4" onclick="return confirm('¿Quieres borrar el usuario');">
+                                                                <x-button onclick="return confirm('¿Quieres borrar el usuario');">
                                                                     {{ __('Borrar') }}
                                                                 </x-button>
                                                             </form>

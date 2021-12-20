@@ -51,7 +51,9 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('admin.show', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -62,7 +64,9 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.edit', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -74,7 +78,14 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update([
+
+        'name' => $request->input('name'),
+        'email' => $request->input('email')
+
+        ]);
+
+        return redirect()->route('admin.users');
     }
 
     /**
