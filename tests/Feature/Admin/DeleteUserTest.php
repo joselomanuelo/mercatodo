@@ -12,18 +12,20 @@ class DeleteUserTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Admin can delete a user
+     * An user can be deleted 
      *
      * @return void
      */
-    public function test_admin_can_delete_user()
+    public function test_user_can_be_delete()
     {
         $user = User::factory()->create();
 
-        $this->post('/login', [
+        $this->actingAs($user)->post(route('login'));
+
+        /*$this->post(route('login'), [
             'email' => $user->email,
             'password' => 'password',
-        ]);
+        ]);*/
 
         $this->assertAuthenticated();
 
