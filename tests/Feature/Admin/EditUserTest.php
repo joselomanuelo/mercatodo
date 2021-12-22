@@ -43,7 +43,8 @@ class EditUserTest extends TestCase
         $response = $this->actingAs($user)
                     ->put(route('admin.users.update', $userToEdit), [
                         'name' => 'Testing name',
-                        'email' => 'testingemail@example.com'
+                        'email' => 'testingemail@example.com',
+                        'status' => true,
                     ]);
         
         $editedUser = User::find($userToEdit->id);
