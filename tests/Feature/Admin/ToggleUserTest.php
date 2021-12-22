@@ -9,6 +9,8 @@ use Tests\TestCase;
 
 class ToggleUserTest extends TestCase
 {
+    use RefreshDatabase;
+    
     /**
      * Disable user can't do anything 
      *

@@ -18,6 +18,7 @@
                                             <th class="px-4 py-3">Id</th>
                                             <th class="px-4 py-3">Nombre</th>
                                             <th class="px-4 py-3">Email</th>
+                                            <th class="px-4 py-3">Estado</th>
                                             <th class="px-4 py-3">Ver</th>
                                             <th class="px-4 py-3">Editar</th>
                                             <th class="px-4 py-3">Borrar</th>
@@ -42,21 +43,11 @@
                                                             <p class="font-semibold text-black">{{ $user->email }}</p>
                                                         </div>
                                                     </td>
-                                                    <!--<td class="px-4 py-3 border">
-                                                        <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $user->email_verified_at }}</p>
-                                                        </div>
-                                                    </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $user->created_at }}</p>
+                                                            <p class="font-semibold text-black">{{ $user->status ? 'Habilitado' : 'Inhabilitado' }}</p>
                                                         </div>
                                                     </td>
-                                                    <td class="px-4 py-3 border">
-                                                        <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $user->updated_at }}</p>
-                                                        </div>
-                                                    </td>-->
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
                                                             <x-button-link href="{{ route('admin.users.show', $user) }}">Ver</x-button-link>

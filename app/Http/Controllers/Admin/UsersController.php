@@ -81,7 +81,8 @@ class UsersController extends Controller
         $user->update([
 
         'name' => $request->input('name'),
-        'email' => $request->input('email')
+        'email' => $request->input('email'),
+        'status' => $request->input('status'),
 
         ]);
 

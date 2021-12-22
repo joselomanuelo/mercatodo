@@ -20,6 +20,9 @@
                             <h3>Email: {{ $user->email }}</h3>
                         </li>
                         <li>
+                            <h3>Estado: {{ $user->status ? 'Habilitado' : 'Inhabilitado' }}</h3>
+                        </li>
+                        <li>
                             <h3>Fecha de verificación de email: {{ $user->email_verified_at }}</h3>
                         </li>
                         <li>

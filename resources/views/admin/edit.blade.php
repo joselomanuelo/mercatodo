@@ -14,13 +14,18 @@
                         @method('PUT')
                         <div>
                             <x-label for="name" :value="__('Nombre')" />
-
                             <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ $user->name }}" required autofocus />
                         </div>
                         <div class="mt-4">
                             <x-label for="email" :value="__('Email')" />
-
                             <x-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{ $user->email }}" required />
+                        </div>
+                        <div class="mt-4">
+                            <x-label for="status" :value="__('Estado')" />
+                            <select name="status" id="status" class="block mt-1 w-full" required>
+                                <option value=0 {{ $user->status ? 'selected' : '' }}>Inhabilitado</option>
+                                <option value=1 {{ $user->status ? 'selected' : '' }}>Habilitado</option>
+                            </select>
                         </div>
                         <div class="flex items-center justify-end mt-4">
                             <x-button class="ml-4">
