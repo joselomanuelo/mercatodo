@@ -16,7 +16,7 @@ class ShowUserTest extends TestCase
      *
      * @return void
      */
-    public function test_show_user_screen_can_be_rendered()
+    public function test_show_user_screen_can_be_rendered(): void
     {
         $user = User::factory()->create();
 

@@ -15,7 +15,7 @@ class ListUsersTest extends TestCase
      *
      * @return void
      */
-    public function test_users_list_screen_can_be_rendered()
+    public function test_users_list_screen_can_be_rendered(): void
     {
         $user = User::factory()->create();
 
@@ -36,7 +36,7 @@ class ListUsersTest extends TestCase
      * 
      * @return void
      */
-    public function test_unauthenticated_user_cant_render_users_list_screen()
+    public function test_unauthenticated_user_cant_render_users_list_screen(): void
     {
         $response = $this->get(route('admin.users'));
 

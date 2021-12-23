@@ -16,7 +16,7 @@ class EditUserTest extends TestCase
      *
      * @return void
      */
-    public function test_edit_user_screen_can_be_rendered()
+    public function test_edit_user_screen_can_be_rendered(): void
     {
         $user = User::factory()->create();
 
@@ -32,7 +32,7 @@ class EditUserTest extends TestCase
      *
      * @return void
      */
-    public function test_user_can_be_edited()
+    public function test_user_can_be_edited(): void
     {
        
 

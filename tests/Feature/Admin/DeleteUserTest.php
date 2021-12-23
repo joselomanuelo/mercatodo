@@ -16,7 +16,7 @@ class DeleteUserTest extends TestCase
      *
      * @return void
      */
-    public function test_user_can_be_delete()
+    public function test_user_can_be_delete(): void
     {
         $user = User::factory()->create();
 
