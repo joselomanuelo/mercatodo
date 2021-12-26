@@ -18,23 +18,34 @@ class DeleteUserTest extends TestCase
      */
     public function test_user_can_be_delete(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'role' => 'admin',
+        ]);
 
-        $this->actingAs($user)->post(route('login'));
+        $userToDelete = User::factory()->create();
 
-        /*$this->post(route('login'), [
-            'email' => $user->email,
-            'password' => 'password',
-        ]);*/
+        $response = $this->actingAs($user)
+                    ->delete(route('admin.users.destroy', $userToDelete));
 
-        $this->assertAuthenticated();
-
-        $user = User::factory()->create();
-
-        $response = $this->delete(route('admin.users.destroy', $user));
-
-        $this->assertDeleted($user);
+        $this->assertDeleted($userToDelete);
 
         $response->assertRedirect(route('admin.users'));
+    }
+
+    /**
+     * Not admin user cant delete users
+     *
+     * @return void
+     */
+    public function test_not_admin_user_cant_delete_users(): void
+    {
+        $user = User::factory()->create();
+
+        $userToDelete = User::factory()->create();
+
+        $response = $this->actingAs($user)
+                    ->delete(route('admin.users.destroy', $userToDelete));
+
+        $response->assertForbidden();
     }
 }

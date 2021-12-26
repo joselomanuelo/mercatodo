@@ -17,16 +17,14 @@ class ListUsersTest extends TestCase
      */
     public function test_users_list_screen_can_be_rendered(): void
     {
-        $user = User::factory()->create();
-
-        $this->post('/login', [
-            'email' => $user->email,
-            'password' => 'password',
+        $user = User::factory()->create([
+            'role' => 'admin',
         ]);
 
-        $this->assertAuthenticated();
+        $response = $this->actingAs($user)
+                    ->get(route('admin.users'));
 
-        $response = $this->get(route('admin.users'));
+        $this->assertAuthenticated();
 
         $response->assertOk();
     }
@@ -41,5 +39,22 @@ class ListUsersTest extends TestCase
         $response = $this->get(route('admin.users'));
 
         $response->assertRedirect(route('login'));
+    }
+
+    /**
+     * Unauthenticated user can´t render user's list screen
+     * 
+     * @return void
+     */
+    public function test_not_admin_user_cant_render_users_list_screen(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)
+                    ->get(route('admin.users'));
+        
+        $this->assertAuthenticated();
+
+        $response->assertForbidden();
     }
 }
