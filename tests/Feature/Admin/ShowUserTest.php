@@ -23,7 +23,7 @@ class ShowUserTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-                    ->get(route('admin.users.show', $user));
+            ->get(route('admin.users.show', $user));
 
         $response->assertOk();
     }
@@ -38,7 +38,7 @@ class ShowUserTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
-                    ->get(route('admin.users.show', $user));
+            ->get(route('admin.users.show', $user));
 
         $response->assertForbidden();
     }

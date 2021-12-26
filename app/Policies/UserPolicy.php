@@ -45,7 +45,7 @@ class UserPolicy
      */
     public function view(User $user, User $model): Response|bool
     {
-        return false; 
+        return false;
     }
 
     /**
@@ -93,7 +93,6 @@ class UserPolicy
     public function restore(User $user, User $model): Response|bool
     {
         return false;
-
     }
 
     /**

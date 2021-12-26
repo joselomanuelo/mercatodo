@@ -25,7 +25,7 @@ class DeleteUserTest extends TestCase
         $userToDelete = User::factory()->create();
 
         $response = $this->actingAs($user)
-                    ->delete(route('admin.users.destroy', $userToDelete));
+            ->delete(route('admin.users.destroy', $userToDelete));
 
         $this->assertDeleted($userToDelete);
 
@@ -44,7 +44,7 @@ class DeleteUserTest extends TestCase
         $userToDelete = User::factory()->create();
 
         $response = $this->actingAs($user)
-                    ->delete(route('admin.users.destroy', $userToDelete));
+            ->delete(route('admin.users.destroy', $userToDelete));
 
         $response->assertForbidden();
     }

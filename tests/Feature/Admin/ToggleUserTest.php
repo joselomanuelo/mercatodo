@@ -10,7 +10,7 @@ use Tests\TestCase;
 class ToggleUserTest extends TestCase
 {
     use RefreshDatabase;
-    
+
     /**
      * Disable user can't do anything 
      *
@@ -23,8 +23,8 @@ class ToggleUserTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-                    ->get('/');
-              
+            ->get('/');
+
         $this->assertGuest();
 
         $response->assertRedirect(route('login'));

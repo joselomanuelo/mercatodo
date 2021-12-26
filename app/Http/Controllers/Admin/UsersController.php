@@ -18,10 +18,10 @@ class UsersController extends Controller
     public function index(): View
     {
         $users = User::paginate(50);
-        
+
         return view('admin.users', [
             'users' => $users
-        ]);        
+        ]);
     }
 
     /**
@@ -61,9 +61,9 @@ class UsersController extends Controller
     {
         $user->update([
 
-        'name' => $request->input('name'),
-        'email' => $request->input('email'),
-        'status' => $request->input('status'),
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'status' => $request->input('status'),
 
         ]);
 

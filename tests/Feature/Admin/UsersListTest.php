@@ -22,7 +22,7 @@ class ListUsersTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)
-                    ->get(route('admin.users'));
+            ->get(route('admin.users'));
 
         $this->assertAuthenticated();
 
@@ -51,8 +51,8 @@ class ListUsersTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
-                    ->get(route('admin.users'));
-        
+            ->get(route('admin.users'));
+
         $this->assertAuthenticated();
 
         $response->assertForbidden();

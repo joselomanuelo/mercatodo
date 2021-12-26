@@ -49,22 +49,22 @@ class EditUserTest extends TestCase
     public function test_user_can_be_edited(): void
     {
         $userToEdit = User::factory()->create();
-        
+
         $user = User::factory()->create([
             'role' => 'admin',
         ]);
 
         $response = $this->actingAs($user)
-                    ->put(route('admin.users.update', $userToEdit), [
-                        'name' => 'Testing name',
-                        'email' => 'testingemail@example.com',
-                        'status' => true,
-                    ]);
-        
+            ->put(route('admin.users.update', $userToEdit), [
+                'name' => 'Testing name',
+                'email' => 'testingemail@example.com',
+                'status' => true,
+            ]);
+
         $editedUser = User::find($userToEdit->id);
 
         $this->assertEquals('Testing name', $editedUser->name);
-        
+
         $this->assertEquals('testingemail@example.com', $editedUser->email);
 
         $response->assertRedirect(route('admin.users'));
@@ -78,16 +78,16 @@ class EditUserTest extends TestCase
     public function test_not_admin_user_cant_edit_users(): void
     {
         $userToEdit = User::factory()->create();
-        
+
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
-                    ->put(route('admin.users.update', $userToEdit), [
-                        'name' => 'Testing name',
-                        'email' => 'testingemail@example.com',
-                        'status' => true,
-                    ]);
-        
+            ->put(route('admin.users.update', $userToEdit), [
+                'name' => 'Testing name',
+                'email' => 'testingemail@example.com',
+                'status' => true,
+            ]);
+
         $response->assertForbidden();
     }
 }

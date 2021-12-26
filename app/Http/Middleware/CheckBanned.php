@@ -19,8 +19,7 @@ class CheckBanned
      */
     public function handle(Request $request, Closure $next): Response|RedirectResponse
     {
-        if(auth()->check() && (auth()->user()->status == 0))
-        {
+        if (auth()->check() && (auth()->user()->status == 0)) {
             Auth::logout();
 
             $request->session()->invalidate();
@@ -28,10 +27,10 @@ class CheckBanned
             $request->session()->regenerateToken();
 
             return redirect()
-                        ->route('login')
-                        ->with('error', 'Su cuenta está suspendida por favor contacte con el administrador');
+                ->route('login')
+                ->with('error', 'Su cuenta está suspendida por favor contacte con el administrador');
         }
-        
+
         return $next($request);
     }
 }
