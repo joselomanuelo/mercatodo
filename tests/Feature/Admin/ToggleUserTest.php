@@ -19,7 +19,7 @@ class ToggleUserTest extends TestCase
     public function test_disable_user_cant_do_anything(): void
     {
         $user = User::factory()->create([
-            'status' => false,
+            'disable_at' => now(),
         ]);
 
         $response = $this->actingAs($user)
