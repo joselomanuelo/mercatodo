@@ -19,7 +19,7 @@ class CheckBanned
      */
     public function handle(Request $request, Closure $next): Response|RedirectResponse
     {
-        if (auth()->check() && (auth()->user()->status == 0)) {
+        if (auth()->check() && (auth()->user()->disable_at !== null)) {
             Auth::logout();
 
             $request->session()->invalidate();

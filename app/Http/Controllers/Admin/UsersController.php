@@ -63,7 +63,7 @@ class UsersController extends Controller
 
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'status' => $request->input('status'),
+            'disable_at' => $request->input('disable_at') ? now() : null
 
         ]);
 

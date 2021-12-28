@@ -21,10 +21,10 @@
                             <x-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{ $user->email }}" required />
                         </div>
                         <div class="mt-4">
-                            <x-label for="status" :value="__('Estado')" />
-                            <select name="status" id="status" class="block mt-1 w-full" required>
-                                <option value=0 {{ $user->status ? 'selected' : '' }}>Inhabilitado</option>
-                                <option value=1 {{ $user->status ? 'selected' : '' }}>Habilitado</option>
+                            <x-label for="disable_at" :value="__('Estado')" />
+                            <select name="disable_at" id="disable_at" class="block mt-1 w-full" required>
+                                <option value="false" {{ $user->disable_at == null ? 'selected' : '' }}>Habilitado</option>
+                                <option value="true" {{ $user->disable_at !== null ? 'selected' : '' }}>Deshabilitado</option>
                             </select>
                         </div>
                         <div class="flex items-center justify-end mt-4">
