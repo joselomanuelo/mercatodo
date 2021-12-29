@@ -18,6 +18,7 @@
                                             <th class="px-4 py-3">Id</th>
                                             <th class="px-4 py-3">Nombre</th>
                                             <th class="px-4 py-3">Email</th>
+                                            <th class="px-4 py-3">Rol</th>
                                             <th class="px-4 py-3">Estado</th>
                                             <th class="px-4 py-3">Ver</th>
                                             <th class="px-4 py-3">Editar</th>
@@ -41,6 +42,11 @@
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
                                                             <p class="font-semibold text-black">{{ $user->email }}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <p class="font-semibold text-black">{{ $user->role == 'admin' ? 'Administrador' : 'Comprador' }}</p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">

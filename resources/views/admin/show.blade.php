@@ -20,6 +20,9 @@
                             <h3>Email: {{ $user->email }}</h3>
                         </li>
                         <li>
+                            <h3>Rol: {{ $user->role == 'admin' ? 'Administrador' : 'Comprador' }}</h3>
+                        </li>
+                        <li>
                             <h3>Fecha de deshabilitación: {{ $user->disable_at ?? 'Está habilitado'}}</h3>
                         </li>
                         <li>
