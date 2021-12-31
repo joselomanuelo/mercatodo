@@ -30,8 +30,8 @@
                         <div class="mt-4">
                             <x-label for="disable_at" :value="__('Estado')" />
                             <select name="disable_at" id="disable_at" class="block mt-1 w-full" required>
-                                <option value="false" {{ $user->disable_at == null ? 'selected' : '' }}>Habilitado</option>
-                                <option value="true" {{ $user->disable_at !== null ? 'selected' : '' }}>Deshabilitado</option>
+                                <option @if(!$user->disable_at) selected @endif value="0" >Habilitado</option>
+                                <option @if($user->disable_at) selected @endif value="1" >Deshabilitado</option>
                             </select>
                         </div>
                         <div class="flex items-center justify-end mt-4">

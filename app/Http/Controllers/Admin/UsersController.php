@@ -59,13 +59,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user): RedirectResponse
     {
-        $user->update([
-
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'disable_at' => $request->input('disable_at') ? now() : null
-
-        ]);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->role = $request->input('role');
+        $user->disable_at = $request->input('disable_at') ? now() : null;
+        $user->save();
 
         return redirect()->route('admin.users');
     }
