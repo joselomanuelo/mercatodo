@@ -46,12 +46,12 @@
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $user->role == 'admin' ? 'Administrador' : 'Comprador' }}</p>
+                                                            <p class="font-semibold text-black">{{ trans('roles.'.$user->role) }}</p>
                                                         </div>
-                                                    </td>
+                                                    </td> 
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $user->disable_at == null ? 'Habilitado' : 'Deshabilitado' }}</p>
+                                                            <p class="font-semibold text-black">{{ !$user->disable_at ? 'Habilitado' : 'Deshabilitado' }}</p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
