@@ -29,4 +29,54 @@ class ToggleUserTest extends TestCase
 
         $response->assertRedirect(route('login'));
     }
+
+    /**
+     * User can be disabled
+     * 
+     * @return void
+     */
+    public function test_user_can_be_disabled(): void
+    {
+        $admin = User::factory()->create([
+            'role' => 'admin'
+        ]);
+
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($admin)
+            ->put(route('admin.users.update', $user), [
+                'disable_at' => now(),
+                'name' => $user->name,
+                'email' => $user->email,
+                'role' => $user->role
+            ]);
+
+        $response->assertRedirect(route('admin.users'));
+    }
+
+    /**
+     * User can be enabled
+     * 
+     * @return void
+     */
+    public function test_user_can_be_enabled(): void
+    {
+        $admin = User::factory()->create([
+            'role' => 'admin'
+        ]);
+
+        $user = User::factory()->create([
+            'disable_at' => now(),
+        ]);
+
+        $response = $this->actingAs($admin)
+            ->put(route('admin.users.update', $user), [
+                'disable_at' => null,
+                'name' => $user->name,
+                'email' => $user->email,
+                'role' => $user->role
+            ]);
+
+        $response->assertRedirect(route('admin.users'));
+    }
 }
