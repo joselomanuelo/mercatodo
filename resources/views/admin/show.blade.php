@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Ver') }}
+            {{ __(trans('buttons.show').' '.$user->name) }}
         </h2>
     </x-slot>
 
@@ -14,25 +14,27 @@
                             <h3>Id: {{ $user->id }}</h3>
                         </li>
                         <li>
-                            <h3>Nombre: {{ $user->name }}</h3>
+                            <h3>{{ trans('auth.name').': '.$user->name }}</h3>
                         </li>
                         <li>
-                            <h3>Email: {{ $user->email }}</h3>
+                            <h3>{{ trans('auth.email').': '.$user->email }}</h3>
                         </li>
                         <li>
-                            <h3>Rol: {{ $user->role == 'admin' ? 'Administrador' : 'Comprador' }}</h3>
+                            <h3>{{ trans('auth.role').': '.($user->role == 'admin' ? trans('auth.admin') : trans('auth.buyer')) }}</h3>
+                        </li>
+                        @if($user->disabled_at)
+                        <li>
+                            <h3>{{ trans('auth.disabledAt').': '.$user->disabled_at }}</h3>
+                        </li>
+                        @endif
+                        <li>
+                            <h3>{{ trans('auth.verifiedAt').': '.$user->email_verified_at }}</h3>
                         </li>
                         <li>
-                            <h3>Fecha de deshabilitación: {{ $user->disable_at ?? 'Está habilitado'}}</h3>
+                            <h3>{{ trans('auth.createdAt').': '.$user->created_at}}</h3>
                         </li>
                         <li>
-                            <h3>Fecha de verificación de email: {{ $user->email_verified_at }}</h3>
-                        </li>
-                        <li>
-                            <h3>Fecha de creación: {{ $user->created_at}}</h3>
-                        </li>
-                        <li>
-                            <h3>Fecha de actualización: {{ $user->updated_at}}</h3>
+                            <h3>{{ trans('auth.updatedAt').': '.$user->updated_at}}</h3>
                         </li>
                     </ul>
                 </div>

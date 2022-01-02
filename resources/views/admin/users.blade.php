@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Usuarios') }}
+            {{ __(trans('navigation.users')) }}
         </h2>
     </x-slot>
 
@@ -16,13 +16,13 @@
                                     <thead>
                                         <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                                             <th class="px-4 py-3">Id</th>
-                                            <th class="px-4 py-3">Nombre</th>
-                                            <th class="px-4 py-3">Email</th>
-                                            <th class="px-4 py-3">Rol</th>
-                                            <th class="px-4 py-3">Estado</th>
-                                            <th class="px-4 py-3">Ver</th>
-                                            <th class="px-4 py-3">Editar</th>
-                                            <th class="px-4 py-3">Borrar</th>
+                                            <th class="px-4 py-3">{{ trans('auth.name') }}</th>
+                                            <th class="px-4 py-3">{{ trans('auth.email') }}</th>
+                                            <th class="px-4 py-3">{{ trans('auth.role') }}</th>
+                                            <th class="px-4 py-3">{{ trans('auth.status') }}</th>
+                                            <th class="px-4 py-3">{{ trans('buttons.show') }}</th>
+                                            <th class="px-4 py-3">{{ trans('buttons.edit') }}</th>
+                                            <th class="px-4 py-3">{{ trans('buttons.delete') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white">
@@ -46,22 +46,22 @@
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ trans('roles.'.$user->role) }}</p>
+                                                            <p class="font-semibold text-black">{{ $user->role == 'admin' ? trans('auth.admin') : trans('auth.buyer') }}</p>
                                                         </div>
                                                     </td> 
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ !$user->disable_at ? 'Habilitado' : 'Deshabilitado' }}</p>
+                                                            <p class="font-semibold text-black">{{ !$user->disabled_at ? trans('auth.enabled') : trans('auth.disabled') }}</p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <x-button-link href="{{ route('admin.users.show', $user) }}">Ver</x-button-link>
+                                                            <x-button-link href="{{ route('admin.users.show', $user) }}">{{ trans('buttons.show') }}</x-button-link>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <x-button-link href="{{ route('admin.users.edit', $user) }}">Editar</x-button-link>
+                                                            <x-button-link href="{{ route('admin.users.edit', $user) }}">{{ trans('buttons.edit') }}</x-button-link>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
@@ -69,8 +69,9 @@
                                                             <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
                                                                 @csrf
                                                                 {{ method_field('DELETE') }}
-                                                                <x-button onclick="return confirm('¿Quieres borrar el usuario');">
-                                                                    {{ __('Borrar') }}
+                                                                <!--¿Cómo hacer traducciones dentro javascript?-->
+                                                                <x-button onclick="return confirm();">
+                                                                    {{ __(trans('buttons.delete')) }}
                                                                 </x-button>
                                                             </form>
                                                         </div>
