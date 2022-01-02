@@ -16,14 +16,14 @@ class ToggleUserTest extends TestCase
      *
      * @return void
      */
-    public function test_disable_user_cant_do_anything(): void
+    public function test_disabled_user_cant_do_anything(): void
     {
         $user = User::factory()->create([
-            'disable_at' => now(),
+            'disabled_at' => now(),
         ]);
 
         $response = $this->actingAs($user)
-            ->get('/');
+            ->get(route('welcome'));
 
         $this->assertGuest();
 
@@ -45,7 +45,7 @@ class ToggleUserTest extends TestCase
 
         $response = $this->actingAs($admin)
             ->put(route('admin.users.update', $user), [
-                'disable_at' => now(),
+                'disabled_at' => now(),
                 'name' => $user->name,
                 'email' => $user->email,
                 'role' => $user->role
@@ -66,12 +66,12 @@ class ToggleUserTest extends TestCase
         ]);
 
         $user = User::factory()->create([
-            'disable_at' => now(),
+            'disabled_at' => now(),
         ]);
 
         $response = $this->actingAs($admin)
             ->put(route('admin.users.update', $user), [
-                'disable_at' => null,
+                'disabled_at' => null,
                 'name' => $user->name,
                 'email' => $user->email,
                 'role' => $user->role

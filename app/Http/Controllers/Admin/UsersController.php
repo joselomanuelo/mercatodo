@@ -62,7 +62,7 @@ class UsersController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->role = $request->input('role');
-        $user->disable_at = $request->input('disable_at') ? now() : null;
+        $user->disabled_at = $request->input('disable_at') ? now() : null;
         $user->save();
 
         return redirect()->route('admin.users');

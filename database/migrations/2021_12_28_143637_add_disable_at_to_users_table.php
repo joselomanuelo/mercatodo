@@ -15,7 +15,7 @@ class AddDisableAtToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('status');
-            $table->timestamp('disable_at')->nullable();
+            $table->timestamp('disabled_at')->nullable();
         });
     }
 
