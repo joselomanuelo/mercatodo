@@ -25,7 +25,11 @@ class ToggleUserTest extends TestCase
         $response = $this->actingAs($user)
             ->get(route('welcome'));
 
+
+        // assertions
         $this->assertGuest();
+
+        $this->assertDatabaseCount('users', 1);
 
         $response->assertRedirect(route('login'));
     }
@@ -50,6 +54,12 @@ class ToggleUserTest extends TestCase
                 'email' => $user->email,
                 'role' => $user->role
             ]);
+
+
+        // assertions
+        $this->assertAuthenticated();
+
+        $this->assertDatabaseCount('users', 2);
 
         $response->assertRedirect(route('admin.users'));
     }
@@ -76,6 +86,12 @@ class ToggleUserTest extends TestCase
                 'email' => $user->email,
                 'role' => $user->role
             ]);
+
+
+        // assertions
+        $this->assertAuthenticated();
+
+        $this->assertDatabaseCount('users', 2);
 
         $response->assertRedirect(route('admin.users'));
     }

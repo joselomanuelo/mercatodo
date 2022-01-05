@@ -18,12 +18,20 @@ class ShowUserTest extends TestCase
      */
     public function test_show_user_screen_can_be_rendered(): void
     {
-        $user = User::factory()->create([
+        $admin = User::factory()->create([
             'role' => 'admin',
         ]);
 
-        $response = $this->actingAs($user)
-            ->get(route('admin.users.show', $user));
+        $response = $this->actingAs($admin)
+            ->get(route('admin.users.show', $admin));
+
+
+        // assertions
+        $this->assertAuthenticated();
+
+        $this->assertDatabaseCount('users', 1);
+
+        $response->assertViewIs('admin.show');
 
         $response->assertOk();
     }
@@ -39,6 +47,12 @@ class ShowUserTest extends TestCase
 
         $response = $this->actingAs($user)
             ->get(route('admin.users.show', $user));
+
+
+        // assertions
+        $this->assertAuthenticated();
+
+        $this->assertDatabaseCount('users', 1);
 
         $response->assertForbidden();
     }

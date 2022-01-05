@@ -18,11 +18,19 @@ class EditUserTest extends TestCase
      */
     public function test_edit_user_screen_can_be_rendered(): void
     {
-        $user = User::factory()->create([
+        $admin = User::factory()->create([
             'role' => 'admin'
         ]);
 
-        $response = $this->actingAs($user)->get(route('admin.users.edit', $user));
+        $response = $this->actingAs($admin)->get(route('admin.users.edit', $admin));
+
+
+        // assertions
+        $this->assertAuthenticated();
+
+        $this->assertDatabaseCount('users', 1);
+
+        $response->assertViewIs('admin.edit');
 
         $response->assertOk();
     }
@@ -38,6 +46,12 @@ class EditUserTest extends TestCase
 
         $response = $this->actingAs($user)->get(route('admin.users.edit', $user));
 
+
+        // assertions
+        $this->assertAuthenticated();
+
+        $this->assertDatabaseCount('users', 1);
+
         $response->assertForbidden();
     }
 
@@ -50,11 +64,11 @@ class EditUserTest extends TestCase
     {
         $userToEdit = User::factory()->create();
 
-        $user = User::factory()->create([
+        $admin = User::factory()->create([
             'role' => 'admin',
         ]);
 
-        $response = $this->actingAs($user)
+        $response = $this->actingAs($admin)
             ->put(route('admin.users.update', $userToEdit), [
                 'name' => 'Testing name',
                 'email' => 'testingemail@example.com',
@@ -63,6 +77,12 @@ class EditUserTest extends TestCase
             ]);
 
         $editedUser = User::find($userToEdit->id);
+
+
+        // assertions
+        $this->assertAuthenticated();
+
+        $this->assertDatabaseCount('users', 2);
 
         $this->assertEquals('Testing name', $editedUser->name);
 
@@ -88,6 +108,12 @@ class EditUserTest extends TestCase
                 'email' => 'testingemail@example.com',
                 'status' => true,
             ]);
+
+
+        // assertions
+        $this->assertAuthenticated();
+
+        $this->assertDatabaseCount('users', 2);
 
         $response->assertForbidden();
     }
