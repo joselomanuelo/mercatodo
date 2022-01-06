@@ -18,14 +18,20 @@ class DeleteUserTest extends TestCase
      */
     public function test_user_can_be_delete(): void
     {
-        $user = User::factory()->create([
+        $admin = User::factory()->create([
             'role' => 'admin',
         ]);
 
         $userToDelete = User::factory()->create();
 
-        $response = $this->actingAs($user)
+        $response = $this->actingAs($admin)
             ->delete(route('admin.users.destroy', $userToDelete));
+
+
+        // assertions
+        $this->assertAuthenticated();
+
+        $this->assertDatabaseCount('users', 1);
 
         $this->assertDeleted($userToDelete);
 
@@ -45,6 +51,14 @@ class DeleteUserTest extends TestCase
 
         $response = $this->actingAs($user)
             ->delete(route('admin.users.destroy', $userToDelete));
+
+
+        // assertions
+        $this->assertAuthenticated();
+
+        $this->assertDatabaseCount('users', 2);
+
+        $this->assertModelExists($userToDelete);
 
         $response->assertForbidden();
     }
