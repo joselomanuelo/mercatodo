@@ -12,5 +12,7 @@ return [
     'confirm' => 'Confirm',
     'reset' => 'Reset Password',
     'register' => 'Register?',
+    'enable' => 'Enable',
+    'disable' => 'Disable',
 
 ];

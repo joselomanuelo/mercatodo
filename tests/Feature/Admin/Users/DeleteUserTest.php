@@ -4,29 +4,30 @@ namespace Tests\Feature\Admin;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class DeleteUserTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * An user can be deleted 
-     *
-     * @return void
-     */
-    public function test_user_can_be_delete(): void
+    public function testUserCanBeDelete(): void
     {
-        $admin = User::factory()->create([
-            'role' => 'admin',
-        ]);
+        $deleteUsersPermission = Permission::create(['name' => 'delete users']);
 
-        $userToDelete = User::factory()->create();
+        $adminRole = Role::create(['name' => 'admin'])
+            ->givePermissionTo($deleteUsersPermission);
+
+        $admin = User::factory()
+            ->create()
+            ->assignRole($adminRole);
+
+        $userToDelete = User::factory()
+            ->create();
 
         $response = $this->actingAs($admin)
             ->delete(route('admin.users.destroy', $userToDelete));
-
 
         // assertions
         $this->assertAuthenticated();
@@ -38,20 +39,19 @@ class DeleteUserTest extends TestCase
         $response->assertRedirect(route('admin.users'));
     }
 
-    /**
-     * Not admin user cant delete users
-     *
-     * @return void
-     */
-    public function test_not_admin_user_cant_delete_users(): void
+    public function testNotAdminUserCantDeleteUsers(): void
     {
-        $user = User::factory()->create();
+        $buyerRole = Role::create(['name' => 'buyer']);
 
-        $userToDelete = User::factory()->create();
+        $user = User::factory()
+            ->create()
+            ->assignRole($buyerRole);
+
+        $userToDelete = User::factory()
+            ->create();
 
         $response = $this->actingAs($user)
             ->delete(route('admin.users.destroy', $userToDelete));
-
 
         // assertions
         $this->assertAuthenticated();

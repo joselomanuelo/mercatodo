@@ -31,26 +31,30 @@ Route::prefix('admin')
     ->name('admin.')
     ->middleware(['auth', 'verified'])
     ->group(function () {
-
         Route::get('/users', [UsersController::class, 'index'])
-            ->middleware(['can:viewAny,App\Models\User'])
+            ->middleware(['permission:index users'])
             ->name('users');
 
         Route::delete('/users/{user}', [UsersController::class, 'destroy'])
-            ->middleware(['can:delete,user'])
+            ->middleware(['permission:delete users'])
             ->name('users.destroy');
 
         Route::get('users/{user}/edit', [UsersController::class, 'edit'])
-            ->middleware(['can:update,user'])
+            ->middleware(['permission:update users'])
             ->name('users.edit');
 
         Route::put('/users/{user}', [UsersController::class, 'update'])
-            ->middleware(['can:update,user'])
+            ->middleware(['permission:update users'])
             ->name('users.update');
 
         Route::get('/users/{user}', [UsersController::class, 'show'])
-            ->middleware(['can:view,user'])
+            ->middleware(['permission:show users'])
             ->name('users.show');
 
-        Route::resource('products', ProductController::class);
+        Route::put('users/{user}/toggle', [UsersController::class, 'toggle'])
+            ->middleware(['permission:update users'])
+            ->name('users.toggle');
+
+        Route::resource('products', ProductController::class)
+        ->middleware(['permission:index products']);
     });

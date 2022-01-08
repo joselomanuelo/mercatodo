@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'save' => 'Guardar',
     'logOut' => 'Salir',
     'logIn' => 'Entrar',
@@ -11,7 +10,7 @@ return [
     'confirm' => 'Confirmar',
     'reset' => 'Cambiar contraseña',
     'register' => '¿Registrarse?',
-    'delete' => 'Eliminar'
-
-
+    'delete' => 'Eliminar',
+    'enable' => 'Habilitar',
+    'disable' => 'Deshabilitar',
 ];

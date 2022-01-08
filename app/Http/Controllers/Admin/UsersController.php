@@ -10,73 +10,55 @@ use Illuminate\View\View;
 
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         $users = User::paginate(50);
 
         return view('admin.users', [
-            'users' => $users
+            'users' => $users,
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\View\View
-     */
     public function show(User $user)
     {
         return view('admin.show', [
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function edit(User $user)
     {
         return view('admin.edit', [
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(Request $request, User $user): RedirectResponse
     {
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->role = $request->input('role');
-        $user->disabled_at = $request->input('disable_at') ? now() : null;
+        $user->syncRoles($request->input('role'));
         $user->save();
 
         return redirect()->route('admin.users');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User $user
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function destroy(User $user): RedirectResponse
     {
         $user->delete();
+
+        return redirect()->route('admin.users');
+    }
+
+    public function toggle(User $user): RedirectResponse
+    {
+        if (!$user->disabled_at) {
+            $user->disabled_at = now();
+            $user->save();
+        } else {
+            $user->disabled_at = null;
+            $user->save();
+        }
 
         return redirect()->route('admin.users');
     }

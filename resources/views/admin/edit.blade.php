@@ -23,17 +23,17 @@
                         <div class="mt-4">
                             <x-label for="role" :value="__(trans('auth.role'))" />
                             <select name="role" id="role" class="block mt-1 w-full" required>
-                                <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>{{ trans('auth.admin') }}</option>
-                                <option value="buyer" {{ $user->role == 'buyer' ? 'selected' : '' }}>{{ trans('auth.buyer') }}</option>
+                                <option @if($user->hasRole('admin')) selected @endif value="admin" >{{ trans('auth.admin') }}</option>
+                                <option @if(!$user->hasRole('admin')) selected @endif value="buyer" >{{ trans('auth.buyer') }}</option>
                             </select>
                         </div>
-                        <div class="mt-4">
+                        {{-- <div class="mt-4">
                             <x-label for="disable_at" :value="__(trans('auth.status'))" />
                             <select name="disable_at" id="disable_at" class="block mt-1 w-full" required>
                                 <option @if(!$user->disable_at) selected @endif value="0" >{{ trans('auth.enabled') }}</option>
                                 <option @if($user->disable_at) selected @endif value="1" >{{ trans('auth.disabled') }}</option>
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="flex items-center justify-end mt-4">
                             <x-button class="ml-4">
                                 {{ __(trans('buttons.save')) }}
