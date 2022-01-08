@@ -37,8 +37,7 @@ class UsersController extends Controller
     {
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->role = $request->input('role');
-        $user->disabled_at = $request->input('disable_at') ? now() : null;
+        $user->syncRoles($request->input('role'));
         $user->save();
 
         return redirect()->route('admin.users');
@@ -47,6 +46,19 @@ class UsersController extends Controller
     public function destroy(User $user): RedirectResponse
     {
         $user->delete();
+
+        return redirect()->route('admin.users');
+    }
+
+    public function toggle(User $user): RedirectResponse
+    {
+        if (!$user->disabled_at) {
+            $user->disabled_at = now();
+            $user->save();
+        } else {
+            $user->disabled_at = null;
+            $user->save();
+        }
 
         return redirect()->route('admin.users');
     }

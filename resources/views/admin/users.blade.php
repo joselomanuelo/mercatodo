@@ -14,7 +14,8 @@
                             <div class="w-full overflow-x-auto">
                                 <table class="w-full">
                                     <thead>
-                                        <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                                        <tr
+                                            class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                                             <th class="px-4 py-3">Id</th>
                                             <th class="px-4 py-3">{{ trans('auth.name') }}</th>
                                             <th class="px-4 py-3">{{ trans('auth.email') }}</th>
@@ -41,35 +42,51 @@
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $user->email }}</p>
+                                                            <p class="font-semibold text-black">{{ $user->email }}
+                                                            </p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $user->role == 'admin' ? trans('auth.admin') : trans('auth.buyer') }}</p>
-                                                        </div>
-                                                    </td> 
-                                                    <td class="px-4 py-3 border">
-                                                        <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ !$user->disabled_at ? trans('auth.enabled') : trans('auth.disabled') }}</p>
+                                                            <p class="font-semibold text-black">
+                                                                {{ $user->hasRole('admin') ? trans('auth.admin') : trans('auth.buyer') }}
+                                                            </p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <x-button-link href="{{ route('admin.users.show', $user) }}">{{ trans('buttons.show') }}</x-button-link>
+                                                            <form action="{{ route('admin.users.toggle', $user) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                {{ method_field('PUT') }}
+                                                                <x-button>
+                                                                    {{ __(!$user->disabled_at ? trans('buttons.disable') : trans('buttons.enable')) }}
+                                                                </x-button>
+                                                            </form>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <x-button-link href="{{ route('admin.users.edit', $user) }}">{{ trans('buttons.edit') }}</x-button-link>
+                                                            <x-button-link
+                                                                href="{{ route('admin.users.show', $user) }}">
+                                                                {{ trans('buttons.show') }}
+                                                            </x-button-link>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
+                                                            <x-button-link
+                                                                href="{{ route('admin.users.edit', $user) }}">
+                                                                {{ trans('buttons.edit') }}
+                                                            </x-button-link>
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <form action="{{ route('admin.users.destroy', $user) }}"
+                                                                method="POST">
                                                                 @csrf
                                                                 {{ method_field('DELETE') }}
-                                                                <!--¿Cómo hacer traducciones dentro javascript?-->
                                                                 <x-button onclick="return confirm();">
                                                                     {{ __(trans('buttons.delete')) }}
                                                                 </x-button>
