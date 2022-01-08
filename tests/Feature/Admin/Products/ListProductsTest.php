@@ -14,7 +14,7 @@ class ListproductsTest extends TestCase
 
     public function testProductsListScreenCanBeRendered(): void
     {
-        $indexProductsPermission = Permission::create(['name' => 'edit users']);
+        $indexProductsPermission = Permission::create(['name' => 'index products']);
 
         $adminRole = Role::create(['name' => 'admin'])
             ->givePermissionTo($indexProductsPermission);
@@ -38,12 +38,6 @@ class ListproductsTest extends TestCase
 
     public function testUnauthenticatedUserCantRenderProductsListScreen(): void
     {
-        $buyerRole = Role::create(['name' => 'buyer']);
-
-        $user = User::factory()
-            ->create(['disabled_at' => now()])
-            ->assignRole($buyerRole);
-            
         $response = $this->get(route('admin.products.index'));
 
         // assertions

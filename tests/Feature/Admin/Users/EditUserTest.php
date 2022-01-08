@@ -14,7 +14,7 @@ class EditUserTest extends TestCase
 
     public function testEditUserScreenCanBeRendered(): void
     {
-        $editUsersPermission = Permission::create(['name' => 'edit users']);
+        $editUsersPermission = Permission::create(['name' => 'update users']);
 
         $adminRole = Role::create(['name' => 'admin'])
             ->givePermissionTo($editUsersPermission);
@@ -57,7 +57,7 @@ class EditUserTest extends TestCase
 
     public function testUserCanBeEdited(): void
     {
-        $editUsersPermission = Permission::create(['name' => 'edit users']);
+        $editUsersPermission = Permission::create(['name' => 'update users']);
 
         $adminRole = Role::create(['name' => 'admin'])
             ->givePermissionTo($editUsersPermission);

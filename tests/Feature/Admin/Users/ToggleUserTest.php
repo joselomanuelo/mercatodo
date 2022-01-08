@@ -33,7 +33,7 @@ class ToggleUserTest extends TestCase
 
     public function testUserCanBeDisabled(): void
     {
-        $editUsersPermission = Permission::create(['name' => 'edit users']);
+        $editUsersPermission = Permission::create(['name' => 'update users']);
 
         $adminRole = Role::create(['name' => 'admin'])
             ->givePermissionTo($editUsersPermission);
@@ -62,7 +62,7 @@ class ToggleUserTest extends TestCase
 
     public function testUserCanBeEnabled(): void
     {
-        $editUsersPermission = Permission::create(['name' => 'edit users']);
+        $editUsersPermission = Permission::create(['name' => 'update users']);
 
         $adminRole = Role::create(['name' => 'admin'])
             ->givePermissionTo($editUsersPermission);
