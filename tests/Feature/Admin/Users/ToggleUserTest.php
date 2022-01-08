@@ -46,11 +46,7 @@ class ToggleUserTest extends TestCase
             ->create();
 
         $response = $this->actingAs($admin)
-            ->put(route('admin.users.update', $user), [
-                'disabled_at' => now(),
-                'name' => $user->name,
-                'email' => $user->email,
-            ]);
+            ->put(route('admin.users.toggle', $user));
 
         // assertions
         $this->assertAuthenticated();
@@ -71,18 +67,13 @@ class ToggleUserTest extends TestCase
             ->create()
             ->assignRole($adminRole);
 
-        $buyerRole = Role::create(['name' => 'buyer']);
-
         $user = User::factory()
-            ->create(['disabled_at' => now()])
-            ->assignRole($buyerRole);
+            ->create([
+                'disabled_at' => now(),
+            ]);
 
         $response = $this->actingAs($admin)
-            ->put(route('admin.users.update', $user), [
-                'disabled_at' => null,
-                'name' => $user->name,
-                'email' => $user->email,
-            ]);
+            ->put(route('admin.users.toggle', $user));
 
         // assertions
         $this->assertAuthenticated();
