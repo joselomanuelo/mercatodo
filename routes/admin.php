@@ -33,7 +33,7 @@ Route::prefix('admin')
     ->group(function () {
 
         Route::get('/users', [UsersController::class, 'index'])
-            ->middleware(['can:viewAny,App\Models\User'])
+            ->middleware(['permission:index users'])
             ->name('users');
 
         Route::delete('/users/{user}', [UsersController::class, 'destroy'])

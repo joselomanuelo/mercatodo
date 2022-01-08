@@ -17,7 +17,7 @@
                             {{ __(trans('navigation.dashboard')) }}
                         </x-nav-link>
                     @endauth
-                    @can ('viewAny', App\Models\User::class)
+                    @can ('index users')
                         <x-nav-link :href="route('admin.users')" :active="request()->routeIs('admin.users')">
                             {{ __(trans('navigation.users')) }}
                         </x-nav-link>
