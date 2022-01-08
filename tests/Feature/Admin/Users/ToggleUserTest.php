@@ -4,27 +4,24 @@ namespace Tests\Feature\Admin;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class ToggleUserTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * Disable user can't do anything 
-     *
-     * @return void
-     */
-    public function test_disabled_user_cant_do_anything(): void
+    public function testDisabledUserCantDoAnything(): void
     {
-        $user = User::factory()->create([
-            'disabled_at' => now(),
-        ]);
+        $buyerRole = Role::create(['name' => 'buyer']);
+
+        $user = User::factory()
+            ->create(['disabled_at' => now()])
+            ->assignRole($buyerRole);
 
         $response = $this->actingAs($user)
             ->get(route('welcome'));
-
 
         // assertions
         $this->assertGuest();
@@ -34,27 +31,26 @@ class ToggleUserTest extends TestCase
         $response->assertRedirect(route('login'));
     }
 
-    /**
-     * User can be disabled
-     * 
-     * @return void
-     */
-    public function test_user_can_be_disabled(): void
+    public function testUserCanBeDisabled(): void
     {
-        $admin = User::factory()->create([
-            'role' => 'admin'
-        ]);
+        $editUsersPermission = Permission::create(['name' => 'edit users']);
 
-        $user = User::factory()->create();
+        $adminRole = Role::create(['name' => 'admin'])
+            ->givePermissionTo($editUsersPermission);
+
+        $admin = User::factory()
+            ->create()
+            ->assignRole($adminRole);
+
+        $user = User::factory()
+            ->create();
 
         $response = $this->actingAs($admin)
             ->put(route('admin.users.update', $user), [
                 'disabled_at' => now(),
                 'name' => $user->name,
                 'email' => $user->email,
-                'role' => $user->role
             ]);
-
 
         // assertions
         $this->assertAuthenticated();
@@ -64,29 +60,29 @@ class ToggleUserTest extends TestCase
         $response->assertRedirect(route('admin.users'));
     }
 
-    /**
-     * User can be enabled
-     * 
-     * @return void
-     */
-    public function test_user_can_be_enabled(): void
+    public function testUserCanBeEnabled(): void
     {
-        $admin = User::factory()->create([
-            'role' => 'admin'
-        ]);
+        $editUsersPermission = Permission::create(['name' => 'edit users']);
 
-        $user = User::factory()->create([
-            'disabled_at' => now(),
-        ]);
+        $adminRole = Role::create(['name' => 'admin'])
+            ->givePermissionTo($editUsersPermission);
+
+        $admin = User::factory()
+            ->create()
+            ->assignRole($adminRole);
+
+        $buyerRole = Role::create(['name' => 'buyer']);
+
+        $user = User::factory()
+            ->create(['disabled_at' => now()])
+            ->assignRole($buyerRole);
 
         $response = $this->actingAs($admin)
             ->put(route('admin.users.update', $user), [
                 'disabled_at' => null,
                 'name' => $user->name,
                 'email' => $user->email,
-                'role' => $user->role
             ]);
-
 
         // assertions
         $this->assertAuthenticated();

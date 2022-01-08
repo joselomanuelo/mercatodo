@@ -4,26 +4,27 @@ namespace Tests\Feature\Admin;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class EditUserTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * Edit user screen can be rendered 
-     *
-     * @return void
-     */
-    public function test_edit_user_screen_can_be_rendered(): void
+    public function testEditUserScreenCanBeRendered(): void
     {
-        $admin = User::factory()->create([
-            'role' => 'admin'
-        ]);
+        $editUsersPermission = Permission::create(['name' => 'edit users']);
 
-        $response = $this->actingAs($admin)->get(route('admin.users.edit', $admin));
+        $adminRole = Role::create(['name' => 'admin'])
+            ->givePermissionTo($editUsersPermission);
 
+        $admin = User::factory()
+            ->create()
+            ->assignRole($adminRole);
+
+        $response = $this->actingAs($admin)
+            ->get(route('admin.users.edit', $admin));
 
         // assertions
         $this->assertAuthenticated();
@@ -35,17 +36,16 @@ class EditUserTest extends TestCase
         $response->assertOk();
     }
 
-    /**
-     * Not admin user cant render edit user screen 
-     *
-     * @return void
-     */
-    public function test_not_admin_user_cant_render_edit_user_screen(): void
+    public function testNotAdminUserCantRenderEditUserScreen(): void
     {
-        $user = User::factory()->create();
+        $buyerRole = Role::create(['name' => 'buyer']);
 
-        $response = $this->actingAs($user)->get(route('admin.users.edit', $user));
+        $user = User::factory()
+            ->create()
+            ->assignRole($buyerRole);
 
+        $response = $this->actingAs($user)
+            ->get(route('admin.users.edit', $user));
 
         // assertions
         $this->assertAuthenticated();
@@ -55,29 +55,28 @@ class EditUserTest extends TestCase
         $response->assertForbidden();
     }
 
-    /**
-     * An user can be edited 
-     *
-     * @return void
-     */
-    public function test_user_can_be_edited(): void
+    public function testUserCanBeEdited(): void
     {
-        $userToEdit = User::factory()->create();
+        $editUsersPermission = Permission::create(['name' => 'edit users']);
 
-        $admin = User::factory()->create([
-            'role' => 'admin',
-        ]);
+        $adminRole = Role::create(['name' => 'admin'])
+            ->givePermissionTo($editUsersPermission);
+
+        $admin = User::factory()
+            ->create()
+            ->assignRole($adminRole);
+
+        $userToEdit = User::factory()
+            ->create();
 
         $response = $this->actingAs($admin)
             ->put(route('admin.users.update', $userToEdit), [
                 'name' => 'Testing name',
                 'email' => 'testingemail@example.com',
                 'disable_at' => null,
-                'role' => 'buyer'
             ]);
 
         $editedUser = User::find($userToEdit->id);
-
 
         // assertions
         $this->assertAuthenticated();
@@ -91,16 +90,15 @@ class EditUserTest extends TestCase
         $response->assertRedirect(route('admin.users'));
     }
 
-    /**
-     * Not admin user cant edit users 
-     *
-     * @return void
-     */
-    public function test_not_admin_user_cant_edit_users(): void
+    public function testNotAdminUserCantEditUsers(): void
     {
-        $userToEdit = User::factory()->create();
+        $buyerRole = Role::create(['name' => 'buyer']);
 
-        $user = User::factory()->create();
+        $user = User::factory()
+            ->create()
+            ->assignRole($buyerRole);
+
+        $userToEdit = User::factory()->create();
 
         $response = $this->actingAs($user)
             ->put(route('admin.users.update', $userToEdit), [
@@ -108,7 +106,6 @@ class EditUserTest extends TestCase
                 'email' => 'testingemail@example.com',
                 'status' => true,
             ]);
-
 
         // assertions
         $this->assertAuthenticated();

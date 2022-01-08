@@ -4,27 +4,27 @@ namespace Tests\Feature\Admin;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class ShowUserTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * Show user screen can be rendered
-     *
-     * @return void
-     */
-    public function test_show_user_screen_can_be_rendered(): void
+    public function testShowUserScreenCanBeRendered(): void
     {
-        $admin = User::factory()->create([
-            'role' => 'admin',
-        ]);
+        $showUsersPermission = Permission::create(['name' => 'show users']);
+
+        $adminRole = Role::create(['name' => 'admin'])
+            ->givePermissionTo($showUsersPermission);
+
+        $admin = User::factory()
+            ->create()
+            ->assignRole($adminRole);
 
         $response = $this->actingAs($admin)
             ->get(route('admin.users.show', $admin));
-
 
         // assertions
         $this->assertAuthenticated();
@@ -36,18 +36,16 @@ class ShowUserTest extends TestCase
         $response->assertOk();
     }
 
-    /**
-     * Not admin user cant see users 
-     *
-     * @return void
-     */
-    public function test_not_admin_user_cant_see_users(): void
+    public function testNotAdminUserCantSeeUsers(): void
     {
-        $user = User::factory()->create();
+        $buyerRole = Role::create(['name' => 'buyer']);
+
+        $user = User::factory()
+            ->create()
+            ->assignRole($buyerRole);
 
         $response = $this->actingAs($user)
             ->get(route('admin.users.show', $user));
-
 
         // assertions
         $this->assertAuthenticated();

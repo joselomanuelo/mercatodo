@@ -4,26 +4,30 @@ namespace Tests\Feature\Admin;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class ListUsersTest extends TestCase
 {
     use RefreshDatabase;
+
     /**
-     * List of users can be rendered
-     *
-     * @return void
+     * @test
      */
-    public function test_users_list_screen_can_be_rendered(): void
+    public function testUsersListScreenCanBeRendered(): void
     {
-        $admin = User::factory()->create([
-            'role' => 'admin',
-        ]);
+        $indexUsersPermission = Permission::create(['name' => 'index users']);
+
+        $adminRole = Role::create(['name' => 'admin'])
+            ->givePermissionTo($indexUsersPermission);
+
+        $admin = User::factory()
+            ->create()
+            ->assignRole($adminRole);
 
         $response = $this->actingAs($admin)
             ->get(route('admin.users'));
-
 
         // assertions
         $this->assertAuthenticated();
@@ -35,15 +39,9 @@ class ListUsersTest extends TestCase
         $response->assertOk();
     }
 
-    /**
-     * Unauthenticated user can´t render user's list screen
-     * 
-     * @return void
-     */
-    public function test_unauthenticated_user_cant_render_users_list_screen(): void
+    public function testUnauthenticatedUserCantRenderUsersListScreen(): void
     {
         $response = $this->get(route('admin.users'));
-
 
         // assertions
         $this->assertGuest();
@@ -53,18 +51,16 @@ class ListUsersTest extends TestCase
         $response->assertRedirect(route('login'));
     }
 
-    /**
-     * Not admin user can´t render user's list screen
-     * 
-     * @return void
-     */
-    public function test_not_admin_user_cant_render_users_list_screen(): void
+    public function testNotAdminUserCantRenderUsersListScreen(): void
     {
-        $user = User::factory()->create();
+        $buyerRole = Role::create(['name' => 'buyer']);
+
+        $user = User::factory()
+            ->create()
+            ->assignRole($buyerRole);
 
         $response = $this->actingAs($user)
             ->get(route('admin.users'));
-
 
         // assertions
         $this->assertAuthenticated();
