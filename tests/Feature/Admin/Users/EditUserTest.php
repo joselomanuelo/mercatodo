@@ -31,7 +31,7 @@ class EditUserTest extends TestCase
 
         $this->assertDatabaseCount('users', 1);
 
-        $response->assertViewIs('admin.edit');
+        $response->assertViewIs('admin.users.edit');
 
         $response->assertOk();
     }
@@ -87,7 +87,7 @@ class EditUserTest extends TestCase
 
         $this->assertEquals('testingemail@example.com', $editedUser->email);
 
-        $response->assertRedirect(route('admin.users'));
+        $response->assertRedirect(route('admin.users.index'));
     }
 
     public function testNotAdminUserCantEditUsers(): void

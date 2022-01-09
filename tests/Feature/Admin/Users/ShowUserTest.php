@@ -31,7 +31,7 @@ class ShowUserTest extends TestCase
 
         $this->assertDatabaseCount('users', 1);
 
-        $response->assertViewIs('admin.show');
+        $response->assertViewIs('admin.users.show');
 
         $response->assertOk();
     }
