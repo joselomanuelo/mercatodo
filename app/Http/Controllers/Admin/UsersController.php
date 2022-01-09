@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class UsersController extends Controller
@@ -33,12 +33,12 @@ class UsersController extends Controller
         ]);
     }
 
-    public function update(Request $request, User $user): RedirectResponse
+    public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->syncRoles($request->input('role'));
         $user->save();
+        $user->syncRoles($request->input('role'));
 
         return redirect()->route('admin.users');
     }
