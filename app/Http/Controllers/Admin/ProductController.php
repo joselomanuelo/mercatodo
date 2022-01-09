@@ -15,7 +15,7 @@ class ProductController extends Controller
     {
         $products = Product::paginate(50);
 
-        return view('admin.products', [
+        return view('admin.products.index', [
             'products' => $products,
         ]);
     }
@@ -30,7 +30,6 @@ class ProductController extends Controller
 
     public function show(Product $product): Response
     {
-        
     }
 
     public function edit(Product $product): Response

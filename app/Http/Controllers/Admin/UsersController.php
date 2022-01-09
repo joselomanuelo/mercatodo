@@ -14,21 +14,21 @@ class UsersController extends Controller
     {
         $users = User::paginate(50);
 
-        return view('admin.users', [
+        return view('admin.users.index', [
             'users' => $users,
         ]);
     }
 
     public function show(User $user)
     {
-        return view('admin.show', [
+        return view('admin.users.show', [
             'user' => $user,
         ]);
     }
 
     public function edit(User $user)
     {
-        return view('admin.edit', [
+        return view('admin.users.edit', [
             'user' => $user,
         ]);
     }
@@ -40,14 +40,14 @@ class UsersController extends Controller
         $user->save();
         $user->syncRoles($request->input('role'));
 
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users.index');
     }
 
     public function destroy(User $user): RedirectResponse
     {
         $user->delete();
 
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users.index');
     }
 
     public function toggle(User $user): RedirectResponse
@@ -60,6 +60,6 @@ class UsersController extends Controller
             $user->save();
         }
 
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users.index');
     }
 }
