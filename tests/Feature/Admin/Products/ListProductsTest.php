@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Products;
+namespace tests\Feature\Products;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -29,9 +29,7 @@ class ListproductsTest extends TestCase
         // assertions
         $this->assertAuthenticated();
 
-        $this->assertDatabaseCount('users', 1);
-
-        $response->assertViewIs('admin.products');
+        $response->assertViewIs('admin.products.index');
 
         $response->assertOk();
     }
@@ -42,8 +40,6 @@ class ListproductsTest extends TestCase
 
         // assertions
         $this->assertGuest();
-
-        $this->assertDatabaseCount('users', 0);
 
         $response->assertRedirect(route('login'));
     }
