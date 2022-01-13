@@ -2,6 +2,7 @@
 
 namespace tests\Feature\Admin;
 
+use App\Constants\Permissions;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -16,7 +17,7 @@ class EditProductsTest extends TestCase
 
     public function testEditProductScreenCanBeRendered(): void
     {
-        $editProductsPermission = Permission::create(['name' => 'update products']);
+        $editProductsPermission = Permission::create(['name' => Permissions::UPDATE_PRODUCTS]);
 
         $adminRole = Role::create(['name' => 'admin'])
             ->givePermissionTo($editProductsPermission);
@@ -65,9 +66,9 @@ class EditProductsTest extends TestCase
         $response->assertForbidden();
     }
 
-    public function testUserCanBeEdited(): void
+    public function testProductCanBeEdited(): void
     {
-        $editProductsPermission = Permission::create(['name' => 'update products']);
+        $editProductsPermission = Permission::create(['name' => Permissions::UPDATE_PRODUCTS]);
 
         $adminRole = Role::create(['name' => 'admin'])
             ->givePermissionTo($editProductsPermission);
@@ -76,31 +77,37 @@ class EditProductsTest extends TestCase
             ->create()
             ->assignRole($adminRole);
 
-        $productToEdit = Product::factory()
-            ->for(Category::factory()->create())
+        $category = Category::factory()->create();
+
+        $product = Product::factory()
+            ->for($category)
             ->create();
 
+        //dd($product->id);
+
         $response = $this->actingAs($admin)
-            ->put(route('admin.products.update', $productToEdit), [
-                'product' => 'Testing product',
+            ->put(route('admin.products.update', $product), [
+                'name' => 'Testing product',
                 'description' => 'Testing description',
-                'price' => 100.99,
-                'category_id' => 1,
+                'price' => 100,
                 'stock' => 100,
+                'category' => $category->id,
             ]);
 
-        $editedProduct = Product::find($productToEdit->id);
+        $product2 = Product::find($product->id);
+
+        //dd($product->attributesToArray(), $product->attributesToArray());
 
         // assertions
         $this->assertAuthenticated();
 
         $this->assertDatabaseCount('products', 1);
 
-        $this->assertEquals('Testing product', $editedProduct->product);
-        $this->assertEquals('Testing description', $editedProduct->description);
-        $this->assertEquals(100.99, $editedProduct->price);
-        $this->assertEquals(1, $editedProduct->category_id);
-        $this->assertEquals(100, $editedProduct->stock);
+        $this->assertEquals('Testing product', $product2->name);
+        $this->assertEquals('Testing description', $product2->description);
+        $this->assertEquals(100, $product2->price);
+        $this->assertEquals($category->id, $product2->category->id);
+        $this->assertEquals(100, $product2->stock);
 
         $response->assertRedirect(route('admin.products.index'));
     }
@@ -118,13 +125,13 @@ class EditProductsTest extends TestCase
             ->create();
 
         $response = $this->actingAs($user)
-        ->put(route('admin.products.update', $productToEdit), [
-            'product' => 'Testing product',
-            'description' => 'Testing description',
-            'price' => 100.99,
-            'category_id' => 1,
-            'stock' => 100,
-        ]);
+            ->put(route('admin.products.update', $productToEdit), [
+                'name' => 'Testing product',
+                'description' => 'Testing description',
+                'price' => 100,
+                'category' => 1,
+                'stock' => 100,
+            ]);
 
         // assertions
         $this->assertAuthenticated();
