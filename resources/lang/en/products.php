@@ -5,4 +5,5 @@ return [
     'description' => 'Description',
     'price' => 'Price',
     'category' => 'Category',
+    'new' => 'New product'
 ];

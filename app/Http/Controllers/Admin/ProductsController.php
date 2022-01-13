@@ -23,7 +23,11 @@ class ProductsController extends Controller
 
     public function create(): View
     {
-        return view('admin.products.create');
+        $categories = Category::all();
+
+        return view('admin.products.create', [
+            'categories' => $categories,
+        ]);
     }
 
     public function store(StoreProductRequest $request): RedirectResponse
@@ -33,7 +37,7 @@ class ProductsController extends Controller
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->stock = $request->input('stock');
-        $product->category = $request->input('category');
+        $product->category_id = $request->input('category');
         $product->save();
 
         return redirect()->route('admin.products.index');
