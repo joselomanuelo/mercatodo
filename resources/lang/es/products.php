@@ -1,9 +1,8 @@
 <?php
 
 return [
-
-    'product' => 'Producto',
+    'name' => 'Nombre',
     'description' => 'Descripción',
     'price' => 'Precio',
-
+    'category' => 'Categoría',
 ];

@@ -52,13 +52,8 @@ class UsersController extends Controller
 
     public function toggle(User $user): RedirectResponse
     {
-        if (!$user->disabled_at) {
-            $user->disabled_at = now();
-            $user->save();
-        } else {
-            $user->disabled_at = null;
-            $user->save();
-        }
+        $user->disabled_at = $user->disabled_at ? null : now();
+        $user->save();
 
         return redirect()->route('admin.users.index');
     }

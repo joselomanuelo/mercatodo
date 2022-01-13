@@ -16,14 +16,14 @@
                                     <thead>
                                         <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                                             <th class="px-4 py-3">Id</th>
-                                            <th class="px-4 py-3">{{ trans('products.product') }}</th>
+                                            <th class="px-4 py-3">{{ trans('products.name') }}</th>
                                             <th class="px-4 py-3">{{ trans('products.description') }}</th>
+                                            <th class="px-4 py-3">{{ trans('products.category') }}</th>
                                             <th class="px-4 py-3">{{ trans('products.price') }}</th>
-                                            <!--
+                                            <th class="px-4 py-3">Stock</th>
                                             <th class="px-4 py-3">{{ trans('buttons.show') }}</th>
                                             <th class="px-4 py-3">{{ trans('buttons.edit') }}</th>
                                             <th class="px-4 py-3">{{ trans('buttons.delete') }}</th>
-                                            -->
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white">
@@ -37,7 +37,7 @@
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $product->product }}</p>
+                                                            <p class="font-semibold text-black">{{ $product->name }}</p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
@@ -47,10 +47,19 @@
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
+                                                            <p class="font-semibold text-black">{{ $product->category->name }}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
                                                             <p class="font-semibold text-black">{{ $product->price }}</p>
                                                         </div>
                                                     </td> 
-                                                    <!--
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <p class="font-semibold text-black">{{ $product->stock }}</p>
+                                                        </div>
+                                                    </td> 
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
                                                             <x-button-link href="{{ route('admin.products.show', $product) }}">{{ trans('buttons.show') }}</x-button-link>
@@ -71,8 +80,7 @@
                                                                 </x-button>
                                                             </form>
                                                         </div>
-                                                    </td>-->
-                                            
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </div>

@@ -18,9 +18,14 @@
                         </x-nav-link>
                     @endauth
                     @can ('index users')
-                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users')">
+                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
                             {{ __(trans('navigation.users')) }}
                         </x-nav-link>
+                    @endcan
+                    @can('index products')
+                    <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
+                        {{ __(trans('navigation.products')) }}
+                    </x-nav-link>
                     @endcan
                 </div>
             </div>
