@@ -14,7 +14,9 @@
                             <div class="w-full overflow-x-auto">
                                 <table class="w-full">
                                     <thead>
-                                        <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                                        <tr
+                                            class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                                            <th class="px-4 py-3">{{ trans('products.image') }}</th>
                                             <th class="px-4 py-3">Id</th>
                                             <th class="px-4 py-3">{{ trans('products.name') }}</th>
                                             <th class="px-4 py-3">{{ trans('products.description') }}</th>
@@ -32,47 +34,65 @@
                                                 <tr class="text-gray-700">
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $product->id }}</p>
+                                                            <img src="{{ asset($product->product_image) }}"
+                                                                alt="Image" width="70px" height="70px">
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $product->name }}</p>
+                                                            <p class="font-semibold text-black">{{ $product->id }}
+                                                            </p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $product->description }}</p>
+                                                            <p class="font-semibold text-black">{{ $product->name }}
+                                                            </p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $product->category->name }}</p>
+                                                            <p class="font-semibold text-black">
+                                                                {{ $product->description }}</p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $product->price }}</p>
-                                                        </div>
-                                                    </td> 
-                                                    <td class="px-4 py-3 border">
-                                                        <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $product->stock }}</p>
-                                                        </div>
-                                                    </td> 
-                                                    <td class="px-4 py-3 border">
-                                                        <div class="flex items-center text-sm">
-                                                            <x-button-link href="{{ route('admin.products.show', $product) }}">{{ trans('buttons.show') }}</x-button-link>
+                                                            <p class="font-semibold text-black">
+                                                                {{ $product->category->name }}</p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <x-button-link href="{{ route('admin.products.edit', $product) }}">{{ trans('buttons.edit') }}</x-button-link>
+                                                            <p class="font-semibold text-black">{{ $product->price }}
+                                                            </p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <form action="{{ route('admin.products.destroy', $product) }}" method="POST">
+                                                            <p class="font-semibold text-black">{{ $product->stock }}
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <x-button-link
+                                                                href="{{ route('admin.products.show', $product) }}">
+                                                                {{ trans('buttons.show') }}</x-button-link>
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <x-button-link
+                                                                href="{{ route('admin.products.edit', $product) }}">
+                                                                {{ trans('buttons.edit') }}</x-button-link>
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-4 py-3 border">
+                                                        <div class="flex items-center text-sm">
+                                                            <form
+                                                                action="{{ route('admin.products.destroy', $product) }}"
+                                                                method="POST">
                                                                 @csrf
                                                                 {{ method_field('DELETE') }}
                                                                 <x-button onclick="return confirm();">

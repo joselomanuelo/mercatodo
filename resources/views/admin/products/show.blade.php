@@ -11,6 +11,10 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <ul>
                         <li>
+                            <img src="{{ asset($product->product_image) }}"
+                                alt="Image" width="200px" height="200px">
+                        </li>
+                        <li>    
                             <h3>Id: {{ $product->id }}</h3>
                         </li>
                         <li>

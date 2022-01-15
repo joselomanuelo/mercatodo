@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ trans('buttons.edit') . ' ' . __(trans('products.new')) }}
+            {{ __(trans('products.new')) }}
         </h2>
     </x-slot>
 
@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form action="{{ route('admin.products.store') }}" method="POST">
+                    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div>
                             <x-label for="name" :value="__(trans('auth.name'))" />
@@ -17,7 +17,8 @@
                         </div>
                         <div class="mt-4">
                             <x-label for="description" :value="__(trans('products.description'))" />
-                            <x-textarea id="description" class="block mt-1 w-full" name="description" required></x-textarea>
+                            <x-textarea id="description" class="block mt-1 w-full" name="description" required>
+                            </x-textarea>
                         </div>
                         <div class="mt-4">
                             <x-label for="price" :value="__(trans('products.price'))" />
@@ -36,6 +37,10 @@
                                     </option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="mt-4">
+                            <x-label for="product_image" :value="__(trans('products.image'))" />
+                            <x-input id="product_image" class="block mt-1 w-full" type="file" name="product_image"/>
                         </div>
                         <div class="flex items-center justify-end mt-4">
                             <x-button class="ml-4">

@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProductsController extends Controller
@@ -38,6 +39,16 @@ class ProductsController extends Controller
         $product->price = $request->input('price');
         $product->stock = $request->input('stock');
         $product->category_id = $request->input('category');
+
+        if ($request->hasFile('product_image')) {
+            $fileName = time().'.'.$request->file('product_image')->extension();
+            $product->product_image = 'storage/'.$request->file('product_image')->storeAs(
+                'uploads/products',
+                $fileName,
+                'public'
+            );
+        }
+
         $product->save();
 
         return redirect()->route('admin.products.index');
@@ -67,6 +78,16 @@ class ProductsController extends Controller
         $product->price = $request->input('price');
         $product->stock = $request->input('stock');
         $product->category_id = $request->input('category');
+
+        if ($request->hasFile('product_image')) {
+            $fileName = time().'.'.$request->file('product_image')->extension();
+            $product->product_image = 'storage/'.$request->file('product_image')->storeAs(
+                'uploads/products',
+                $fileName,
+                'public'
+            );
+        }
+
         $product->save();
 
         return redirect()->route('admin.products.index');

@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory
 {
-   
     public function definition(): array
     {
         return [
@@ -14,6 +13,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->paragraph(),
             'price' => $this->faker->randomNumber(5),
             'stock' => $this->faker->randomNumber(4),
+            'product_image' => 'storage/uploads/products/example.jpg',
         ];
     }
 }

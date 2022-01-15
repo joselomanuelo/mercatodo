@@ -5,5 +5,6 @@ return [
     'description' => 'Description',
     'price' => 'Price',
     'category' => 'Category',
-    'new' => 'New product'
+    'new' => 'New product',
+    'image' => 'Image',
 ];
