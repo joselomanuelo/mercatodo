@@ -3,6 +3,7 @@
 namespace tests\Feature\Admin;
 
 use App\Constants\Permissions;
+use App\Constants\Roles;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -19,7 +20,7 @@ class EditProductsTest extends TestCase
     {
         $editProductsPermission = Permission::create(['name' => Permissions::UPDATE_PRODUCTS]);
 
-        $adminRole = Role::create(['name' => 'admin'])
+        $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($editProductsPermission);
 
         $admin = User::factory()
@@ -45,7 +46,7 @@ class EditProductsTest extends TestCase
 
     public function testNotAdminUserCantRenderEditProductScreen(): void
     {
-        $buyerRole = Role::create(['name' => 'buyer']);
+        $buyerRole = Role::create(['name' => Roles::BUYER]);
 
         $user = User::factory()
             ->create()
@@ -70,7 +71,7 @@ class EditProductsTest extends TestCase
     {
         $editProductsPermission = Permission::create(['name' => Permissions::UPDATE_PRODUCTS]);
 
-        $adminRole = Role::create(['name' => 'admin'])
+        $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($editProductsPermission);
 
         $admin = User::factory()
@@ -83,8 +84,6 @@ class EditProductsTest extends TestCase
             ->for($category)
             ->create();
 
-        //dd($product->id);
-
         $response = $this->actingAs($admin)
             ->put(route('admin.products.update', $product), [
                 'name' => 'Testing product',
@@ -95,8 +94,6 @@ class EditProductsTest extends TestCase
             ]);
 
         $product2 = Product::find($product->id);
-
-        //dd($product->attributesToArray(), $product->attributesToArray());
 
         // assertions
         $this->assertAuthenticated();
@@ -131,6 +128,7 @@ class EditProductsTest extends TestCase
                 'price' => 100,
                 'category' => 1,
                 'stock' => 100,
+                'product_image' => null,
             ]);
 
         // assertions

@@ -18,7 +18,9 @@ class CreateProductsTest extends TestCase
 
     public function testCreateProductScreenCanBeRendered(): void
     {
-        $createProductsPermission = Permission::create(['name' => Permissions::CREATE_PRODUCTS]);
+        $createProductsPermission = Permission::create([
+            'name' => Permissions::CREATE_PRODUCTS,
+        ]);
 
         $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($createProductsPermission);
@@ -61,7 +63,9 @@ class CreateProductsTest extends TestCase
 
     public function testProductCanBeCreated(): void
     {
-        $createProductsPermission = Permission::create(['name' => Permissions::CREATE_PRODUCTS]);
+        $createProductsPermission = Permission::create([
+            'name' => Permissions::CREATE_PRODUCTS,
+        ]);
 
         $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($createProductsPermission);
