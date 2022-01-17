@@ -18,15 +18,27 @@
                         </x-nav-link>
                     @endauth
                     @can ('index users')
-                        <x-nav-link :href="route('admin.users')" :active="request()->routeIs('admin.users')">
+                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
                             {{ __(trans('navigation.users')) }}
                         </x-nav-link>
+                    @endcan
+                    @can('index products')
+                    <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
+                        {{ __(trans('navigation.products')) }}
+                    </x-nav-link>
                     @endcan
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+                @if (request()->routeIs('admin.products.index'))
+                <div class="mr-4">
+                    <x-button-link class="ml-4" href="{{ route('admin.products.create') }}">
+                        {{ __(trans('products.new')) }}
+                    </x-button-link>
+                </div>
+                @endif
                 @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">

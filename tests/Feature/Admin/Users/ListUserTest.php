@@ -27,21 +27,21 @@ class ListUsersTest extends TestCase
             ->assignRole($adminRole);
 
         $response = $this->actingAs($admin)
-            ->get(route('admin.users'));
+            ->get(route('admin.users.index'));
 
         // assertions
         $this->assertAuthenticated();
 
         $this->assertDatabaseCount('users', 1);
 
-        $response->assertViewIs('admin.users');
+        $response->assertViewIs('admin.users.index');
 
         $response->assertOk();
     }
 
     public function testUnauthenticatedUserCantRenderUsersListScreen(): void
     {
-        $response = $this->get(route('admin.users'));
+        $response = $this->get(route('admin.users.index'));
 
         // assertions
         $this->assertGuest();
@@ -60,7 +60,7 @@ class ListUsersTest extends TestCase
             ->assignRole($buyerRole);
 
         $response = $this->actingAs($user)
-            ->get(route('admin.users'));
+            ->get(route('admin.users.index'));
 
         // assertions
         $this->assertAuthenticated();

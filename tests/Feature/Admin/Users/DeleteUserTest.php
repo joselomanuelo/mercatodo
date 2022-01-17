@@ -36,7 +36,7 @@ class DeleteUserTest extends TestCase
 
         $this->assertDeleted($userToDelete);
 
-        $response->assertRedirect(route('admin.users'));
+        $response->assertRedirect(route('admin.users.index'));
     }
 
     public function testNotAdminUserCantDeleteUsers(): void

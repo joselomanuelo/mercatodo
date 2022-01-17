@@ -53,7 +53,7 @@ class ToggleUserTest extends TestCase
 
         $this->assertDatabaseCount('users', 2);
 
-        $response->assertRedirect(route('admin.users'));
+        $response->assertRedirect(route('admin.users.index'));
     }
 
     public function testUserCanBeEnabled(): void
@@ -80,6 +80,6 @@ class ToggleUserTest extends TestCase
 
         $this->assertDatabaseCount('users', 2);
 
-        $response->assertRedirect(route('admin.users'));
+        $response->assertRedirect(route('admin.users.index'));
     }
 }
