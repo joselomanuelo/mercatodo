@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProductsController extends Controller
@@ -24,7 +23,7 @@ class ProductsController extends Controller
 
     public function create(): View
     {
-        $categories = Category::all();
+        $categories = Category::categoriesFromCache();
 
         return view('admin.products.create', [
             'categories' => $categories,
@@ -63,7 +62,7 @@ class ProductsController extends Controller
 
     public function edit(Product $product): View
     {
-        $categories = Category::all();
+        $categories = Category::categoriesFromCache();
 
         return view('admin.products.edit', [
             'product' => $product,
