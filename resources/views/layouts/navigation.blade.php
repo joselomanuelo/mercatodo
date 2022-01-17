@@ -17,15 +17,18 @@
                             {{ __(trans('navigation.dashboard')) }}
                         </x-nav-link>
                     @endauth
+                    <x-nav-link :href="route('buyer.products')" :active="request()->routeIs('buyer.products')">
+                        {{ __(trans('navigation.catalog')) }}
+                    </x-nav-link>
                     @can ('index users')
                         <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
                             {{ __(trans('navigation.users')) }}
                         </x-nav-link>
                     @endcan
                     @can('index products')
-                    <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
-                        {{ __(trans('navigation.products')) }}
-                    </x-nav-link>
+                        <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
+                            {{ __(trans('navigation.products')) }}
+                        </x-nav-link>
                     @endcan
                 </div>
             </div>
