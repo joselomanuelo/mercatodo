@@ -17,7 +17,7 @@
                             {{ __(trans('navigation.dashboard')) }}
                         </x-nav-link>
                     @endauth
-                    <x-nav-link :href="route('buyer.products')" :active="request()->routeIs('buyer.products')">
+                    <x-nav-link :href="route('buyer.products.index')" :active="request()->routeIs('buyer.products.index')">
                         {{ __(trans('navigation.catalog')) }}
                     </x-nav-link>
                     @can ('index users')

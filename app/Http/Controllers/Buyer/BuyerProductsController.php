@@ -12,8 +12,11 @@ class BuyerProductsController extends Controller
     {
         $products = Product::paginate(20);
 
-        return view('buyer.products.index', [
-            'products' => $products,
-        ]);
+        return view('buyer.products.index', compact('products'));
+    }
+
+    public function show(Product $product): View
+    {
+        return view('buyer.products.show', compact('product'));
     }
 }

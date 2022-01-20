@@ -13,7 +13,9 @@
                 @foreach ($products as $product)
                     <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
                         <div class="flex items-end justify-end h-56 w-full bg-cover">
-                            <img src="{{ asset($product->product_image) }}" alt="{{ $product->name }}">
+                            <a href="{{ route('buyer.products.show', $product) }}">
+                                <img src="{{ asset($product->product_image) }}" alt="{{ $product->name }}">
+                            </a>
                         </div>
                         <div class="px-5 py-3" >
                             <h3 class="text-gray-700 uppercase">{{ $product->name }}</h3>
