@@ -11,4 +11,7 @@ Route::prefix('buyer')
 
         Route::get('/products/{product}/show', [BuyerProductsController::class, 'show'])
             ->name('products.show');
+
+        /* Route::get('/products/search', [BuyerProductsController::class, 'search'])
+            ->name('products.search'); */
     });

@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'save' => 'Save',
     'logOut' => 'Log Out',
     'logIn' => 'Log In',
@@ -14,5 +13,6 @@ return [
     'register' => 'Register?',
     'enable' => 'Enable',
     'disable' => 'Disable',
-
+    'search' => 'Search',
+    'back' => 'Back',
 ];

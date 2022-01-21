@@ -6,7 +6,7 @@
     </x-slot>
     <main class="my-8">
         <div class="container mx-auto px-6">
-            <form action="{{ route('buyer.products.index') }}" method="GET" class="grid grid-cols-6 gap-3">
+            <form action="{{ route('buyer.products.search') }}" method="GET" class="grid grid-cols-6 gap-3">
                 <x-input id="search" type="text" name="search" required class="col-span-5"/>
                 <x-button >
                     {{ __(trans('buttons.search')) }}

@@ -13,4 +13,6 @@ return [
     'delete' => 'Eliminar',
     'enable' => 'Habilitar',
     'disable' => 'Deshabilitar',
+    'search' => 'Buscar',
+    'back' => 'Volver',
 ];
