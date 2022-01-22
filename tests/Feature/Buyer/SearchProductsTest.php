@@ -13,6 +13,9 @@ class SearchProductsTest extends TestCase
     {
         $response = $this->get(route('buyer.products.index'), [
             'search' => 'search',
+            'category' => '1',
+            'priceFrom' => '10',
+            'priceTo' => '10000',
         ]);
 
         // assertions
