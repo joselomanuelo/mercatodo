@@ -12,7 +12,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->bigInteger('price');
+            $table->integer('price');
             $table->bigInteger('stock')->nullable();
             $table->foreignId('category_id')
                 ->nullable()

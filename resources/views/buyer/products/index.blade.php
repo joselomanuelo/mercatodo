@@ -6,11 +6,32 @@
     </x-slot>
     <main class="my-8">
         <div class="container mx-auto px-6">
-            <form action="{{ route('buyer.products.index') }}" method="GET" class="grid grid-cols-6 gap-3">
-                <x-input id="search" type="text" name="search" required class="col-span-5"/>
-                <x-button >
+            <form action="{{ route('buyer.products.index') }}" method="GET" class="grid grid-cols-7 gap-3">
+                <x-input id="search" type="text" name="search" required class="col-span-6"/>
+                <x-button class="row-span-2">
                     {{ __(trans('buttons.search')) }}
                 </x-button>
+                <div class="flex justify-center items-center col-span-2 ">
+                    <x-label for="category" :value="__(trans('products.category'))" class="mx-4" />
+                    <x-select name="category" id="category" class="w-full">
+                        <option value={{ null }}>
+                            {{ trans('buttons.choose') }}
+                        </option>
+                        @foreach ($categories as $category)
+                        <option value={{ $category->id }}>
+                            {{ $category->name }}
+                        </option>
+                        @endforeach
+                    </x-select>
+                </div>
+                <div class="flex justify-center items-center col-span-2">
+                    <x-label for="priceFrom" :value="__(trans('products.priceFrom'))" class="mr-4"/>
+                    <x-input id="priceFrom" type="text" name="priceFrom"/>
+                </div>
+                <div class="flex justify-center items-center col-span-2">
+                    <x-label for="priceTo" :value="__(trans('products.priceTo'))" class="mr-4"/>
+                    <x-input id="priceTo" type="text" name="priceTo"/>
+                </div>
             </form>
             <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
                 @foreach ($products as $product)

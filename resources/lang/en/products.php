@@ -7,4 +7,6 @@ return [
     'category' => 'Category',
     'new' => 'New product',
     'image' => 'Image',
+    'priceFrom' => 'Price from',
+    'priceTo' => 'Price to',
 ];

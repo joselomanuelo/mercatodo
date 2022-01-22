@@ -15,4 +15,5 @@ return [
     'disable' => 'Deshabilitar',
     'search' => 'Buscar',
     'back' => 'Volver',
+    'choose' => 'Seleccione',
 ];

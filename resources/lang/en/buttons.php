@@ -15,4 +15,5 @@ return [
     'disable' => 'Disable',
     'search' => 'Search',
     'back' => 'Back',
+    'choose' => 'Choose',
 ];
