@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Events\UserLoged;
+use App\Events\UserLogouted;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -40,11 +41,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        event(new UserLogouted(Auth::user()));
+        
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        
 
         return redirect('/');
     }

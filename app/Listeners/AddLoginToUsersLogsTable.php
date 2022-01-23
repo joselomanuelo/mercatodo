@@ -6,7 +6,7 @@ use App\Events\UserLoged;
 use App\Models\User;
 use App\Models\UserLog;
 
-class AddInputToUsersLoginTable
+class AddLoginToUsersLogsTable
 {
     public function __construct()
     {

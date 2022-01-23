@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\UserLoged;
-use App\Listeners\AddInputToUsersLoginTable;
+use App\Events\UserLogouted;
+use App\Listeners\AddLoginToUsersLogsTable;
+use App\Listeners\AddLogoutToUsersLogsTable;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -21,7 +23,10 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         UserLoged::class => [
-            AddInputToUsersLoginTable::class,
+            AddLoginToUsersLogsTable::class,
+        ],
+        UserLogouted::class => [
+            AddLogoutToUsersLogsTable::class,
         ],
     ];
 
