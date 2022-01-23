@@ -3,6 +3,6 @@
 return [
     'users' => 'Usuarios',
     'dashboard' => 'Tablero',
-    'products' => 'Productos'
-
+    'products' => 'Productos',
+    'catalog' => 'Catálogo',
 ];
