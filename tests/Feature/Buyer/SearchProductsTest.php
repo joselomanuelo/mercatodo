@@ -21,8 +21,10 @@ class SearchProductsTest extends TestCase
         // assertions
         $this->assertGuest();
 
+        $response->assertOk();
+
         $response->assertViewIs('buyer.products.index');
 
-        $response->assertOk();
+        
     }
 }
