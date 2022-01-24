@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\UserDeleted;
+use App\Events\UserUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
@@ -44,12 +46,16 @@ class UsersController extends Controller
         $user->save();
         $user->syncRoles($request->input('role'));
 
+        event(new UserUpdated($user));
+
         return redirect()->route('admin.users.index');
     }
 
     public function destroy(User $user): RedirectResponse
     {
         $user->delete();
+
+        event(new UserDeleted($user));
 
         return redirect()->route('admin.users.index');
     }

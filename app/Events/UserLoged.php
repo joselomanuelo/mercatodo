@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -15,17 +16,15 @@ class UserLoged
 
     public $email;
 
-    public function __construct($email)
+    public function __construct(string $email)
     {
         $this->email = $email;
     }
 
     /**
      * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
      */
-    public function broadcastOn()
+    public function broadcastOn(): Channel|array
     {
         return new PrivateChannel('channel-name');
     }

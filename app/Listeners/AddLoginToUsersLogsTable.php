@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Actions\Users\AddInputUserLogs;
 use App\Events\UserLoged;
 use App\Models\User;
 use App\Models\UserLog;
@@ -18,10 +19,7 @@ class AddLoginToUsersLogsTable
         $user = User::where('email', $event->email)
             ->firstOrFail();
 
-        $userLog = new UserLog();
-        $userLog->user_id = $user->id;
-        $userLog->type = 'login';
-        $userLog->save();
+        AddInputUserLogs::execute($user, 'login');
 
         Log::notice('The user with Id '.$user->id.' has logged in.');
     }

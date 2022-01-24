@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
+use App\Events\UserDeleted;
 use App\Events\UserLoged;
 use App\Events\UserLogouted;
+use App\Events\UserUpdated;
+use App\Listeners\AddDeleteToUserLogsTable;
 use App\Listeners\AddLoginToUsersLogsTable;
 use App\Listeners\AddLogoutToUsersLogsTable;
+use App\Listeners\AddUpdateToUserLogsTable;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,6 +31,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserLogouted::class => [
             AddLogoutToUsersLogsTable::class,
+        ],
+        UserUpdated::class => [
+            AddUpdateToUserLogsTable::class,
+        ],
+        UserDeleted::class => [
+            AddDeleteToUserLogsTable::class,
         ],
     ];
 

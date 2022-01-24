@@ -10,7 +10,7 @@ class CreateUserLogsTable extends Migration
     {
         Schema::create('user_logs', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['login', 'logout']);
+            $table->enum('type', ['login', 'logout', 'update', 'delete']);
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->onDelete('cascade');

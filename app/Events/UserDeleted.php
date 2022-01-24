@@ -9,7 +9,7 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UserLogouted
+class UserDeleted
 {
     use Dispatchable;
     use InteractsWithSockets;
