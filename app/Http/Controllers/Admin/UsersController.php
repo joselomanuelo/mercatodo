@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use App\Models\UserLog;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -21,8 +22,11 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
+        $userLogs = UserLog::where('user_id', $user->id)->get();
+
         return view('admin.users.show', [
             'user' => $user,
+            'userLogs' => $userLogs,
         ]);
     }
 
