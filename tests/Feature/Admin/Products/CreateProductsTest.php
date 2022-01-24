@@ -37,9 +37,8 @@ class CreateProductsTest extends TestCase
 
         $this->assertDatabaseCount('products', 0);
 
-        $response->assertViewIs('admin.products.create');
-
         $response->assertOk();
+        $response->assertViewIs('admin.products.create');
     }
 
     public function testNotAdminUserCantRenderCreateProductScreen(): void
