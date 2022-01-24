@@ -35,11 +35,12 @@ class DeleteProductsTest extends TestCase
         // assertions
         $this->assertAuthenticated();
 
+        $response->assertRedirect(route('admin.products.index'));
+
         $this->assertDatabaseCount('products', 0);
 
         $this->assertDeleted($productToDelete);
 
-        $response->assertRedirect(route('admin.products.index'));
     }
 
     public function testNotAdminUserCantDeleteProducts(): void
@@ -60,10 +61,12 @@ class DeleteProductsTest extends TestCase
         // assertions
         $this->assertAuthenticated();
 
+        $response->assertForbidden();
+
         $this->assertDatabaseCount('products', 1);
 
         $this->assertModelExists($productToDelete);
 
-        $response->assertForbidden();
+        
     }
 }

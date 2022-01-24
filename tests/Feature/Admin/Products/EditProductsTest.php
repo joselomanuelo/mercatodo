@@ -37,11 +37,13 @@ class EditProductsTest extends TestCase
         // assertions
         $this->assertAuthenticated();
 
+        $response->assertOk();
+
         $this->assertDatabaseCount('products', 1);
 
         $response->assertViewIs('admin.products.edit');
 
-        $response->assertOk();
+        
     }
 
     public function testNotAdminUserCantRenderEditProductScreen(): void
@@ -62,9 +64,11 @@ class EditProductsTest extends TestCase
         // assertions
         $this->assertAuthenticated();
 
+        $response->assertForbidden();
+
         $this->assertDatabaseCount('products', 1);
 
-        $response->assertForbidden();
+        
     }
 
     public function testProductCanBeEdited(): void
@@ -98,6 +102,8 @@ class EditProductsTest extends TestCase
         // assertions
         $this->assertAuthenticated();
 
+        $response->assertRedirect(route('admin.products.index'));
+
         $this->assertDatabaseCount('products', 1);
 
         $this->assertEquals('Testing product', $product2->name);
@@ -106,7 +112,7 @@ class EditProductsTest extends TestCase
         $this->assertEquals($category->id, $product2->category->id);
         $this->assertEquals(100, $product2->stock);
 
-        $response->assertRedirect(route('admin.products.index'));
+        
     }
 
     public function testNotAdminUserCantEditProducts(): void
@@ -134,8 +140,10 @@ class EditProductsTest extends TestCase
         // assertions
         $this->assertAuthenticated();
 
+        $response->assertForbidden();
+
         $this->assertDatabaseCount('products', 1);
 
-        $response->assertForbidden();
+        
     }
 }

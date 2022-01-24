@@ -35,11 +35,13 @@ class ShowProductsTest extends TestCase
         // assertions
         $this->assertAuthenticated();
 
+        $response->assertOk();
+
         $this->assertDatabaseCount('products', 1);
 
         $response->assertViewIs('admin.products.show');
 
-        $response->assertOk();
+        
     }
 
     public function testNotAdminUserCantSeeProducts(): void
@@ -60,8 +62,10 @@ class ShowProductsTest extends TestCase
         // assertions
         $this->assertAuthenticated();
 
+        $response->assertForbidden();
+
         $this->assertDatabaseCount('products', 1);
 
-        $response->assertForbidden();
+        
     }
 }

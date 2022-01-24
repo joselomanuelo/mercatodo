@@ -34,10 +34,8 @@ class CreateProductsTest extends TestCase
 
         // assertions
         $this->assertAuthenticated();
-
-        $this->assertDatabaseCount('products', 0);
-
         $response->assertOk();
+        $this->assertDatabaseCount('products', 0);
         $response->assertViewIs('admin.products.create');
     }
 
@@ -55,9 +53,11 @@ class CreateProductsTest extends TestCase
         // assertions
         $this->assertAuthenticated();
 
+        $response->assertForbidden();
+
         $this->assertDatabaseCount('products', 0);
 
-        $response->assertForbidden();
+        
     }
 
     public function testProductCanBeCreated(): void
@@ -89,6 +89,8 @@ class CreateProductsTest extends TestCase
         // assertions
         $this->assertAuthenticated();
 
+        $response->assertRedirect(route('admin.products.index'));
+
         $this->assertDatabaseCount('products', 1);
 
         $this->assertEquals('Testing product', $product->name);
@@ -97,7 +99,6 @@ class CreateProductsTest extends TestCase
         $this->assertEquals($category->id, $product->category->id);
         $this->assertEquals(100, $product->stock);
 
-        $response->assertRedirect(route('admin.products.index'));
     }
 
     public function testNotAdminUserCantCreateProducts(): void

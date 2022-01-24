@@ -29,9 +29,11 @@ class ListproductsTest extends TestCase
         // assertions
         $this->assertAuthenticated();
 
+        $response->assertOk();
+
         $response->assertViewIs('admin.products.index');
 
-        $response->assertOk();
+        
     }
 
     public function testUnauthenticatedUserCantRenderProductsListScreen(): void
