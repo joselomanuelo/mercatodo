@@ -15,9 +15,9 @@ class SearchProductsRequest extends FormRequest
     {
         return [
             'search' => 'string',
-            'category' => 'numeric',
-            'priceFrom' => 'numeric',
-            'priceTo' => 'numeric',
+            'category' => 'numeric|nullable',
+            'priceFrom' => 'numeric|nullable',
+            'priceTo' => 'numeric|nullable',
         ];
     }
 }
