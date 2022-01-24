@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Products\StoreOrUpdateAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -32,32 +33,14 @@ class ProductsController extends Controller
 
     public function store(StoreProductRequest $request): RedirectResponse
     {
-        $product = new Product();
-        $product->name = $request->input('name');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
-        $product->stock = $request->input('stock');
-        $product->category_id = $request->input('category');
-
-        if ($request->hasFile('product_image')) {
-            $fileName = time().'.'.$request->file('product_image')->extension();
-            $product->product_image = 'storage/'.$request->file('product_image')->storeAs(
-                'uploads/products',
-                $fileName,
-                'public'
-            );
-        }
-
-        $product->save();
+        StoreOrUpdateAction::execute($request);
 
         return redirect()->route('admin.products.index');
     }
 
     public function show(Product $product): View
     {
-        return view('admin.products.show', [
-            'product' => $product,
-        ]);
+        return view('admin.products.show', compact('product'));
     }
 
     public function edit(Product $product): View
@@ -72,22 +55,7 @@ class ProductsController extends Controller
 
     public function update(UpdateProductRequest $request, Product $product): RedirectResponse
     {
-        $product->name = $request->input('name');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
-        $product->stock = $request->input('stock');
-        $product->category_id = $request->input('category');
-
-        if ($request->hasFile('product_image')) {
-            $fileName = time().'.'.$request->file('product_image')->extension();
-            $product->product_image = 'storage/'.$request->file('product_image')->storeAs(
-                'uploads/products',
-                $fileName,
-                'public'
-            );
-        }
-
-        $product->save();
+        StoreOrUpdateAction::execute($request, $product);
 
         return redirect()->route('admin.products.index');
     }

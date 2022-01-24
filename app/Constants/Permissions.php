@@ -2,9 +2,7 @@
 
 namespace App\Constants;
 
-use MyCLabs\Enum\Enum;
-
-class Permissions extends Enum
+class Permissions extends Constant
 {
     public const INDEX_USERS = 'index users';
     public const SHOW_USERS = 'show users';
@@ -16,9 +14,4 @@ class Permissions extends Enum
     public const UPDATE_PRODUCTS = 'update products';
     public const DELETE_PRODUCTS = 'delete products';
     public const CREATE_PRODUCTS = 'create products';
-
-    public static function supported(): array
-    {
-        return collect(static::toArray())->values()->toArray();
-    }
 }
