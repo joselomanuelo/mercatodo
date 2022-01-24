@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\UserDeleted;
+use App\Events\UserUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use App\Models\UserLog;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -21,8 +24,11 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
+        $userLogs = UserLog::where('user_id', $user->id)->get();
+
         return view('admin.users.show', [
             'user' => $user,
+            'userLogs' => $userLogs,
         ]);
     }
 
@@ -40,12 +46,16 @@ class UsersController extends Controller
         $user->save();
         $user->syncRoles($request->input('role'));
 
+        event(new UserUpdated($user));
+
         return redirect()->route('admin.users.index');
     }
 
     public function destroy(User $user): RedirectResponse
     {
         $user->delete();
+
+        event(new UserDeleted($user));
 
         return redirect()->route('admin.users.index');
     }
