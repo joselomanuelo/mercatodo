@@ -41,7 +41,7 @@ class UsersController extends Controller
 
         event(new UserUpdated($user));
 
-        return redirect()->route('admin.users.index');
+        return redirect($user->indexRoute());
     }
 
     public function destroy(User $user): RedirectResponse
@@ -50,7 +50,7 @@ class UsersController extends Controller
 
         event(new UserDeleted($user));
 
-        return redirect()->route('admin.users.index');
+        return redirect($user->indexRoute());
     }
 
     public function toggle(User $user): RedirectResponse
@@ -58,6 +58,6 @@ class UsersController extends Controller
         $user->disabled_at = $user->disabled_at ? null : now();
         $user->save();
 
-        return redirect()->route('admin.users.index');
+        return redirect($user->indexRoute());
     }
 }
