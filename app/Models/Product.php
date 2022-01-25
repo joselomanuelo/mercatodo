@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Query\Builder;
 
 class Product extends Model
 {
@@ -24,20 +24,21 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function scopeSearch(Builder $query, ?string $search): Builder
+    public function scopeSearch(Builder $query, ?string $search = null): Builder
     {
-        return $query->where('name', 'like', '%' . $search .'%')
-            ->orWhere('description', 'like', '%' . $search .'%');
+        return $search ? $query->where('name', 'like', '%'.trim($search).'%')
+            ->orWhere('description', 'like', '%'.trim($search).'%') : $query;
     }
 
-    public function scopePrice(Builder $query, ?string $from, ?string $to): Builder
+    public function scopeCategoryFilter(Builder $query, ?string $category = null): Builder
     {
-        return $query->where('name', 'like', '%' . $search .'%')
-            ->orWhere('description', 'like', '%' . $search .'%');
+        return $category ? $query->where('category_id', $category) : $query;
     }
 
-    public function scopeCategory(Builder $query, ?string $category): Builder
+    public function scopePriceFilter(Builder $query, ?string $priceFrom = null, ?string $priceTo = null): Builder
     {
-        return $category ? $query->where('category', $category) : $query;
+        $query = $priceFrom ? $query->where('price', '>=', $priceFrom) : $query;
+
+        return $priceTo ? $query->where('price', '<=', $priceTo) : $query;
     }
 }
