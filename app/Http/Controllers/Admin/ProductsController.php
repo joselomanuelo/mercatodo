@@ -31,7 +31,7 @@ class ProductsController extends Controller
     {
         StoreOrUpdateAction::execute($request);
 
-        return redirect()->route('admin.products.index');
+        return redirect(Product::indexRoute());
     }
 
     public function show(Product $product): View
@@ -50,13 +50,13 @@ class ProductsController extends Controller
     {
         StoreOrUpdateAction::execute($request, $product);
 
-        return redirect()->route('admin.products.index');
+        return redirect(Product::indexRoute());
     }
 
     public function destroy(Product $product): RedirectResponse
     {
         $product->delete();
 
-        return redirect()->route('admin.products.index');
+        return redirect(Product::indexRoute());
     }
 }
