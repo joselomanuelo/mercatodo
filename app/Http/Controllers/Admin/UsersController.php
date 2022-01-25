@@ -24,12 +24,12 @@ class UsersController extends Controller
     {
         $userLogs = UserLog::where('user_id', $user->id)->get();
 
-        return view('admin.users.show', compact('user', 'userLogs'));
+        return view($user->showView(), compact('user', 'userLogs'));
     }
 
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        return view($user->editView(), compact('user'));
     }
 
     public function update(UpdateUserRequest $request, User $user): RedirectResponse

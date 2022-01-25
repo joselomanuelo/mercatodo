@@ -13,4 +13,11 @@ trait UserViews
     {
         return 'admin.users.show';
     }
+
+    public static function editView(): string
+    {
+        return 'admin.users.edit';
+    }
+
+    
 }
