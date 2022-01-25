@@ -17,26 +17,19 @@ class UsersController extends Controller
     {
         $users = User::paginate(50);
 
-        return view('admin.users.index', [
-            'users' => $users,
-        ]);
+        return view(User::indexView(), compact('users'));
     }
 
     public function show(User $user)
     {
         $userLogs = UserLog::where('user_id', $user->id)->get();
 
-        return view('admin.users.show', [
-            'user' => $user,
-            'userLogs' => $userLogs,
-        ]);
+        return view(User::showView(), compact('user', 'userLogs'));
     }
 
     public function edit(User $user)
     {
-        return view('admin.users.edit', [
-            'user' => $user,
-        ]);
+        return view(User::editView(), compact('user'));
     }
 
     public function update(UpdateUserRequest $request, User $user): RedirectResponse
@@ -48,7 +41,7 @@ class UsersController extends Controller
 
         event(new UserUpdated($user));
 
-        return redirect()->route('admin.users.index');
+        return redirect(User::indexRoute());
     }
 
     public function destroy(User $user): RedirectResponse
@@ -57,7 +50,7 @@ class UsersController extends Controller
 
         event(new UserDeleted($user));
 
-        return redirect()->route('admin.users.index');
+        return redirect(User::indexRoute());
     }
 
     public function toggle(User $user): RedirectResponse
@@ -65,6 +58,6 @@ class UsersController extends Controller
         $user->disabled_at = $user->disabled_at ? null : now();
         $user->save();
 
-        return redirect()->route('admin.users.index');
+        return redirect(User::indexRoute());
     }
 }

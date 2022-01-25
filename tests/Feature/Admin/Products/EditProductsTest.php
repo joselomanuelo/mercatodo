@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Feature\Admin;
+namespace tests\Feature\Admin\Products;
 
 use App\Constants\Permissions;
 use App\Constants\Roles;
@@ -32,25 +32,20 @@ class EditProductsTest extends TestCase
             ->create();
 
         $response = $this->actingAs($admin)
-            ->get(route('admin.products.edit', $product));
+            ->get($product->editRoute());
 
         // assertions
-        $this->assertAuthenticated();
-
         $response->assertOk();
-
+        $response->assertViewIs(Product::editView());
+        $this->assertAuthenticated();
         $this->assertDatabaseCount('products', 1);
-
-        $response->assertViewIs('admin.products.edit');
-
-        
     }
 
     public function testNotAdminUserCantRenderEditProductScreen(): void
     {
         $buyerRole = Role::create(['name' => Roles::BUYER]);
 
-        $user = User::factory()
+        $buyer = User::factory()
             ->create()
             ->assignRole($buyerRole);
 
@@ -58,17 +53,13 @@ class EditProductsTest extends TestCase
             ->for(Category::factory()->create())
             ->create();
 
-        $response = $this->actingAs($user)
-            ->get(route('admin.products.edit', $product));
+        $response = $this->actingAs($buyer)
+            ->get($product->editRoute());
 
         // assertions
-        $this->assertAuthenticated();
-
         $response->assertForbidden();
-
+        $this->assertAuthenticated();
         $this->assertDatabaseCount('products', 1);
-
-        
     }
 
     public function testProductCanBeEdited(): void
@@ -89,7 +80,7 @@ class EditProductsTest extends TestCase
             ->create();
 
         $response = $this->actingAs($admin)
-            ->put(route('admin.products.update', $product), [
+            ->put($product->updateRoute(), [
                 'name' => 'Testing product',
                 'description' => 'Testing description',
                 'price' => 100,
@@ -100,26 +91,21 @@ class EditProductsTest extends TestCase
         $product2 = Product::find($product->id);
 
         // assertions
+        $response->assertRedirect(Product::indexRoute());
         $this->assertAuthenticated();
-
-        $response->assertRedirect(route('admin.products.index'));
-
         $this->assertDatabaseCount('products', 1);
-
         $this->assertEquals('Testing product', $product2->name);
         $this->assertEquals('Testing description', $product2->description);
         $this->assertEquals(100, $product2->price);
         $this->assertEquals($category->id, $product2->category->id);
         $this->assertEquals(100, $product2->stock);
-
-        
     }
 
     public function testNotAdminUserCantEditProducts(): void
     {
-        $buyerRole = Role::create(['name' => 'buyer']);
+        $buyerRole = Role::create(['name' => Roles::BUYER]);
 
-        $user = User::factory()
+        $buyer = User::factory()
             ->create()
             ->assignRole($buyerRole);
 
@@ -127,8 +113,8 @@ class EditProductsTest extends TestCase
             ->for(Category::factory()->create())
             ->create();
 
-        $response = $this->actingAs($user)
-            ->put(route('admin.products.update', $productToEdit), [
+        $response = $this->actingAs($buyer)
+            ->put($productToEdit->updateRoute(), [
                 'name' => 'Testing product',
                 'description' => 'Testing description',
                 'price' => 100,
@@ -138,12 +124,8 @@ class EditProductsTest extends TestCase
             ]);
 
         // assertions
-        $this->assertAuthenticated();
-
         $response->assertForbidden();
-
+        $this->assertAuthenticated();
         $this->assertDatabaseCount('products', 1);
-
-        
     }
 }

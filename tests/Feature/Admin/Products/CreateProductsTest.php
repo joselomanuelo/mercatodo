@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Feature\Admin;
+namespace tests\Feature\Admin\Products;
 
 use App\Constants\Permissions;
 use App\Constants\Roles;
@@ -30,34 +30,30 @@ class CreateProductsTest extends TestCase
             ->assignRole($adminRole);
 
         $response = $this->actingAs($admin)
-            ->get(route('admin.products.create'));
+            ->get(Product::createRoute());
 
         // assertions
-        $this->assertAuthenticated();
         $response->assertOk();
+        $response->assertViewIs(Product::createView());
+        $this->assertAuthenticated();
         $this->assertDatabaseCount('products', 0);
-        $response->assertViewIs('admin.products.create');
     }
 
     public function testNotAdminUserCantRenderCreateProductScreen(): void
     {
         $buyerRole = Role::create(['name' => Roles::BUYER]);
 
-        $user = User::factory()
+        $buyer = User::factory()
             ->create()
             ->assignRole($buyerRole);
 
-        $response = $this->actingAs($user)
-            ->get(route('admin.products.create'));
+        $response = $this->actingAs($buyer)
+            ->get(Product::createRoute());
 
         // assertions
-        $this->assertAuthenticated();
-
         $response->assertForbidden();
-
+        $this->assertAuthenticated();
         $this->assertDatabaseCount('products', 0);
-
-        
     }
 
     public function testProductCanBeCreated(): void
@@ -76,55 +72,49 @@ class CreateProductsTest extends TestCase
         $category = Category::factory()->create();
 
         $response = $this->actingAs($admin)
-            ->post(route('admin.products.store', [
+            ->post(Product::storeRoute(), [
                 'name' => 'Testing product',
                 'description' => 'Testing description',
                 'price' => 100,
                 'stock' => 100,
                 'category' => $category->id,
-            ]));
+            ]);
 
         $product = Product::first();
 
         // assertions
+        $response->assertRedirect(Product::indexRoute());
         $this->assertAuthenticated();
-
-        $response->assertRedirect(route('admin.products.index'));
-
         $this->assertDatabaseCount('products', 1);
-
         $this->assertEquals('Testing product', $product->name);
         $this->assertEquals('Testing description', $product->description);
         $this->assertEquals(100, $product->price);
         $this->assertEquals($category->id, $product->category->id);
         $this->assertEquals(100, $product->stock);
-
     }
 
     public function testNotAdminUserCantCreateProducts(): void
     {
         $buyerRole = Role::create(['name' => Roles::BUYER]);
 
-        $user = User::factory()
+        $buyer = User::factory()
             ->create()
             ->assignRole($buyerRole);
 
         $category = Category::factory()->create();
 
-        $response = $this->actingAs($user)
-            ->post(route('admin.products.store', [
+        $response = $this->actingAs($buyer)
+            ->post(Product::storeRoute(), [
                 'name' => 'Testing product',
                 'description' => 'Testing description',
                 'price' => 100,
                 'stock' => 100,
                 'category' => $category->id,
-            ]));
+            ]);
 
         // assertions
-        $this->assertAuthenticated();
-
-        $this->assertDatabaseCount('products', 0);
-
         $response->assertForbidden();
+        $this->assertAuthenticated();
+        $this->assertDatabaseCount('products', 0);
     }
 }

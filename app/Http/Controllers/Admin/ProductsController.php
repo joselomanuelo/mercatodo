@@ -17,53 +17,46 @@ class ProductsController extends Controller
     {
         $products = Product::paginate(50);
 
-        return view('admin.products.index', [
-            'products' => $products,
-        ]);
+        return view(Product::indexView(), compact('products'));
     }
 
     public function create(): View
     {
         $categories = Category::categoriesFromCache();
 
-        return view('admin.products.create', [
-            'categories' => $categories,
-        ]);
+        return view(Product::createView(), compact('categories'));
     }
 
     public function store(StoreProductRequest $request): RedirectResponse
     {
         StoreOrUpdateAction::execute($request);
 
-        return redirect()->route('admin.products.index');
+        return redirect(Product::indexRoute());
     }
 
     public function show(Product $product): View
     {
-        return view('admin.products.show', compact('product'));
+        return view(Product::showView(), compact('product'));
     }
 
     public function edit(Product $product): View
     {
         $categories = Category::categoriesFromCache();
 
-        return view('admin.products.edit', [
-            'product' => $product,
-            'categories' => $categories,
-        ]);
+        return view(Product::editView(), compact('product', 'categories'));
     }
 
     public function update(UpdateProductRequest $request, Product $product): RedirectResponse
     {
         StoreOrUpdateAction::execute($request, $product);
 
-        return redirect()->route('admin.products.index');
+        return redirect(Product::indexRoute());
     }
 
     public function destroy(Product $product): RedirectResponse
     {
         $product->delete();
 
-        return redirect()->route('admin.products.index');
+        return redirect(Product::indexRoute());
     }
 }

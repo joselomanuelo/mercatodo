@@ -15,8 +15,8 @@ class BuyerProductsController extends Controller
         $categories = Category::all();
 
         $products = Product::search($request->query('search'))
-            ->priceFilter($request->query('priceFrom'), $request->query('priceTo'))
             ->categoryFilter($request->query('category'))
+            ->priceFilter($request->query('priceFrom'), $request->query('priceTo'))
             ->paginate(20);
 
         return view('buyer.products.index', compact('products', 'categories'));

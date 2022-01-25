@@ -58,7 +58,7 @@
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <form action="{{ route('admin.users.toggle', $user) }}"
+                                                            <form action="{{ $user->toggleRoute() }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 {{ method_field('PUT') }}
@@ -71,7 +71,7 @@
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
                                                             <x-button-link
-                                                                href="{{ route('admin.users.show', $user) }}">
+                                                                href="{{ $user->showRoute() }}">
                                                                 {{ trans('buttons.show') }}
                                                             </x-button-link>
                                                         </div>
@@ -79,14 +79,14 @@
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
                                                             <x-button-link
-                                                                href="{{ route('admin.users.edit', $user) }}">
+                                                                href="{{ $user->editRoute() }}">
                                                                 {{ trans('buttons.edit') }}
                                                             </x-button-link>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <form action="{{ route('admin.users.destroy', $user) }}"
+                                                            <form action="{{ $user->destroyRoute() }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 {{ method_field('DELETE') }}
