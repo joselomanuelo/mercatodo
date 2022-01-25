@@ -22,9 +22,6 @@ class UserLogouted
         $this->user = $user;
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     */
     public function broadcastOn(): Channel|array
     {
         return new PrivateChannel('channel-name');
