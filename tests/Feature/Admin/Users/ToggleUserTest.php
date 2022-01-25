@@ -1,7 +1,9 @@
 <?php
 
-namespace Tests\Feature\Admin;
+namespace Tests\Feature\Admin\Users;
 
+use App\Constants\Permissions;
+use App\Constants\Roles;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -14,7 +16,7 @@ class ToggleUserTest extends TestCase
 
     public function testDisabledUserCantDoAnything(): void
     {
-        $buyerRole = Role::create(['name' => 'buyer']);
+        $buyerRole = Role::create(['name' => Roles::BUYER]);
 
         $user = User::factory()
             ->create(['disabled_at' => now()])
@@ -24,18 +26,16 @@ class ToggleUserTest extends TestCase
             ->get(route('welcome'));
 
         // assertions
-        $this->assertGuest();
-
-        $this->assertDatabaseCount('users', 1);
-
         $response->assertRedirect(route('login'));
+        $this->assertGuest();
+        $this->assertDatabaseCount('users', 1);
     }
 
     public function testUserCanBeDisabled(): void
     {
-        $editUsersPermission = Permission::create(['name' => 'update users']);
+        $editUsersPermission = Permission::create(['name' => Permissions::UPDATE_USERS]);
 
-        $adminRole = Role::create(['name' => 'admin'])
+        $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($editUsersPermission);
 
         $admin = User::factory()
@@ -46,21 +46,19 @@ class ToggleUserTest extends TestCase
             ->create();
 
         $response = $this->actingAs($admin)
-            ->put(route('admin.users.toggle', $user));
+            ->put($user->toggleRoute());
 
         // assertions
+        $response->assertRedirect(User::indexRoute());
         $this->assertAuthenticated();
-
         $this->assertDatabaseCount('users', 2);
-
-        $response->assertRedirect(route('admin.users.index'));
     }
 
     public function testUserCanBeEnabled(): void
     {
-        $editUsersPermission = Permission::create(['name' => 'update users']);
+        $editUsersPermission = Permission::create(['name' => Permissions::UPDATE_USERS]);
 
-        $adminRole = Role::create(['name' => 'admin'])
+        $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($editUsersPermission);
 
         $admin = User::factory()
@@ -73,13 +71,11 @@ class ToggleUserTest extends TestCase
             ]);
 
         $response = $this->actingAs($admin)
-            ->put(route('admin.users.toggle', $user));
+            ->put($user->toggleRoute());
 
         // assertions
+        $response->assertRedirect(User::indexRoute());
         $this->assertAuthenticated();
-
         $this->assertDatabaseCount('users', 2);
-
-        $response->assertRedirect(route('admin.users.index'));
     }
 }
