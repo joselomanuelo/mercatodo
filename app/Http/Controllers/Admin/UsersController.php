@@ -17,26 +17,19 @@ class UsersController extends Controller
     {
         $users = User::paginate(50);
 
-        return view('admin.users.index', [
-            'users' => $users,
-        ]);
+        return view('admin.users.index', compact('users'));
     }
 
     public function show(User $user)
     {
         $userLogs = UserLog::where('user_id', $user->id)->get();
 
-        return view('admin.users.show', [
-            'user' => $user,
-            'userLogs' => $userLogs,
-        ]);
+        return view('admin.users.show', compact('user', 'userLogs'));
     }
 
     public function edit(User $user)
     {
-        return view('admin.users.edit', [
-            'user' => $user,
-        ]);
+        return view('admin.users.edit', compact('user'));
     }
 
     public function update(UpdateUserRequest $request, User $user): RedirectResponse

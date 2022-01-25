@@ -17,18 +17,14 @@ class ProductsController extends Controller
     {
         $products = Product::paginate(50);
 
-        return view('admin.products.index', [
-            'products' => $products,
-        ]);
+        return view('admin.products.index', compact('products'));
     }
 
     public function create(): View
     {
         $categories = Category::categoriesFromCache();
 
-        return view('admin.products.create', [
-            'categories' => $categories,
-        ]);
+        return view('admin.products.create', compact('categories'));
     }
 
     public function store(StoreProductRequest $request): RedirectResponse
@@ -47,10 +43,7 @@ class ProductsController extends Controller
     {
         $categories = Category::categoriesFromCache();
 
-        return view('admin.products.edit', [
-            'product' => $product,
-            'categories' => $categories,
-        ]);
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     public function update(UpdateProductRequest $request, Product $product): RedirectResponse
