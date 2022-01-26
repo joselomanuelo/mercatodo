@@ -24,11 +24,11 @@
                         </div>
                         <div class="mt-4">
                             <x-label for="price" :value="__(trans('products.price'))" />
-                            <x-input id="price" class="block mt-1 w-full" type="text" name="price" value="{{ $product->price }}" required />
+                            <x-input id="price" class="block mt-1 w-full" type="text" name="price" value="{{ Cknow\Money\Money::COP($product->price.'00') }}" required />
                         </div>
                         <div class="mt-4">
                             <x-label for="stock" :value="__('Stock')" />
-                            <x-input id="stock" class="block mt-1 w-full" type="text" name="stock" value="{{ $product->stock }}" required />
+                            <x-input id="stock" class="block mt-1 w-full" type="text" name="stock" value="{{ number_format($product->stock) }}" required />
                         </div>
                         <div class="mt-4">
                             <x-label for="category" :value="__(trans('products.category'))" />

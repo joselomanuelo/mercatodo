@@ -67,13 +67,13 @@
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $product->price }}
+                                                            <p class="font-semibold text-black">{{ Cknow\Money\Money::COP($product->price.'00') }}
                                                             </p>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ $product->stock }}
+                                                            <p class="font-semibold text-black">{{ number_format($product->stock) }}
                                                             </p>
                                                         </div>
                                                     </td>
