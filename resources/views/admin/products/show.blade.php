@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __(trans('buttons.show').' '.$product->name) }}
+            {{ __(trans('buttons.show') . ' ' . $product->name) }}
         </h2>
     </x-slot>
 
@@ -11,29 +11,30 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <ul>
                         <li>
-                            <img src="{{ asset($product->product_image) }}"
-                                alt="Image" width="200px" height="200px">
+                            <img src="{{ asset('storage/' . $product->product_image) }}" alt="Image" width="200px"
+                                height="200px">
                         </li>
-                        <li>    
+                        <li>
                             <h3>Id: {{ $product->id }}</h3>
                         </li>
                         <li>
-                            <h3>{{ trans('products.name').': '.$product->name }}</h3>
+                            <h3>{{ trans('products.name') . ': ' . $product->name }}</h3>
                         </li>
                         <li>
-                            <h3>{{ trans('products.description').': '.$product->description }}</h3>
+                            <h3>{{ trans('products.description') . ': ' . $product->description }}</h3>
                         </li>
                         <li>
-                            <h3>{{ trans('products.price').': '.$product->price }}</h3>
+                            <h3>{{ trans('products.price') . ': ' . Cknow\Money\Money::COP($product->price . '00') }}
+                            </h3>
                         </li>
                         <li>
-                            <h3>Stock: {{ $product->stock }}</h3>
+                            <h3>Stock: {{ number_format($product->stock) }}</h3>
                         </li>
                         <li>
-                            <h3>{{ trans('auth.createdAt').': '.$product->created_at}}</h3>
+                            <h3>{{ trans('auth.createdAt') . ': ' . $product->created_at }}</h3>
                         </li>
                         <li>
-                            <h3>{{ trans('auth.updatedAt').': '.$product->updated_at}}</h3>
+                            <h3>{{ trans('auth.updatedAt') . ': ' . $product->updated_at }}</h3>
                         </li>
                     </ul>
                 </div>
