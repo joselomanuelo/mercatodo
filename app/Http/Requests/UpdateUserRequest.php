@@ -15,7 +15,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'email' => ['required', 'email', 'string'],
+            'email' => ['required', 'email', 'string', 'unique:users,email'],
         ];
     }
 }

@@ -1,7 +1,9 @@
 <?php
 
-namespace tests\Feature\Admin;
+namespace tests\Feature\Admin\Products;
 
+use App\Constants\Permissions;
+use App\Constants\Roles;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -16,9 +18,9 @@ class DeleteProductsTest extends TestCase
 
     public function testProductCanBeDelete(): void
     {
-        $deleteProductsPermission = Permission::create(['name' => 'delete products']);
+        $deleteProductsPermission = Permission::create(['name' => Permissions::DELETE_PRODUCTS]);
 
-        $adminRole = Role::create(['name' => 'admin'])
+        $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($deleteProductsPermission);
 
         $admin = User::factory()
@@ -30,23 +32,20 @@ class DeleteProductsTest extends TestCase
             ->create();
 
         $response = $this->actingAs($admin)
-            ->delete(route('admin.products.destroy', $productToDelete));
+            ->delete($productToDelete->destroyRoute());
 
         // assertions
+        $response->assertRedirect(Product::indexRoute());
         $this->assertAuthenticated();
-
         $this->assertDatabaseCount('products', 0);
-
         $this->assertDeleted($productToDelete);
-
-        $response->assertRedirect(route('admin.products.index'));
     }
 
     public function testNotAdminUserCantDeleteProducts(): void
     {
-        $buyerRole = Role::create(['name' => 'buyer']);
+        $buyerRole = Role::create(['name' => Roles::BUYER]);
 
-        $user = User::factory()
+        $buyer = User::factory()
             ->create()
             ->assignRole($buyerRole);
 
@@ -54,16 +53,13 @@ class DeleteProductsTest extends TestCase
             ->for(Category::factory()->create())
             ->create();
 
-        $response = $this->actingAs($user)
-            ->delete(route('admin.products.destroy', $productToDelete));
+        $response = $this->actingAs($buyer)
+            ->delete($productToDelete->destroyRoute());
 
         // assertions
-        $this->assertAuthenticated();
-
-        $this->assertDatabaseCount('products', 1);
-
-        $this->assertModelExists($productToDelete);
-
         $response->assertForbidden();
+        $this->assertAuthenticated();
+        $this->assertDatabaseCount('products', 1);
+        $this->assertModelExists($productToDelete);
     }
 }

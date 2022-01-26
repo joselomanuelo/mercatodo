@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\UserDeleted;
+use App\Events\UserUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use App\Models\UserLog;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -14,23 +17,19 @@ class UsersController extends Controller
     {
         $users = User::paginate(50);
 
-        return view('admin.users.index', [
-            'users' => $users,
-        ]);
+        return view(User::indexView(), compact('users'));
     }
 
     public function show(User $user)
     {
-        return view('admin.users.show', [
-            'user' => $user,
-        ]);
+        $userLogs = UserLog::where('user_id', $user->id)->get();
+
+        return view(User::showView(), compact('user', 'userLogs'));
     }
 
     public function edit(User $user)
     {
-        return view('admin.users.edit', [
-            'user' => $user,
-        ]);
+        return view(User::editView(), compact('user'));
     }
 
     public function update(UpdateUserRequest $request, User $user): RedirectResponse
@@ -40,14 +39,18 @@ class UsersController extends Controller
         $user->save();
         $user->syncRoles($request->input('role'));
 
-        return redirect()->route('admin.users.index');
+        event(new UserUpdated($user));
+
+        return redirect(User::indexRoute());
     }
 
     public function destroy(User $user): RedirectResponse
     {
         $user->delete();
 
-        return redirect()->route('admin.users.index');
+        event(new UserDeleted($user));
+
+        return redirect(User::indexRoute());
     }
 
     public function toggle(User $user): RedirectResponse
@@ -55,6 +58,6 @@ class UsersController extends Controller
         $user->disabled_at = $user->disabled_at ? null : now();
         $user->save();
 
-        return redirect()->route('admin.users.index');
+        return redirect(User::indexRoute());
     }
 }

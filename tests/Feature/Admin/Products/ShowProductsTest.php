@@ -1,7 +1,9 @@
 <?php
 
-namespace tests\Feature\Admin;
+namespace tests\Feature\Admin\Products;
 
+use App\Constants\Permissions;
+use App\Constants\Roles;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -16,9 +18,9 @@ class ShowProductsTest extends TestCase
 
     public function testShowProductScreenCanBeRendered(): void
     {
-        $showProductsPermission = Permission::create(['name' => 'show products']);
+        $showProductsPermission = Permission::create(['name' => Permissions::SHOW_PRODUCTS]);
 
-        $adminRole = Role::create(['name' => 'admin'])
+        $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($showProductsPermission);
 
         $admin = User::factory()
@@ -30,21 +32,18 @@ class ShowProductsTest extends TestCase
             ->create();
 
         $response = $this->actingAs($admin)
-            ->get(route('admin.products.show', $product));
+            ->get($product->showRoute());
 
         // assertions
-        $this->assertAuthenticated();
-
-        $this->assertDatabaseCount('products', 1);
-
-        $response->assertViewIs('admin.products.show');
-
         $response->assertOk();
+        $response->assertViewIs(Product::showView());
+        $this->assertAuthenticated();
+        $this->assertDatabaseCount('products', 1);
     }
 
     public function testNotAdminUserCantSeeProducts(): void
     {
-        $buyerRole = Role::create(['name' => 'buyer']);
+        $buyerRole = Role::create(['name' => Roles::BUYER]);
 
         $user = User::factory()
             ->create()
@@ -55,13 +54,11 @@ class ShowProductsTest extends TestCase
             ->create();
 
         $response = $this->actingAs($user)
-            ->get(route('admin.products.show', $product));
+            ->get($product->showRoute());
 
         // assertions
-        $this->assertAuthenticated();
-
-        $this->assertDatabaseCount('products', 1);
-
         $response->assertForbidden();
+        $this->assertAuthenticated();
+        $this->assertDatabaseCount('products', 1);
     }
 }

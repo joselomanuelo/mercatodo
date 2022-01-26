@@ -24,12 +24,12 @@
                     <x-nav-link :href="route('buyer.products.index')" :active="request()->routeIs('buyer.products.index')">
                         {{ __(trans('navigation.catalog')) }}
                     </x-nav-link>
-                    @can ('index users')
+                    @can (App\Constants\Permissions::INDEX_USERS)
                         <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
                             {{ __(trans('navigation.users')) }}
                         </x-nav-link>
                     @endcan
-                    @can('index products')
+                    @can(App\Constants\Permissions::INDEX_PRODUCTS)
                         <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
                             {{ __(trans('navigation.products')) }}
                         </x-nav-link>

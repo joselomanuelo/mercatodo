@@ -1,22 +1,25 @@
 <?php
 
-namespace tests\Feature\Products;
+namespace tests\Feature\Admin\Products;
 
+use App\Constants\Permissions;
+use App\Constants\Roles;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
-class ListproductsTest extends TestCase
+class IndexproductsTest extends TestCase
 {
     use RefreshDatabase;
 
     public function testProductsListScreenCanBeRendered(): void
     {
-        $indexProductsPermission = Permission::create(['name' => 'index products']);
+        $indexProductsPermission = Permission::create(['name' => Permissions::INDEX_PRODUCTS]);
 
-        $adminRole = Role::create(['name' => 'admin'])
+        $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($indexProductsPermission);
 
         $admin = User::factory()
@@ -24,23 +27,20 @@ class ListproductsTest extends TestCase
             ->assignRole($adminRole);
 
         $response = $this->actingAs($admin)
-            ->get(route('admin.products.index'));
+            ->get(Product::indexRoute());
 
         // assertions
-        $this->assertAuthenticated();
-
-        $response->assertViewIs('admin.products.index');
-
         $response->assertOk();
+        $response->assertViewIs(Product::indexView());
+        $this->assertAuthenticated();
     }
 
     public function testUnauthenticatedUserCantRenderProductsListScreen(): void
     {
-        $response = $this->get(route('admin.products.index'));
+        $response = $this->get(Product::indexRoute());
 
         // assertions
-        $this->assertGuest();
-
         $response->assertRedirect(route('login'));
+        $this->assertGuest();
     }
 }

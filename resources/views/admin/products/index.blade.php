@@ -80,21 +80,21 @@
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
                                                             <x-button-link
-                                                                href="{{ route('admin.products.show', $product) }}">
+                                                                href="{{ $product->showRoute() }}">
                                                                 {{ trans('buttons.show') }}</x-button-link>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
                                                             <x-button-link
-                                                                href="{{ route('admin.products.edit', $product) }}">
+                                                                href="{{ $product->editRoute() }}">
                                                                 {{ trans('buttons.edit') }}</x-button-link>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
                                                             <form
-                                                                action="{{ route('admin.products.destroy', $product) }}"
+                                                                action="{{ $product->destroyRoute() }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 {{ method_field('DELETE') }}

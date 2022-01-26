@@ -1,7 +1,9 @@
 <?php
 
-namespace Tests\Feature\Admin;
+namespace Tests\Feature\Admin\Users;
 
+use App\Constants\Permissions;
+use App\Constants\Roles;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -14,9 +16,9 @@ class EditUserTest extends TestCase
 
     public function testEditUserScreenCanBeRendered(): void
     {
-        $editUsersPermission = Permission::create(['name' => 'update users']);
+        $editUsersPermission = Permission::create(['name' => Permissions::UPDATE_USERS]);
 
-        $adminRole = Role::create(['name' => 'admin'])
+        $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($editUsersPermission);
 
         $admin = User::factory()
@@ -24,42 +26,37 @@ class EditUserTest extends TestCase
             ->assignRole($adminRole);
 
         $response = $this->actingAs($admin)
-            ->get(route('admin.users.edit', $admin));
+            ->get($admin->editRoute());
 
         // assertions
-        $this->assertAuthenticated();
-
-        $this->assertDatabaseCount('users', 1);
-
-        $response->assertViewIs('admin.users.edit');
-
         $response->assertOk();
+        $response->assertViewIs(User::editView());
+        $this->assertAuthenticated();
+        $this->assertDatabaseCount('users', 1);
     }
 
     public function testNotAdminUserCantRenderEditUserScreen(): void
     {
-        $buyerRole = Role::create(['name' => 'buyer']);
+        $buyerRole = Role::create(['name' => Roles::BUYER]);
 
         $user = User::factory()
             ->create()
             ->assignRole($buyerRole);
 
         $response = $this->actingAs($user)
-            ->get(route('admin.users.edit', $user));
+            ->get($user->editRoute());
 
         // assertions
-        $this->assertAuthenticated();
-
-        $this->assertDatabaseCount('users', 1);
-
         $response->assertForbidden();
+        $this->assertAuthenticated();
+        $this->assertDatabaseCount('users', 1);
     }
 
     public function testUserCanBeEdited(): void
     {
-        $editUsersPermission = Permission::create(['name' => 'update users']);
+        $editUsersPermission = Permission::create(['name' => Permissions::UPDATE_USERS]);
 
-        $adminRole = Role::create(['name' => 'admin'])
+        $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($editUsersPermission);
 
         $admin = User::factory()
@@ -70,7 +67,7 @@ class EditUserTest extends TestCase
             ->create();
 
         $response = $this->actingAs($admin)
-            ->put(route('admin.users.update', $userToEdit), [
+            ->put($userToEdit->updateRoute(), [
                 'name' => 'Testing name',
                 'email' => 'testingemail@example.com',
                 'disable_at' => null,
@@ -79,39 +76,32 @@ class EditUserTest extends TestCase
         $editedUser = User::find($userToEdit->id);
 
         // assertions
+        $response->assertRedirect(User::indexRoute());
         $this->assertAuthenticated();
-
         $this->assertDatabaseCount('users', 2);
-
         $this->assertEquals('Testing name', $editedUser->name);
-
         $this->assertEquals('testingemail@example.com', $editedUser->email);
-
-        $response->assertRedirect(route('admin.users.index'));
     }
 
     public function testNotAdminUserCantEditUsers(): void
     {
-        $buyerRole = Role::create(['name' => 'buyer']);
+        $buyerRole = Role::create(['name' => Roles::BUYER]);
 
-        $user = User::factory()
+        $buyer = User::factory()
             ->create()
             ->assignRole($buyerRole);
 
         $userToEdit = User::factory()->create();
 
-        $response = $this->actingAs($user)
-            ->put(route('admin.users.update', $userToEdit), [
+        $response = $this->actingAs($buyer)
+            ->put($userToEdit->updateRoute(), [
                 'name' => 'Testing name',
                 'email' => 'testingemail@example.com',
-                'status' => true,
             ]);
 
         // assertions
-        $this->assertAuthenticated();
-
-        $this->assertDatabaseCount('users', 2);
-
         $response->assertForbidden();
+        $this->assertAuthenticated();
+        $this->assertDatabaseCount('users', 2);
     }
 }
