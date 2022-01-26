@@ -37,7 +37,7 @@
                                                 <tr class="text-gray-700">
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <img src="{{ asset($product->product_image) }}"
+                                                            <img src="{{ asset('storage/'.$product->product_image) }}"
                                                                 alt="Image" width="70px" height="70px">
                                                         </div>
                                                     </td>
@@ -79,22 +79,19 @@
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <x-button-link
-                                                                href="{{ $product->showRoute() }}">
+                                                            <x-button-link href="{{ $product->showRoute() }}">
                                                                 {{ trans('buttons.show') }}</x-button-link>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <x-button-link
-                                                                href="{{ $product->editRoute() }}">
+                                                            <x-button-link href="{{ $product->editRoute() }}">
                                                                 {{ trans('buttons.edit') }}</x-button-link>
                                                         </div>
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <form
-                                                                action="{{ $product->destroyRoute() }}"
+                                                            <form action="{{ $product->destroyRoute() }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 {{ method_field('DELETE') }}

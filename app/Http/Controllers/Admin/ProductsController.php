@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProductsController extends Controller
@@ -56,6 +57,8 @@ class ProductsController extends Controller
     public function destroy(Product $product): RedirectResponse
     {
         $product->delete();
+
+        Storage::disk('public')->delete($product->product_image);
 
         return redirect(Product::indexRoute());
     }

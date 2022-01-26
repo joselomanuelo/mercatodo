@@ -20,7 +20,7 @@ class StoreOrUpdateAction extends Action
 
         if ($request->hasFile('product_image')) {
             $fileName = time().'.'.$request->file('product_image')->extension();
-            $product->product_image = 'storage/'.$request->file('product_image')->storeAs(
+            $product->product_image = $request->file('product_image')->storeAs(
                     'uploads/products',
                     $fileName,
                     'public'

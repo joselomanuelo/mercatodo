@@ -13,7 +13,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->paragraph(),
             'price' => $this->faker->randomNumber(5),
             'stock' => $this->faker->randomNumber(4),
-            'product_image' => 'storage/uploads/products/example.jpg',
+            'product_image' => 'uploads/products/example.jpg',
         ];
     }
 }

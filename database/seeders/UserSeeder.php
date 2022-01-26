@@ -10,8 +10,8 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $admin = User::factory()->create([
-            'name' => 'Administrator',
-            'email' => 'administrator@mercatodo.com',
+            'name' => 'Admin',
+            'email' => 'admin@mercatodo.com',
         ]);
 
         $admin->assignRole('admin');
