@@ -40,11 +40,7 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 @if (request()->routeIs('admin.products.index'))
-                <div class="mr-4">
-                    <x-button-link class="ml-4" href="{{ route('admin.products.create') }}">
-                        {{ __(trans('products.new')) }}
-                    </x-button-link>
-                </div>
+                
                 @endif
                 @auth
                     <x-dropdown align="right" width="48">

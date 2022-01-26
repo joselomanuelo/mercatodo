@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Actions\Products\StoreOrUpdateAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Products\SearchRequest;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
@@ -14,9 +15,10 @@ use Illuminate\View\View;
 
 class ProductsController extends Controller
 {
-    public function index(): View
+    public function index(SearchRequest $request): View
     {
-        $products = Product::paginate(50);
+        $products = Product::search($request->query('search'))
+            ->paginate(20);
 
         return view(Product::indexView(), compact('products'));
     }
