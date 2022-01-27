@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Events\UserDeleted;
 use App\Events\UserUpdated;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Users\SearchRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use App\Models\UserLog;
@@ -13,9 +14,10 @@ use Illuminate\View\View;
 
 class UsersController extends Controller
 {
-    public function index(): View
+    public function index(SearchRequest $request): View
     {
-        $users = User::paginate(50);
+        $users = User::search($request->query('search'))
+            ->paginate(20);
 
         return view(User::indexView(), compact('users'));
     }

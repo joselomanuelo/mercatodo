@@ -6,6 +6,7 @@ use App\Models\Concerns\UserRoutes;
 use App\Models\Concerns\UserViews;
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -36,4 +37,10 @@ class User extends Authenticatable implements MustVerifyEmail, Authorizable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function scopeSearch(Builder $query, ?string $search = null): Builder
+    {
+        return $search ? $query->where('name', 'like', '%'.trim($search).'%')
+            ->orWhere('email', 'like', '%'.trim($search).'%') : $query;
+    }
 }

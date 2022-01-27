@@ -41,7 +41,14 @@
                         </x-button-link>
                     </div>
                 @endif
-                
+                @if (request()->routeIs(App\Constants\RouteNames::INDEX_USERS))
+                    <form action="{{ App\Models\User::indexRoute() }}" method="GET" class="ml-4">
+                        <x-input id="search" type="text" name="search" />
+                        <x-button class="ml-2">
+                            {{ __(trans('buttons.search')) }}
+                        </x-button>
+                    </form>
+                @endif
             </div>
         </header>
 
