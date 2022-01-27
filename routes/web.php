@@ -1,5 +1,6 @@
 <?php
 
+use App\Constants\RouteNames;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-})->name('welcome');
+})->name('welcome'); */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::view('/', 'welcome')
+    ->name(RouteNames::WELCOME);
+
+Route::view('/dashboard', 'welcome')
+    ->middleware(['auth', 'verified'])
+    ->name(RouteNames::DASHBOARD);
 
 require __DIR__ . '/auth.php';
 
 require __DIR__ . '/admin.php';
+
+require __DIR__. '/buyer.php';
