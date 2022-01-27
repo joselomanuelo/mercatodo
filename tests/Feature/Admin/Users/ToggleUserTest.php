@@ -4,6 +4,7 @@ namespace Tests\Feature\Admin\Users;
 
 use App\Constants\Permissions;
 use App\Constants\Roles;
+use App\Constants\RouteNames;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -23,10 +24,10 @@ class ToggleUserTest extends TestCase
             ->assignRole($buyerRole);
 
         $response = $this->actingAs($user)
-            ->get(route('welcome'));
+            ->get(route(RouteNames::WELCOME));
 
         // assertions
-        $response->assertRedirect(route('login'));
+        $response->assertRedirect(route(RouteNames::LOGIN));
         $this->assertGuest();
         $this->assertDatabaseCount('users', 1);
     }

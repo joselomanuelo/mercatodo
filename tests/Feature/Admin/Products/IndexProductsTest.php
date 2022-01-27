@@ -4,6 +4,7 @@ namespace tests\Feature\Admin\Products;
 
 use App\Constants\Permissions;
 use App\Constants\Roles;
+use App\Constants\RouteNames;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -40,7 +41,7 @@ class IndexproductsTest extends TestCase
         $response = $this->get(Product::indexRoute());
 
         // assertions
-        $response->assertRedirect(route('login'));
+        $response->assertRedirect(route(RouteNames::LOGIN));
         $this->assertGuest();
     }
 }

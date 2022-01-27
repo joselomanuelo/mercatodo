@@ -2,6 +2,7 @@
 
 namespace tests\Feature\Buyer\Products;
 
+use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -11,14 +12,14 @@ class IndexProductsTest extends TestCase
 
     public function testProductsListScreenCanBeRendered(): void
     {
-        $response = $this->get(route('buyer.products.index'));
+        $response = $this->get(Product::buyerIndexRoute());
 
         // assertions
         $this->assertGuest();
 
         $response->assertOk();
 
-        $response->assertViewIs('buyer.products.index');
+        $response->assertViewIs(Product::buyerIndexView());
 
         
     }

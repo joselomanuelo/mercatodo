@@ -4,6 +4,7 @@ namespace Tests\Feature\Admin\Users;
 
 use App\Constants\Permissions;
 use App\Constants\Roles;
+use App\Constants\RouteNames;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -40,7 +41,7 @@ class IndexUsersTest extends TestCase
         $response = $this->get(User::indexRoute());
 
         // assertions
-        $response->assertRedirect(route('login'));
+        $response->assertRedirect(route(RouteNames::LOGIN));
         $this->assertGuest();
         $this->assertDatabaseCount('users', 0);
     }
