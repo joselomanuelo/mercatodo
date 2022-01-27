@@ -14,7 +14,7 @@ class StoreOrUpdateAction extends Action
         $product = $model ?? new Product();
         $product->name = $request->input('name');
         $product->description = $request->input('description');
-        $product->price = $request->input('price').'00';
+        $product->price = $request->input('price');
         $product->stock = $request->input('stock');
         $product->category_id = $request->input('category');
 

@@ -96,7 +96,7 @@ class EditProductsTest extends TestCase
         $this->assertDatabaseCount('products', 1);
         $this->assertEquals('Testing product', $product2->name);
         $this->assertEquals('Testing description', $product2->description);
-        $this->assertEquals(10000, $product2->price);
+        $this->assertEquals(100, $product2->price);
         $this->assertEquals($category->id, $product2->category->id);
         $this->assertEquals(100, $product2->stock);
     }

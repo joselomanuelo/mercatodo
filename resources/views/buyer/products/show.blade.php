@@ -13,7 +13,7 @@
                 <div class="px-5 py-3">
                     <h3 class="text-gray-700 uppercase">{{ $product->name }}</h3>
                     <span
-                        class="text-gray-500 mt-2">{{ trans('products.price') . ': ' . Cknow\Money\Money::COP($product->price . '00') }}</span><br>
+                        class="text-gray-500 mt-2">{{ trans('products.price') . ': ' . money($product->price . '00') }}</span><br>
                     <span class="text-gray-500 mt-2">Stock: {{ number_format($product->stock, 0, ',','.') }}</span><br>
                     <span
                         class="text-gray-500 mt-2">{{ trans('products.category') . ': ' . $product->category->name }}</span><br>

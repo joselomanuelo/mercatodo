@@ -13,7 +13,7 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'description' => $this->faker->paragraph(),
-            'price' => $this->faker->randomNumber(5).'00',
+            'price' => $this->faker->randomNumber(5),
             'stock' => $this->faker->randomNumber(4),
             'product_image' => Storage::disk('public')->put('uploads/products', new File('public/images/example.jpg')),
         ];

@@ -88,7 +88,7 @@ class CreateProductsTest extends TestCase
         $this->assertDatabaseCount('products', 1);
         $this->assertEquals('Testing product', $product->name);
         $this->assertEquals('Testing description', $product->description);
-        $this->assertEquals(10000, $product->price);
+        $this->assertEquals(100, $product->price);
         $this->assertEquals($category->id, $product->category->id);
         $this->assertEquals(100, $product->stock);
     }
