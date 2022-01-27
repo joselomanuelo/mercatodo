@@ -28,7 +28,7 @@
                             </h3>
                         </li>
                         <li>
-                            <h3>Stock: {{ number_format($product->stock) }}</h3>
+                            <h3>Stock: {{ number_format($product->stock, 0, ',','.') }}</h3>
                         </li>
                         <li>
                             <h3>{{ trans('auth.createdAt') . ': ' . $product->created_at }}</h3>

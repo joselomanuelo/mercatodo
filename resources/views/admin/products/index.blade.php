@@ -73,7 +73,7 @@
                                                     </td>
                                                     <td class="px-4 py-3 border">
                                                         <div class="flex items-center text-sm">
-                                                            <p class="font-semibold text-black">{{ number_format($product->stock) }}
+                                                            <p class="font-semibold text-black">{{ number_format($product->stock, 0, ',','.') }}
                                                             </p>
                                                         </div>
                                                     </td>
