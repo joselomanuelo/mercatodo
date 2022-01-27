@@ -1,17 +1,14 @@
 <?php
 
+use App\Constants\RouteNames;
 use App\Http\Controllers\Buyer\BuyerProductsController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('buyer')
-    ->name('buyer.')
     ->group(function () {
         Route::get('/products', [BuyerProductsController::class, 'index'])
-            ->name('products.index');
+            ->name(RouteNames::BUYER_INDEX_PRODUCTS);
 
         Route::get('/products/{product}/show', [BuyerProductsController::class, 'show'])
-            ->name('products.show');
-
-        /* Route::get('/products/search', [BuyerProductsController::class, 'search'])
-            ->name('products.search'); */
+            ->name(RouteNames::BUYER_SHOW_PRODUCTS);
     });

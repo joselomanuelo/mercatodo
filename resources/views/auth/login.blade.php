@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href={{ route('welcome') }}>
+            <a href={{ route(App\Constants\RouteNames::WELCOME) }}>
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
@@ -12,7 +12,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route(App\Constants\RouteNames::LOGIN) }}">
             @csrf
 
             <!-- Email Address -->
@@ -42,7 +42,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route(App\Constants\RouteNames::PASSWORD_REQUEST) }}">
                         {{ __(trans('auth.forgot')) }}
                     </a>
                 @endif

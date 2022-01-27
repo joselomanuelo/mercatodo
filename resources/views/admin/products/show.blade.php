@@ -24,7 +24,7 @@
                             <h3>{{ trans('products.description') . ': ' . $product->description }}</h3>
                         </li>
                         <li>
-                            <h3>{{ trans('products.price') . ': ' . Cknow\Money\Money::COP($product->price . '00') }}
+                            <h3>{{ trans('products.price') . ': ' . Cknow\Money\Money::COP($product->price) }}
                             </h3>
                         </li>
                         <li>

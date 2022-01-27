@@ -24,7 +24,7 @@
                         </div>
                         <div class="mt-4">
                             <x-label for="price" :value="__(trans('products.price'))" />
-                            <x-input id="price" class="block mt-1 w-full" type="text" name="price" value="{{ Cknow\Money\Money::COP($product->price.'00') }}" required />
+                            <x-input id="price" class="block mt-1 w-full" type="text" name="price" value="{{ Cknow\Money\Money::COP($product->price) }}" required />
                         </div>
                         <div class="mt-4">
                             <x-label for="stock" :value="__('Stock')" />
