@@ -2,42 +2,52 @@
 
 namespace App\Models\Concerns;
 
-use Illuminate\Http\Request;
+use App\Constants\RouteNames;
 
 trait ProductRoutes
 {
     public static function indexRoute(): string
     {
-        return route('admin.products.index');
+        return route(RouteNames::INDEX_PRODUCTS);
     }
 
     public function showRoute(): string
     {
-        return route('admin.products.show', $this);
+        return route(RouteNames::SHOW_PRODUCTS, $this);
     }
 
     public static function createRoute(): string
     {
-        return route('admin.products.create');
+        return route(RouteNames::CREATE_PRODUCTS);
     }
 
     public static function storeRoute(): string
     {
-        return route('admin.products.store');
+        return route(RouteNames::STORE_PRODUCTS);
     }
 
     public function editRoute(): string
     {
-        return route('admin.products.edit', $this);
+        return route(RouteNames::EDIT_PRODUCTS, $this);
     }
 
     public function updateRoute(): string
     {
-        return route('admin.products.update', $this);
+        return route(RouteNames::UPDATE_PRODUCTS, $this);
     }
 
-       public function destroyRoute(): string
+    public function destroyRoute(): string
     {
-        return route('admin.products.destroy', $this);
+        return route(RouteNames::DESTROY_PRODUCTS, $this);
+    }
+
+    public static function buyerIndexRoute(): string
+    {
+        return route(RouteNames::BUYER_INDEX_PRODUCTS);
+    }
+
+    public function buyerShowRoute(): string
+    {
+        return route(RouteNames::BUYER_SHOW_PRODUCTS, $this);
     }
 }

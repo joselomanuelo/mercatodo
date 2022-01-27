@@ -2,37 +2,37 @@
 
 namespace App\Models\Concerns;
 
-use Illuminate\Http\Request;
+use App\Constants\RouteNames;
 
 trait UserRoutes
 {
     public static function indexRoute(): string
     {
-        return route('admin.users.index');
+        return route(RouteNames::INDEX_USERS);
     }
 
     public function showRoute(): string
     {
-        return route('admin.users.show', $this);
+        return route(RouteNames::SHOW_USERS, $this);
     }
 
     public function editRoute(): string
     {
-        return route('admin.users.edit', $this);
+        return route(RouteNames::EDIT_USERS, $this);
     }
 
     public function updateRoute(): string
     {
-        return route('admin.users.update', $this);
+        return route(RouteNames::UPDATE_USERS, $this);
     }
 
     public function toggleRoute(): string
     {
-        return route('admin.users.toggle', $this);
+        return route(RouteNames::TOGGLE_USERS, $this);
     }
 
     public function destroyRoute(): string
     {
-        return route('admin.users.destroy', $this);
+        return route(RouteNames::DESTROY_USERS, $this);
     }
 }

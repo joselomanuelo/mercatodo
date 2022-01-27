@@ -24,5 +24,14 @@ trait ProductViews
         return 'admin.products.edit';
     }
 
-    
+    public static function buyerIndexView(): string
+    {
+        return 'buyer.products.index';
+    }
+
+    public static function buyerShowView(): string
+    {
+        return 'buyer.products.show';
+    }
+
 }

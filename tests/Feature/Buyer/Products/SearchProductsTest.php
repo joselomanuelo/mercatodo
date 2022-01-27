@@ -13,7 +13,7 @@ class SearchProductsTest extends TestCase
 
     public function testProductsSearchScreenCanBeRendered(): void
     {
-        $response = $this->get(route('buyer.products.index'), [
+        $response = $this->get(Product::buyerIndexRoute(), [
             'search' => 'search',
             'category' => '1',
             'priceFrom' => '10',
@@ -25,7 +25,7 @@ class SearchProductsTest extends TestCase
 
         $response->assertOk();
 
-        $response->assertViewIs('buyer.products.index');
+        $response->assertViewIs(Product::buyerIndexView());
     }
 
     /* public function testSearchResultsAreCorrect(): void

@@ -24,11 +24,11 @@
                             <h3>{{ trans('products.description') . ': ' . $product->description }}</h3>
                         </li>
                         <li>
-                            <h3>{{ trans('products.price') . ': ' . Cknow\Money\Money::COP($product->price . '00') }}
+                            <h3>{{ trans('products.price') . ': ' . money($product->price.'00') }}
                             </h3>
                         </li>
                         <li>
-                            <h3>Stock: {{ number_format($product->stock) }}</h3>
+                            <h3>Stock: {{ number_format($product->stock, 0, ',','.') }}</h3>
                         </li>
                         <li>
                             <h3>{{ trans('auth.createdAt') . ': ' . $product->created_at }}</h3>

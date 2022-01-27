@@ -19,11 +19,11 @@ class BuyerProductsController extends Controller
             ->priceFilter($request->query('priceFrom'), $request->query('priceTo'))
             ->paginate(20);
 
-        return view('buyer.products.index', compact('products', 'categories'));
+        return view(Product::buyerIndexView(), compact('products', 'categories'));
     }
 
     public function show(Product $product): View
     {
-        return view('buyer.products.show', compact('product'));
+        return view(Product::buyerShowView(), compact('product'));
     }
 }

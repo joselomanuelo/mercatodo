@@ -1,5 +1,6 @@
 <?php
 
+use App\Constants\RouteNames;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -12,53 +13,54 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
     ->middleware('guest')
-    ->name('register');
+    ->name(RouteNames::REGISTER);
 
 Route::post('/register', [RegisteredUserController::class, 'store'])
     ->middleware('guest');
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
     ->middleware('guest')
-    ->name('login');
+    ->name(RouteNames::LOGIN);
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
-    ->middleware('guest');
+    ->middleware('guest')
+    ->name(RouteNames::LOGIN_ATTEMP);
 
 Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
     ->middleware('guest')
-    ->name('password.request');
+    ->name(RouteNames::PASSWORD_REQUEST);
 
 Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
     ->middleware('guest')
-    ->name('password.email');
+    ->name(RouteNames::PASSWORD_EMAIL);
 
 Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
     ->middleware('guest')
-    ->name('password.reset');
+    ->name(RouteNames::PASSWORD_RESET);
 
 Route::post('/reset-password', [NewPasswordController::class, 'store'])
     ->middleware('guest')
-    ->name('password.update');
+    ->name(RouteNames::PASSWORD_UPDATE);
 
 Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])
     ->middleware('auth')
-    ->name('verification.notice');
+    ->name(RouteNames::VERIFICATION_NOTICE);
 
 Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
     ->middleware(['auth', 'signed', 'throttle:6,1'])
-    ->name('verification.verify');
+    ->name(RouteNames::VERIFICATION_VERIFY);
 
 Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
     ->middleware(['auth', 'throttle:6,1'])
-    ->name('verification.send');
+    ->name(RouteNames::VERIFICATION_SEND);
 
 Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])
     ->middleware('auth')
-    ->name('password.confirm');
+    ->name(RouteNames::PASSWORD_CONFIRM);
 
 Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store'])
     ->middleware('auth');
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->middleware('auth')
-    ->name('logout');
+    ->name(RouteNames::LOGOUT);

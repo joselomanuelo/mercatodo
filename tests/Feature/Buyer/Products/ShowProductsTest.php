@@ -17,14 +17,14 @@ class ShowProductsTest extends TestCase
             ->for(Category::factory()->create())
             ->create();
 
-        $response = $this->get(route('buyer.products.show', $product));
+        $response = $this->get($product->buyerShowRoute());
 
         // assertions
         $this->assertGuest();
 
         $this->assertDatabaseCount('products', 1);
 
-        $response->assertViewIs('buyer.products.show');
+        $response->assertViewIs(Product::buyerShowView());
 
         $response->assertOk();
     }

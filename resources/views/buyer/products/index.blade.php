@@ -6,7 +6,7 @@
     </x-slot>
     <main class="my-8">
         <div class="container mx-auto px-6">
-            <form action="{{ route('buyer.products.index') }}" method="GET" class="grid grid-cols-7 gap-3">
+            <form action="{{ App\Models\Product::buyerIndexRoute() }}" method="GET" class="grid grid-cols-7 gap-3">
                 <x-input id="search" type="text" name="search" class="col-span-6"/>
                 <x-button class="row-span-2">
                     {{ __(trans('buttons.search')) }}
@@ -44,7 +44,7 @@
                         </div>
                         <div class="px-5 py-3" >
                             <h3 class="text-gray-700 uppercase">{{ $product->name }}</h3>
-                            <span class="text-gray-500 mt-2">{{ Cknow\Money\Money::COP($product->price.'00') }}</span>
+                            <span class="text-gray-500 mt-2">{{ money($product->price.'00') }}</span>
                         </div>
                     </div>
                 @endforeach
