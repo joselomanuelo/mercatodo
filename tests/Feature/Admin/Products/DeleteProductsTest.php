@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
@@ -39,6 +40,7 @@ class DeleteProductsTest extends TestCase
         $this->assertAuthenticated();
         $this->assertDatabaseCount('products', 0);
         $this->assertDeleted($productToDelete);
+        $this->assertFalse(Storage::disk('public')->exists($productToDelete->product_image));
     }
 
     public function testNotAdminUserCantDeleteProducts(): void

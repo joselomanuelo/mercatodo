@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class ProductFactory extends Factory
 {
@@ -13,7 +15,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->paragraph(),
             'price' => $this->faker->randomNumber(5),
             'stock' => $this->faker->randomNumber(4),
-            'product_image' => 'storage/uploads/products/example.jpg',
+            'product_image' => Storage::disk('public')->put('uploads/products', new File('public/images/example.jpg')),
         ];
     }
 }
