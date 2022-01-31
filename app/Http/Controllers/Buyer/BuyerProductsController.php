@@ -17,6 +17,7 @@ class BuyerProductsController extends Controller
         $products = Product::search($request->query('search'))
             ->categoryFilter($request->query('category'))
             ->priceFilter($request->query('priceFrom'), $request->query('priceTo'))
+            ->orderBy('name')
             ->paginate(20);
 
         $products->appends(['search' => $request->query('search'),
