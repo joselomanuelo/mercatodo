@@ -7,7 +7,7 @@ return [
      |--------------------------------------------------------------------------
      */
     'locale' => config('app.locale', 'en_US'),
-    'defaultCurrency' => config('app.currency', 'USD'),
+    'defaultCurrency' => env('APP_DEFAULT_CURRENCY', 'USD'),
     'defaultFormatter' => null,
     'currencies' => [
         'iso' => 'all',
