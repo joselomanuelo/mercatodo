@@ -20,8 +20,10 @@ class ProductsController extends Controller
         $products = Product::search($request->query('search'))
             ->paginate(20);
 
+        $products->appends(['search' => $request->query('search')]);
+
         return view(Product::indexView(), compact('products'));
-    }
+    } 
 
     public function create(): View
     {

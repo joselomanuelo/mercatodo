@@ -19,6 +19,8 @@ class UsersController extends Controller
         $users = User::search($request->query('search'))
             ->paginate(20);
 
+        $users->appends(['search' => $request->query('search')]);
+
         return view(User::indexView(), compact('users'));
     }
 
