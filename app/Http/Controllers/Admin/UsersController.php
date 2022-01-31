@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Users\StoreOrUpdateAction;
 use App\Events\UserDeleted;
 use App\Events\UserUpdated;
 use App\Http\Controllers\Controller;
@@ -38,10 +39,7 @@ class UsersController extends Controller
 
     public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->save();
-        $user->syncRoles($request->input('role'));
+        $user = StoreOrUpdateAction::execute($request, $user);
 
         event(new UserUpdated($user));
 
