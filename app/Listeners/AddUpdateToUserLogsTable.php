@@ -12,6 +12,6 @@ class AddUpdateToUserLogsTable
     {
         AddInputUserLogs::execute($event->user, 'update');
 
-        Log::notice('The user with id '.$event->user->id.' has been updated.');
+        Log::info('The user with id '.$event->user->id.' has been updated.');
     }
 }

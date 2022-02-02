@@ -56,8 +56,11 @@ class EditUserTest extends TestCase
     {
         $editUsersPermission = Permission::create(['name' => Permissions::UPDATE_USERS]);
 
+        Role::create(['name' => 'buyer']);
+
         $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($editUsersPermission);
+        
 
         $admin = User::factory()
             ->create()
