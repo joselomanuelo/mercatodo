@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Actions\Products\StoreOrUpdateAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Products\ProductRequest;
 use App\Http\Requests\Admin\Products\SearchRequest;
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
@@ -18,7 +17,10 @@ class ProductsController extends Controller
     public function index(SearchRequest $request): View
     {
         $products = Product::search($request->query('search'))
+            ->orderBy('name')
             ->paginate(20);
+
+        $products->appends(['search' => $request->query('search')]);
 
         return view(Product::indexView(), compact('products'));
     }
@@ -30,7 +32,7 @@ class ProductsController extends Controller
         return view(Product::createView(), compact('categories'));
     }
 
-    public function store(StoreProductRequest $request): RedirectResponse
+    public function store(ProductRequest $request): RedirectResponse
     {
         StoreOrUpdateAction::execute($request);
 
@@ -49,7 +51,7 @@ class ProductsController extends Controller
         return view(Product::editView(), compact('product', 'categories'));
     }
 
-    public function update(UpdateProductRequest $request, Product $product): RedirectResponse
+    public function update(ProductRequest $request, Product $product): RedirectResponse
     {
         StoreOrUpdateAction::execute($request, $product);
 

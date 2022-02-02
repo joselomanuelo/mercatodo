@@ -9,6 +9,6 @@ class AddDeleteToUserLogsTable
 {
     public function handle(UserDeleted $event): void
     {
-        Log::notice('The user with id '.$event->user->id.' has been deleted.');
+        Log::info('The user with id '.$event->user->id.' has been deleted.');
     }
 }
