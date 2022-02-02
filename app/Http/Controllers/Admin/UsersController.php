@@ -7,7 +7,7 @@ use App\Events\UserDeleted;
 use App\Events\UserUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\SearchRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\Admin\Users\UpdateUserRequest;
 use App\Models\User;
 use App\Models\UserLog;
 use Illuminate\Http\RedirectResponse;
