@@ -6,11 +6,8 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-window.Vue = require('vue');
-
-Vue.component('catalog', require('./components/Catalog.vue').default);
-
-const app = new Vue({
-    el: '#app',
-    
-});
+import { createApp } from 'vue';
+import Catalog from './components/Catalog';
+const app = createApp({});
+app.component('catalog-page', Catalog);
+app.mount('#app');
