@@ -6,7 +6,7 @@
     </x-slot>
     
     <div id="app">
-        <catalog-page></catalog-page>
+        <index-page></index-page>
     </div>
-    <script src="{{ mix('js/app.js') }}"></script>
+    
 </x-app-layout>
