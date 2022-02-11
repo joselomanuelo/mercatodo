@@ -7,11 +7,10 @@ Alpine.start();
 
 import { createApp } from "vue";
 import router from './router'
-import IndexProducts from '.components/products/Index'
-
+import ProductsIndex from './components/products/ProductsIndex'
 createApp({
     components: {
-        IndexProducts
+        ProductsIndex
     }
 }).use(router).mount('#app')
 

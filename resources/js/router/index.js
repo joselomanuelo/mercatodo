@@ -1,12 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import IndexProducts from './components/products/Index';
+import ProductsIndex from '../components/products/ProductsIndex';
 
 const routes = [
     {
+        path: '/',
+        name: 'products.index',
+        component: ProductsIndex,
+    },
+
+    {
         path: '/dashboard',
         name: 'products.index',
-        component: IndexProducts,
+        component: ProductsIndex,
     }
 ]
 

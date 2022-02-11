@@ -1,9 +1,4 @@
 <template>
-    Hello world.
-</template>
-
-
-<!-- <template>
     <div>
         <div class="my-8">
             <div class="container mx-auto px-6">
@@ -27,8 +22,8 @@
                             shadow-md
                             overflow-hidden
                         "
-                        v-for="(product, index) in products"
-                        :key="index"
+                        v-for="product in products"
+                        :key="product.id"
                     >
                         <div
                             class="
@@ -43,14 +38,14 @@
                             <img
                                 :src="'/storage/' + product.product_image"
                                 :alt="product.name"
-                                @click="viewProduct(product)"
+
                             />
                         </div>
                         <div class="px-5 py-3">
                             <h3 class="text-gray-700 uppercase">
                                 {{ product.name }}
                             </h3>
-                            <span class="text-gray-500 mt-2"> 
+                            <span class="text-gray-500 mt-2">
                                 {{ product.price.formatted }}
                             </span>
                             <button></button>
@@ -63,49 +58,21 @@
 </template>
 
 <script>
+import useProducts from "../../composables/products";
+import useCategories from "../../composables/categories";
+import { onMounted } from "vue";
+
 export default {
-    el: "#app",
-    data() {
+    setup() {
+        const { products, getProducts } = useProducts();
+        const { categories, getCategories } = useCategories();
+
+        onMounted(getProducts(), getCategories());
+
         return {
-            categories: [],
-            products: [],
-        };
-    },
-
-    mounted() {
-        this.loadCategories();
-        this.loadProducts();
-    },
-
-    methods: {
-        loadCategories() {
-            axios
-                .get("/api/categories")
-                .then((response) => {
-                    this.categories = response.data.data;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        },
-
-        loadProducts() {
-            axios
-                .get("/api/products")
-                .then((response) => {
-                    this.products = response.data.data;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        },
-
-        viewProduct(product) {
-            this.$swal('Hello');
+            products,
+            categories
         }
     },
 };
-</script> */
-
-<style>
-</style>-->
+</script>
