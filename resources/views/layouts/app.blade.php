@@ -14,11 +14,11 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    
+
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100" id="app">
+    <div class="min-h-screen ">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
@@ -52,7 +52,7 @@
         </header>
 
         <!-- Page Content -->
-        <main>
+        <main id="app">
             {{ $slot }}
         </main>
     </div>

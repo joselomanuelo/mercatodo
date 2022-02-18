@@ -43,4 +43,9 @@ class RouteNames extends Constant
     //app
     public const DASHBOARD = 'dashboard';
     public const WELCOME = 'welcome';
+
+    //api
+    public const CATEGORIES = 'categories';
+    public const PRODUCTS = 'products';
+    public const ORDERS = 'orders';
 }

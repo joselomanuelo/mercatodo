@@ -16,7 +16,7 @@ class Product extends Model
     use ProductViews;
 
     protected $fillable = [
-        'product',
+        'name',
         'description',
         'price',
         'stock',
