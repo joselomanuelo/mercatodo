@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="justify-center inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150">
-            <router-link :to="{ name: 'buyer.cart.index' }"> Carrito </router-link>
+            <router-link :to="{ name: 'buyer.cart.index' }"> Carrito ({{ shoppingCart.length }})</router-link>
         </div>
         <div class="my-8">
             <div class="container mx-auto px-6">
@@ -22,12 +22,16 @@
                                 {{ product.name }}
                             </h3>
                             <span class="text-gray-500 mt-2">
-                                {{ '$ ' + product.price / 100 }}
+                                {{ currencyCOP(product.price) }}
                             </span><br>
                             <button
+                                v-if="!cartIndexes.includes(product.id)"
                                 class="justify-center inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150"
                                 @click="addProductToCart(product)">Añadir al carrito
                             </button>
+                            <span v-else>
+                                Añadido al carrito
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -57,17 +61,23 @@ export default {
 
     data() {
         return {
-            shoppingCart: JSON.parse(localStorage.getItem('shoppingCart'))
+            shoppingCart: [],
+            cartIndexes: []
         }
+    },
+
+    mounted() {
+        this.loadShopingCart()
+        this.loadCartIndexes()
     },
 
     methods: {
         addProductToCart(product) {
             Swal.fire({
-                title: 'Agregar ' + product.name + ' al carrito.',
+                title: '¿Quieres añadir ' + product.name + ' al carrito?',
                 imageUrl: '/storage/' + product.product_image,
                 input: 'range',
-                inputLabel: '¿Cuántas unidades deseas agregar?',
+                inputLabel: '¿Cuántas unidades deseas añadir?',
                 inputAttributes: {
                     min: 1,
                     max: product.stock > 100 ? 100 : product.stock,
@@ -79,7 +89,7 @@ export default {
                 confirmButtonText: 'Agregar',
                 confirmButtonColor: '#1e40af'
 
-        }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
                     this.shoppingCart.push({
                         id: product.id,
@@ -92,13 +102,33 @@ export default {
                     const parsed = JSON.stringify(this.shoppingCart)
                     localStorage.setItem('shoppingCart', parsed)
                     Swal.fire({
-                        title: 'Agregado al carrito!',
+                        title: 'Añadido al carrito!',
                         icon : 'success',
                         confirmButtonColor: '#1e40af'
                     })
+                    this.loadCartIndexes()
                 }
             })
         },
+
+        loadShopingCart() {
+            if (localStorage.getItem('shoppingCart')) {
+                this.shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'))
+            }
+        },
+
+        loadCartIndexes() {
+            if (localStorage.getItem('shoppingCart')) {
+                this.cartIndexes = JSON.parse(localStorage.getItem('shoppingCart')).map(item => item.id)
+            }
+        },
+
+        currencyCOP(value) {
+            const options = { style: 'currency', currency: 'COP'}
+            const numberFormat = new Intl.NumberFormat('es-ES', options)
+
+            return numberFormat.format(value)
+        }
     }
 }
 </script>
