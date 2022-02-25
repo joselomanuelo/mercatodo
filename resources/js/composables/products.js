@@ -5,7 +5,13 @@ export default function useProducts() {
     const products = ref([]);
 
     const indexProducts = async () => {
-        let response = await axios.get("/api/products");
+        let token = localStorage.getItem('token');
+        let config = {
+            headers : {
+                'Authorization': 'Bearer ' + token
+            }
+        }
+        let response = await axios.get("/api/products", config);
         products.value = response.data.data;
     }
 

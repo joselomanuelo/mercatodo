@@ -41,10 +41,11 @@
 </template>
 
 <script>
-import useProducts from "../../composables/products"
-import useCategories from "../../composables/categories"
-import {onMounted} from "vue"
-import Swal from "sweetalert2"
+import useProducts from "../../composables/products";
+import useCategories from "../../composables/categories";
+import {onMounted} from "vue";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 export default {
     setup() {
@@ -67,6 +68,7 @@ export default {
     },
 
     mounted() {
+        this.authentication();
         this.loadShopingCart()
         this.loadCartIndexes()
     },
@@ -128,7 +130,12 @@ export default {
             const numberFormat = new Intl.NumberFormat('es-ES', options)
 
             return numberFormat.format(value)
+        },
+
+        authentication() {
+            axios.get('/sanctum/csrf-cookie');
         }
+
     }
 }
 </script>

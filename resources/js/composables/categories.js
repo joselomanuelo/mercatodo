@@ -5,7 +5,13 @@ export default function useCategories() {
     const categories = ref([]);
 
     const indexCategories = async () => {
-        let response = await axios.get("/api/categories");
+        let token = localStorage.getItem('token');
+        let config = {
+            headers : {
+                'Authorization': 'Bearer ' + token
+            }
+        }
+        let response = await axios.get("/api/categories", config);
         categories.value = response.data.data;
     }
     return {

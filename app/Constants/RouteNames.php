@@ -45,7 +45,10 @@ class RouteNames extends Constant
     public const WELCOME = 'welcome';
 
     //api
-    public const CATEGORIES = 'categories';
-    public const PRODUCTS = 'products';
-    public const ORDERS = 'orders';
+    public const API_CATEGORIES = 'api.categories';
+    public const API_PRODUCTS = 'api.products';
+    public const API_ORDERS = 'api.orders';
+    public const API_STORE_ORDERS = 'api.orders.store';
+    public const API_LOGIN_ATTEMP = 'api.login.attemp';
+    public const API_LOGIN_VIEW = 'api.login.view';
 }

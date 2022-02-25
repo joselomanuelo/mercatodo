@@ -13,9 +13,10 @@ class Order extends Model
 
     protected $fillable = [
         'price',
+        'status',
     ];
 
-    public function user():BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -24,6 +25,4 @@ class Order extends Model
     {
         return $this->hasMany(OrderProduct::class);
     }
-
-
 }
