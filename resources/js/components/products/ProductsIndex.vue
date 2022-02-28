@@ -104,7 +104,7 @@ export default {
                     const parsed = JSON.stringify(this.shoppingCart)
                     localStorage.setItem('shoppingCart', parsed)
                     Swal.fire({
-                        title: 'Añadido al carrito!',
+                        title: '!Añadido al carrito!',
                         icon : 'success',
                         confirmButtonColor: '#1e40af'
                     })

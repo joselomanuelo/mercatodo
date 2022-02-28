@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "cknow/laravel-money": "^6.0",
+        "dnetix/redirection": "^2.0",
         "doctrine/dbal": "^3.2",
         "friendsofphp/php-cs-fixer": "^3.6",
         "fruitcake/laravel-cors": "^2.0",

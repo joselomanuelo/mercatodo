@@ -11,7 +11,7 @@ export default function useProducts() {
                 'Authorization': 'Bearer ' + token
             }
         }
-        let response = await axios.get("/api/products", config);
+        let response = await axios.get("/api/products");
         products.value = response.data.data;
     }
 

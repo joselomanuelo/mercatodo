@@ -12,8 +12,11 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
+        'reference',
         'price',
         'status',
+        'request_id',
+        'procces_url',
     ];
 
     public function user(): BelongsTo

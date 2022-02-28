@@ -10,12 +10,15 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->uuid('reference');
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained('users')
                 ->onDelete('cascade');
             $table->enum('status', ['CREATED', 'PAYED', 'REJECTED']);
             $table->bigInteger('price');
+            $table->string('process_url')->nullable();
+            $table->string('request_id')->nullable();
             $table->timestamps();
         });
     }

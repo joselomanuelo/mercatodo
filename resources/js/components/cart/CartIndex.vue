@@ -91,24 +91,17 @@ export default {
     setup() {
         const { shoppingCart, order, storeOrders } = useOrders();
 
-        const shoppingOrder = ref(order.value);
-
         const payOrder = async () => {
             await storeOrders();
         }
 
         const quantities = () => {
-            shoppingOrder.value.quantities = shoppingCart.value
+            order.value.quantities = shoppingCart.value
 
         }
 
-        watch(shoppingOrder.value, () => {
-            console.log('hola');
-            quantities()
-        });
-
         return {
-            shoppingOrder,
+            order,
             shoppingCart,
             payOrder,
             quantities,
@@ -119,10 +112,6 @@ export default {
         this.indexShopingCart();
         this.quantities();
     },
-
-
-
-
 
     methods: {
         removeProductFromCart(product) {
@@ -159,18 +148,14 @@ export default {
         },
 
         total() {
-            this.shoppingOrder.price = 0;
+            this.order.price = 0;
             this.shoppingCart.forEach(product => {
-                this.shoppingOrder.price += product.price * product.amount;
+                this.order.price += product.price * product.amount;
             });
 
-            return this.currencyCOP(this.shoppingOrder.price);
+            return this.currencyCOP(this.order.price);
         },
-
-
-        }
-
-
     }
+}
 
 </script>

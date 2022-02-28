@@ -13,4 +13,6 @@ Route::prefix('buyer')
             ->name(RouteNames::BUYER_SHOW_PRODUCTS);
 
         Route::view('/cart', 'buyer.cart.index');
+
+        Route::view('/orders/show/{id}', 'buyer.orders.show');
     });

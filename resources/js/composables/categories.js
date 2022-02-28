@@ -11,7 +11,7 @@ export default function useCategories() {
                 'Authorization': 'Bearer ' + token
             }
         }
-        let response = await axios.get("/api/categories", config);
+        let response = await axios.get("/api/categories");
         categories.value = response.data.data;
     }
     return {

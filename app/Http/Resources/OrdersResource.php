@@ -20,6 +20,8 @@ class OrdersResource extends JsonResource
             'user_id' => $this->user_id,
             'price' => $this->price,
             'status' => $this->status,
+            'process_url' => $this->process_url,
+            'request_id' => $this->request_id,
         ];
     }
 }

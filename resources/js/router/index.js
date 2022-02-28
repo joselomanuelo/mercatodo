@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import ProductsIndex from "../components/products/ProductsIndex";
 import CartIndex from "../components/cart/CartIndex";
-import Login from "../components/auth/Login"
+import OrdersShow from "../components/orders/OrdersShow";
 
 const routes = [
     {
@@ -24,10 +24,11 @@ const routes = [
     },
 
     {
-        path: '/api/login',
-        name: 'auth.login',
-        component: Login,
-    }
+        path: '/buyer/orders/show/:id',
+        name: 'buyer.orders.show',
+        component: OrdersShow,
+    },
+
 ]
 
 export default createRouter({
