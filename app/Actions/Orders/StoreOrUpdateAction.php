@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class StoreOrUpdateAction extends Action
@@ -19,7 +20,7 @@ class StoreOrUpdateAction extends Action
 
         $order = new Order();
         $order->reference = Str::uuid();
-        $order->user_id = '1';
+        $order->user_id = Auth::user()->id;
         $order->price = $apiPrice;
         $order->status = OrderConstants::CREATED;
         $order->save();

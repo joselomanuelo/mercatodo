@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\OrdersController;
 use App\Http\Controllers\Api\ProductsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +22,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user', function (Request $request) {
     return response()->json(['user' => $request->user()]);
 });
+Route::middleware(['auth:api'])
+    ->group(function () {
+        Route::get('categories', [CategoriesController::class, 'index'])
+        ->name(RouteNames::API_CATEGORIES);
 
-Route::get('categories', [CategoriesController::class, 'index'])
-->name(RouteNames::API_CATEGORIES);
+        Route::get('products', [ProductsController::class, 'index'])
+        ->name(RouteNames::API_PRODUCTS);
 
-Route::get('products', [ProductsController::class, 'index'])
-->name(RouteNames::API_PRODUCTS);
+        Route::get('orders', [OrdersController::class, 'index'])
+        ->name(RouteNames::API_ORDERS);
 
-Route::get('orders', [OrdersController::class, 'index'])
-->name(RouteNames::API_ORDERS);
+        Route::post('orders', [OrdersController::class, 'store'])
+        ->name(RouteNames::API_STORE_ORDERS);
 
-Route::post('orders', [OrdersController::class, 'store'])
-->name(RouteNames::API_STORE_ORDERS);
+        Route::get('orders/show', [OrdersController::class, 'show'])
+        ->name(RouteNames::API_SHOW_ORDERS);
+    });
