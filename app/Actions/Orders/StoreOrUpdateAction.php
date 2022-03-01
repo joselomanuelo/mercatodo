@@ -15,20 +15,22 @@ class StoreOrUpdateAction extends Action
     public static function execute(Request $request): Order
     {
         $apiOrder = json_decode($request->orders, true);
+        $apiPrice = json_decode($request->price);
+
         $order = new Order();
         $order->reference = Str::uuid();
         $order->user_id = '1';
-        $order->price = Arr::get($apiOrder, 'price');
+        $order->price = $apiPrice;
         $order->status = OrderConstants::CREATED;
         $order->save();
 
-        foreach (Arr::get($apiOrder, 'quantities') as $quantity) {
+        foreach ($apiOrder as $item) {
             $orderProduct = new OrderProduct();
             $orderProduct->order_id = $order->id;
-            $orderProduct->product_id = Arr::get($quantity, 'id');
+            $orderProduct->product_id = Arr::get($item, 'id');
             $orderProduct->user_id = '1';
-            $orderProduct->amount = Arr::get($quantity, 'amount');
-            $orderProduct->price = Arr::get($quantity, 'amount') * Arr::get($quantity, 'price');
+            $orderProduct->amount = Arr::get($item, 'amount');
+            $orderProduct->price = Arr::get($item, 'amount') * Arr::get($item, 'price');
             $orderProduct->save();
         }
 

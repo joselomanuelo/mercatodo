@@ -1,18 +1,12 @@
-import { reactive, ref } from "vue";
+import { ref } from "vue";
 import axios from "axios";
-import { useRouter } from "vue-router";
 
 export default function useOrders() {
     const orders = ref([]);
     const shoppingCart = ref([]);
-    const router = useRouter();
-    const order = ref({
-        price: 0,
-        quantities: {},
-    });
+    const price = ref(0)
 
     const indexOrders = async () => {
-        
         let response = await axios.get("/api/orders");
         orders.value = response.data.data;
     };
@@ -20,8 +14,14 @@ export default function useOrders() {
     const storeOrders = async () => {
         await axios
             .post("/api/orders", {
-                orders: JSON.stringify(order.value),
-
+                orders: JSON.stringify(shoppingCart.value.map((item) => {
+                    return {
+                        id: item.id,
+                        price: item.price,
+                        amount: item.amount
+                    }
+                })),
+                price: price.value
             })
             .then((response) => {
                 localStorage.removeItem("shoppingCart");
@@ -29,10 +29,19 @@ export default function useOrders() {
             });
     };
 
+    const indexShopingCart = () => {
+        if (localStorage.getItem("shoppingCart")) {
+            shoppingCart.value = JSON.parse(
+                localStorage.getItem("shoppingCart")
+            );
+        }
+    };
+
     return {
         orders,
-        order,
         shoppingCart,
+        price,
+        indexShopingCart,
         indexOrders,
         storeOrders,
     };
