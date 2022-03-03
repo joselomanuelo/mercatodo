@@ -21,6 +21,7 @@
         "tailwindcss": "^3.0.22"
     },
     "dependencies": {
+        "sweetalert2": "^11.4.0",
         "vue": "^3.2.30",
         "vue-loader": "^17.0.0",
         "vue-router": "^4.0.12"

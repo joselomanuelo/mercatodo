@@ -12,5 +12,7 @@ Route::prefix('buyer')
         Route::get('/products/{product}/show', [BuyerProductsController::class, 'show'])
             ->name(RouteNames::BUYER_SHOW_PRODUCTS);
 
-        Route::view('/productsVue', 'buyer.products.indexVue');
+        Route::view('/cart', 'buyer.cart.index');
+
+        Route::view('/orders/show/{reference}', 'buyer.orders.show');
     });

@@ -4,12 +4,12 @@ import axios from 'axios' ;
 export default function useCategories() {
     const categories = ref([]);
 
-    const getCategories = async () => {
+    const indexCategories = async () => {
         let response = await axios.get("/api/categories");
         categories.value = response.data.data;
     }
     return {
         categories,
-        getCategories
+        indexCategories
     };
 }
