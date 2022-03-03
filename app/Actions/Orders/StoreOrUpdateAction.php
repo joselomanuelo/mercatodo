@@ -22,7 +22,7 @@ class StoreOrUpdateAction extends Action
         $order->reference = Str::uuid();
         $order->user_id = Auth::user()->id;
         $order->price = $apiPrice;
-        $order->status = OrderConstants::CREATED;
+        $order->status = OrderConstants::PENDING;
         $order->save();
 
         foreach ($apiOrder as $item) {

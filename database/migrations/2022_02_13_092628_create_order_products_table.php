@@ -11,14 +11,11 @@ class CreateOrderProductsTable extends Migration
         Schema::create('order_products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')
-                ->constrained('orders')
-                ->onDelete('cascade');
+                ->constrained('orders');
             $table->foreignId('product_id')
-                ->constrained('products')
-                ->onDelete('cascade');
+                ->constrained('products');
             $table->foreignId('user_id')
-                ->constrained('users')
-                ->onDelete('cascade');
+                ->constrained('users');
             $table->bigInteger('amount');
             $table->bigInteger('price');
             $table->timestamps();

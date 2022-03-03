@@ -24,7 +24,7 @@ const routes = [
     },
 
     {
-        path: '/buyer/orders/show/:id',
+        path: '/buyer/orders/show/:reference',
         name: 'buyer.orders.show',
         component: OrdersShow,
     },

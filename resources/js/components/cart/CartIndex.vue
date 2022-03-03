@@ -108,14 +108,11 @@ import { onMounted } from "vue";
 
 export default {
     setup() {
-        const { shoppingCart, price, storeOrders, indexShopingCart } =
-            useOrders();
+        const { shoppingCart, price, storeOrders } = useOrders();
 
         const payOrder = async () => {
             await storeOrders();
         };
-
-        onMounted(indexShopingCart);
 
         return {
             price,
@@ -124,7 +121,18 @@ export default {
         };
     },
 
+    mounted() {
+        this.indexShoppingCart();
+    },
+
     methods: {
+        indexShoppingCart() {
+            if (localStorage.getItem("shoppingCart")) {
+                this.shoppingCart = JSON.parse(
+                    localStorage.getItem("shoppingCart")
+                );
+            }
+        },
         removeProductFromCart(product) {
             Swal.fire({
                 title: "¿Quitar " + product.name + " del carrito?",

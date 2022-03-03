@@ -25,4 +25,13 @@ class OrdersController extends Controller
 
         return new OrdersResource($order);
     }
+
+    public function show(string $reference): OrdersResource
+    {
+        $order = Order::findOrFail($reference);
+
+        PlacetoPayHelper::statusPayment($order);
+
+        return new OrdersResource($order);
+    }
 }

@@ -13,9 +13,8 @@ class CreateOrdersTable extends Migration
             $table->uuid('reference');
             $table->foreignId('user_id')
                 ->nullable()
-                ->constrained('users')
-                ->onDelete('cascade');
-            $table->enum('status', ['CREATED', 'PAYED', 'REJECTED']);
+                ->constrained('users');
+            $table->enum('status', ['PENDING', 'APPROVED', 'REJECTED']);
             $table->bigInteger('price');
             $table->string('process_url')->nullable();
             $table->string('request_id')->nullable();

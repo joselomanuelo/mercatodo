@@ -20,7 +20,7 @@ class PlacetoPayHelper
         $request = [
             'payment' => [
                 'reference' => $reference,
-                'description' => 'Mercatodo payment',
+                'description' => $order->reference,
                 'amount' => [
                     'currency' => 'COP',
                     'total' => $order->price,
@@ -43,5 +43,23 @@ class PlacetoPayHelper
         }
 
         return $order;
+    }
+
+    public static function statusPayment(Order $order)
+    {
+        $placetopay = new PlacetoPay([
+            'login' => config('placetopay.login'),
+            'tranKey' => config('placetopay.tranKey'),
+            'baseUrl' => config('placetopay.baseUrl'),
+        ]);
+
+        $response = $placetopay->query($order->request_id);
+
+        if ($response->isSuccessful()) {
+            $order->status = $response->status()->status();
+            $order->save();
+        } else {
+            dd($response->status()->message());
+        }
     }
 }
