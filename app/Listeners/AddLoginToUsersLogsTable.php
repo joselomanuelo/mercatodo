@@ -16,6 +16,6 @@ class AddLoginToUsersLogsTable
 
         AddInputUserLogs::execute($user, 'login');
 
-        Log::info('The user with Id '.$user->id.' has logged in.');
+        Log::info('The user with Id ' . $user->id . ' has logged in.');
     }
 }

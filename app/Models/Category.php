@@ -23,7 +23,7 @@ class Category extends Model
     public static function categoriesFromCache()
     {
         return Cache::rememberForever('categories', function () {
-            return Category::all();
+            return self::all();
         });
     }
 }

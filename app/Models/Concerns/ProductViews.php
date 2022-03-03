@@ -33,5 +33,4 @@ trait ProductViews
     {
         return 'buyer.products.show';
     }
-
 }

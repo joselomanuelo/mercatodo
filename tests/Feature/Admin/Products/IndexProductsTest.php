@@ -12,7 +12,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
-class IndexproductsTest extends TestCase
+class IndexProductsTest extends TestCase
 {
     use RefreshDatabase;
 
