@@ -3,9 +3,9 @@
         <div v-if="order.status == 'PENDING'">
             El pago está pendiente
         </div>
-        <dir v-else-if="order.status == 'APPROVED'">
+        <div v-else-if="order.status == 'APPROVED'">
 
-        </dir>
+        </div>
         <div v-else>
 
 
