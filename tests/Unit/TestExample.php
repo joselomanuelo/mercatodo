@@ -1,11 +1,12 @@
 <?php
 
-namespace Tests\Feature\Api\Orders;
+namespace Tests\Feature;
 
-use App\Constants\RouteNames;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class CreateOrdersTest extends TestCase
+class TestExample extends TestCase
 {
     /**
      * A basic feature test example.
@@ -19,4 +20,3 @@ class CreateOrdersTest extends TestCase
         $response->assertStatus(200);
     }
 }
-
