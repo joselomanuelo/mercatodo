@@ -18,6 +18,6 @@ return [
     'showing' => 'Showing',
     'to' => 'to',
     'of' => 'of',
-    'results' => 'results'
+    'results' => 'results',
 
 ];

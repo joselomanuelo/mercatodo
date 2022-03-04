@@ -18,6 +18,6 @@ return [
     'showing' => 'Mostrando',
     'to' => 'al',
     'of' => 'de',
-    'results' => 'resultados'
+    'results' => 'resultados',
 
 ];

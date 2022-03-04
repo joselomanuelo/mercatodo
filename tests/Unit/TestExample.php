@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Feature\Api\Orders;
+namespace Tests\Feature;
 
 use Tests\TestCase;
 
-class CreateOrdersTest extends TestCase
+class TestExample extends TestCase
 {
     /**
      * A basic feature test example.

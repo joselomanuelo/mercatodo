@@ -9,7 +9,6 @@
         "cknow/laravel-money": "^6.0",
         "dnetix/redirection": "^2.0",
         "doctrine/dbal": "^3.2",
-        "friendsofphp/php-cs-fixer": "^3.6",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.65",
@@ -22,6 +21,7 @@
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "friendsofphp/php-cs-fixer": "^3.6",
         "laravel/breeze": "^1.5",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
@@ -53,6 +53,24 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "sniff": [
+            "./vendor/bin/php-cs-fixer fix -vvv --dry-run --show-progress=dots"
+        ],
+        "lint": [
+            "./vendor/bin/php-cs-fixer fix -vvv --show-progress=dots"
+        ],
+        "test": [
+            "vendor/bin/phpunit --verbose --testdox"
+        ],
+        "test-ci": [
+            "XDEBUG_MODE=coverage vendor/bin/phpunit --stop-on-error --stop-on-failure --testdox --coverage-clover phpunit.coverage.xml --log-junit phpunit.report.xml"
+        ],
+        "phpcs": [
+            "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php"
+        ],
+        "phpcs-validate" : [
+            "vendor/bin/php-cs-fixer fix --dry-run --diff"
         ]
     },
     "extra": {
