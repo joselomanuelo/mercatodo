@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Api\Orders;
 
-use App\Constants\RouteNames;
 use Tests\TestCase;
 
 class CreateOrdersTest extends TestCase
@@ -19,4 +18,3 @@ class CreateOrdersTest extends TestCase
         $response->assertStatus(200);
     }
 }
-
