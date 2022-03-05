@@ -36,6 +36,9 @@ Route::middleware(['auth:api'])
         Route::post('orders', [OrdersController::class, 'store'])
         ->name(RouteNames::API_STORE_ORDERS);
 
-        Route::get('orders/show/{reference}', [OrdersController::class, 'show'])
+        Route::get('orders/{reference}/show', [OrdersController::class, 'show'])
         ->name(RouteNames::API_SHOW_ORDERS);
+
+        Route::post('orders/retry', [OrdersController::class, 'retry'])
+        ->name(RouteNames::API_RETRY_ORDERS);
     });
