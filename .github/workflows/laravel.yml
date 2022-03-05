@@ -33,6 +33,9 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
+        LOGIN_PLACETOPAY: ${{ secrets.LOGIN_PLACETOPAY }}
+        TRANKEY_PLACETOPAY: ${{ secrets.TRANKEY_PLACETOPAY }}
+        BASEURL_PLACETOPAY: ${{ secrets.BASEURL_PLACETOPAY }}
       run: composer test-ci
     - name: Execute php-cs-fixer
       run: composer phpcs-validate
