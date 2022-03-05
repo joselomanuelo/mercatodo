@@ -37,7 +37,7 @@ class CreateOrdersTest extends TestCase
 
         $price = '90000';
 
-        $order = '[{"id":1,"name":"Product A","amount":"5","price":50000},{"id":2,"name":"Product B","amount":"2","price":40000}]';
+        $order = '[{"product_id":1,"name":"Product A","amount":"5","price":50000},{"product_id":2,"name":"Product B","amount":"2","price":40000}]';
 
         $response = $this->actingAs($user, 'api')
             ->postJson(Order::ApiStoreRoute(), compact('order', 'price'));
