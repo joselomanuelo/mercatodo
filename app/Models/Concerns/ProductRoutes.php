@@ -50,4 +50,9 @@ trait ProductRoutes
     {
         return route(RouteNames::BUYER_SHOW_PRODUCTS, $this);
     }
+
+    public static function ApiIndexRoute(): string
+    {
+        return route(RouteNames::API_PRODUCTS);
+    }
 }

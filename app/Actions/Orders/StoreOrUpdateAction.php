@@ -15,11 +15,11 @@ class StoreOrUpdateAction extends Action
 {
     public static function execute(Request $request): Order
     {
-        $apiOrder = json_decode($request->orders, true);
+        $apiOrder = json_decode($request->order, true);
         $apiPrice = json_decode($request->price);
 
         $order = new Order();
-        $order->reference = Str::uuid();
+        $order->reference = Str::uuid()->toString();
         $order->user_id = Auth::user()->id;
         $order->price = $apiPrice;
         $order->status = OrderConstants::PENDING;

@@ -14,6 +14,7 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->integer('price');
             $table->bigInteger('stock')->nullable();
+            $table->string('product_image')->nullable();
             $table->foreignId('category_id')
                 ->nullable()
                 ->constrained('categories')

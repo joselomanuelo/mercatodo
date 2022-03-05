@@ -12,6 +12,6 @@ class AddLogoutToUsersLogsTable
     {
         AddInputUserLogs::execute($event->user, 'logout');
 
-        Log::info('The user with Id '.$event->user->id.' has logged out.');
+        Log::info('The user with Id ' . $event->user->id . ' has logged out.');
     }
 }

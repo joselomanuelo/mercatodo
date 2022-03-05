@@ -19,12 +19,12 @@ class StoreOrUpdateAction extends Action
         $product->category_id = $request->input('category');
 
         if ($request->hasFile('product_image')) {
-            $fileName = time().'.'.$request->file('product_image')->extension();
+            $fileName = time() . '.' . $request->file('product_image')->extension();
             $product->product_image = $request->file('product_image')->storeAs(
-                    'uploads/products',
-                    $fileName,
-                    'public'
-                );
+                'uploads/products',
+                $fileName,
+                'public'
+            );
         }
 
         $product->save();

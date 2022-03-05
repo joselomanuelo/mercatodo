@@ -60,7 +60,6 @@ class EditUserTest extends TestCase
 
         $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($editUsersPermission);
-        
 
         $admin = User::factory()
             ->create()

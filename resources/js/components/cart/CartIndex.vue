@@ -104,7 +104,6 @@
 <script>
 import useOrders from "../../composables/orders";
 import Swal from "sweetalert2";
-import { onMounted } from "vue";
 
 export default {
     setup() {

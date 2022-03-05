@@ -36,8 +36,8 @@ class Product extends Model
 
     public function scopeSearch(Builder $query, ?string $search = null): Builder
     {
-        return $search ? $query->where('name', 'like', '%'.trim($search).'%')
-            ->orWhere('description', 'like', '%'.trim($search).'%') : $query;
+        return $search ? $query->where('name', 'like', '%' . trim($search) . '%')
+            ->orWhere('description', 'like', '%' . trim($search) . '%') : $query;
     }
 
     public function scopeCategoryFilter(Builder $query, ?string $category = null): Builder

@@ -46,7 +46,7 @@ class User extends Authenticatable implements MustVerifyEmail, Authorizable
 
     public function scopeSearch(Builder $query, ?string $search = null): Builder
     {
-        return $search ? $query->where('name', 'like', '%'.trim($search).'%')
-            ->orWhere('email', 'like', '%'.trim($search).'%') : $query;
+        return $search ? $query->where('name', 'like', '%' . trim($search) . '%')
+            ->orWhere('email', 'like', '%' . trim($search) . '%') : $query;
     }
 }
