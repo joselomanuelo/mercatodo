@@ -14,7 +14,8 @@ class OrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'order' => ['required'],
+            'order' => ['required', 'string'],
+            'price' => ['required', 'numeric']
         ];
     }
 }
