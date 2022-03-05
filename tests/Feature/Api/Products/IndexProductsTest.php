@@ -1,27 +1,26 @@
 <?php
 
-namespace Tests\Feature\Api\Orders;
+namespace Tests\Feature\Api\Products;
 
-use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class IndexOrdersTest extends TestCase
+class IndexProductsTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testOrdersCanBeIndex(): void
+    public function testProductsCanBeIndex(): void
     {
         $user = User::factory()->create();
 
-        Order::factory()
+        Product::factory()
             ->count(10)
-            ->for($user)
             ->create();
 
         $response = $this->actingAs($user, 'api')
-            ->getJson(Order::ApiIndexRoute());
+            ->getJson(Product::ApiIndexRoute());
 
         $response->assertOk();
 

@@ -15,6 +15,7 @@ jobs:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
         php-version: '8.0'
+        coverage: 'xdebug'
     - uses: actions/checkout@v2
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
@@ -32,6 +33,21 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
+        LOGIN_PLACETOPAY: ${{ secrets.LOGIN_PLACETOPAY }}
+        TRANKEY_PLACETOPAY: ${{ secrets.TRANKEY_PLACETOPAY }}
+        BASEURL_PLACETOPAY: ${{ secrets.BASEURL_PLACETOPAY }}
       run: composer test-ci
     - name: Execute php-cs-fixer
       run: composer phpcs-validate
+    - name: Prepare paths for SonarCloud analysis
+      run: |
+        sed -i "s|$GITHUB_WORKSPACE|/github/workspace|g" phpunit.report.xml
+        sed -i "s|$GITHUB_WORKSPACE|/github/workspace|g" phpunit.coverage.xml
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+
+

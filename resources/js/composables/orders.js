@@ -17,7 +17,7 @@ export default function useOrders() {
     const storeOrders = async () => {
         await axios
             .post("/api/orders", {
-                orders: JSON.stringify(shoppingCart.value.map((item) => {
+                order: JSON.stringify(shoppingCart.value.map((item) => {
                     return {
                         id: item.id,
                         price: item.price,
