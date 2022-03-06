@@ -21,7 +21,6 @@ module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "generateCodeFrame": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_0__.generateCodeFrame),
 /* harmony export */   "BASE_TRANSITION": () => (/* binding */ BASE_TRANSITION),
 /* harmony export */   "CAMELIZE": () => (/* binding */ CAMELIZE),
 /* harmony export */   "CAPITALIZE": () => (/* binding */ CAPITALIZE),
@@ -96,6 +95,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "findDir": () => (/* binding */ findDir),
 /* harmony export */   "findProp": () => (/* binding */ findProp),
 /* harmony export */   "generate": () => (/* binding */ generate),
+/* harmony export */   "generateCodeFrame": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_0__.generateCodeFrame),
 /* harmony export */   "getBaseTransformPreset": () => (/* binding */ getBaseTransformPreset),
 /* harmony export */   "getInnerRange": () => (/* binding */ getInnerRange),
 /* harmony export */   "getMemoedVNodeCall": () => (/* binding */ getMemoedVNodeCall),
@@ -5686,6 +5686,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CREATE_STATIC": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.CREATE_STATIC),
 /* harmony export */   "CREATE_TEXT": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.CREATE_TEXT),
 /* harmony export */   "CREATE_VNODE": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.CREATE_VNODE),
+/* harmony export */   "DOMDirectiveTransforms": () => (/* binding */ DOMDirectiveTransforms),
+/* harmony export */   "DOMNodeTransforms": () => (/* binding */ DOMNodeTransforms),
 /* harmony export */   "FRAGMENT": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.FRAGMENT),
 /* harmony export */   "GUARD_REACTIVE_PROPS": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.GUARD_REACTIVE_PROPS),
 /* harmony export */   "IS_MEMO_SAME": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.IS_MEMO_SAME),
@@ -5710,7 +5712,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "TO_DISPLAY_STRING": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.TO_DISPLAY_STRING),
 /* harmony export */   "TO_HANDLERS": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.TO_HANDLERS),
 /* harmony export */   "TO_HANDLER_KEY": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.TO_HANDLER_KEY),
+/* harmony export */   "TRANSITION": () => (/* binding */ TRANSITION),
+/* harmony export */   "TRANSITION_GROUP": () => (/* binding */ TRANSITION_GROUP),
 /* harmony export */   "UNREF": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.UNREF),
+/* harmony export */   "V_MODEL_CHECKBOX": () => (/* binding */ V_MODEL_CHECKBOX),
+/* harmony export */   "V_MODEL_DYNAMIC": () => (/* binding */ V_MODEL_DYNAMIC),
+/* harmony export */   "V_MODEL_RADIO": () => (/* binding */ V_MODEL_RADIO),
+/* harmony export */   "V_MODEL_SELECT": () => (/* binding */ V_MODEL_SELECT),
+/* harmony export */   "V_MODEL_TEXT": () => (/* binding */ V_MODEL_TEXT),
+/* harmony export */   "V_ON_WITH_KEYS": () => (/* binding */ V_ON_WITH_KEYS),
+/* harmony export */   "V_ON_WITH_MODIFIERS": () => (/* binding */ V_ON_WITH_MODIFIERS),
+/* harmony export */   "V_SHOW": () => (/* binding */ V_SHOW),
 /* harmony export */   "WITH_CTX": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.WITH_CTX),
 /* harmony export */   "WITH_DIRECTIVES": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.WITH_DIRECTIVES),
 /* harmony export */   "WITH_MEMO": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.WITH_MEMO),
@@ -5723,6 +5735,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "buildProps": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.buildProps),
 /* harmony export */   "buildSlots": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.buildSlots),
 /* harmony export */   "checkCompatEnabled": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.checkCompatEnabled),
+/* harmony export */   "compile": () => (/* binding */ compile),
 /* harmony export */   "createArrayExpression": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.createArrayExpression),
 /* harmony export */   "createAssignmentExpression": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.createAssignmentExpression),
 /* harmony export */   "createBlockStatement": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.createBlockStatement),
@@ -5731,6 +5744,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createCompilerError": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.createCompilerError),
 /* harmony export */   "createCompoundExpression": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.createCompoundExpression),
 /* harmony export */   "createConditionalExpression": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.createConditionalExpression),
+/* harmony export */   "createDOMCompilerError": () => (/* binding */ createDOMCompilerError),
 /* harmony export */   "createForLoopParams": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.createForLoopParams),
 /* harmony export */   "createFunctionExpression": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.createFunctionExpression),
 /* harmony export */   "createIfStatement": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.createIfStatement),
@@ -5779,6 +5793,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "locStub": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.locStub),
 /* harmony export */   "makeBlock": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.makeBlock),
 /* harmony export */   "noopDirectiveTransform": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.noopDirectiveTransform),
+/* harmony export */   "parse": () => (/* binding */ parse),
+/* harmony export */   "parserOptions": () => (/* binding */ parserOptions),
 /* harmony export */   "processExpression": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.processExpression),
 /* harmony export */   "processFor": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.processFor),
 /* harmony export */   "processIf": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.processIf),
@@ -5794,28 +5810,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "transformExpression": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.transformExpression),
 /* harmony export */   "transformModel": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.transformModel),
 /* harmony export */   "transformOn": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.transformOn),
+/* harmony export */   "transformStyle": () => (/* binding */ transformStyle),
 /* harmony export */   "traverseNode": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.traverseNode),
 /* harmony export */   "walkBlockDeclarations": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.walkBlockDeclarations),
 /* harmony export */   "walkFunctionParams": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.walkFunctionParams),
 /* harmony export */   "walkIdentifiers": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.walkIdentifiers),
-/* harmony export */   "warnDeprecation": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.warnDeprecation),
-/* harmony export */   "DOMDirectiveTransforms": () => (/* binding */ DOMDirectiveTransforms),
-/* harmony export */   "DOMNodeTransforms": () => (/* binding */ DOMNodeTransforms),
-/* harmony export */   "TRANSITION": () => (/* binding */ TRANSITION),
-/* harmony export */   "TRANSITION_GROUP": () => (/* binding */ TRANSITION_GROUP),
-/* harmony export */   "V_MODEL_CHECKBOX": () => (/* binding */ V_MODEL_CHECKBOX),
-/* harmony export */   "V_MODEL_DYNAMIC": () => (/* binding */ V_MODEL_DYNAMIC),
-/* harmony export */   "V_MODEL_RADIO": () => (/* binding */ V_MODEL_RADIO),
-/* harmony export */   "V_MODEL_SELECT": () => (/* binding */ V_MODEL_SELECT),
-/* harmony export */   "V_MODEL_TEXT": () => (/* binding */ V_MODEL_TEXT),
-/* harmony export */   "V_ON_WITH_KEYS": () => (/* binding */ V_ON_WITH_KEYS),
-/* harmony export */   "V_ON_WITH_MODIFIERS": () => (/* binding */ V_ON_WITH_MODIFIERS),
-/* harmony export */   "V_SHOW": () => (/* binding */ V_SHOW),
-/* harmony export */   "compile": () => (/* binding */ compile),
-/* harmony export */   "createDOMCompilerError": () => (/* binding */ createDOMCompilerError),
-/* harmony export */   "parse": () => (/* binding */ parse),
-/* harmony export */   "parserOptions": () => (/* binding */ parserOptions),
-/* harmony export */   "transformStyle": () => (/* binding */ transformStyle)
+/* harmony export */   "warnDeprecation": () => (/* reexport safe */ _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__.warnDeprecation)
 /* harmony export */ });
 /* harmony import */ var _vue_compiler_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/compiler-core */ "./node_modules/@vue/compiler-core/dist/compiler-core.esm-bundler.js");
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/shared */ "./node_modules/@vue/compiler-dom/node_modules/@vue/shared/dist/shared.esm-bundler.js");
@@ -6953,8 +6953,8 @@ const getGlobalThis = () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "HOOK_SETUP": () => (/* binding */ HOOK_SETUP),
-/* harmony export */   "HOOK_PLUGIN_SETTINGS_SET": () => (/* binding */ HOOK_PLUGIN_SETTINGS_SET)
+/* harmony export */   "HOOK_PLUGIN_SETTINGS_SET": () => (/* binding */ HOOK_PLUGIN_SETTINGS_SET),
+/* harmony export */   "HOOK_SETUP": () => (/* binding */ HOOK_SETUP)
 /* harmony export */ });
 const HOOK_SETUP = 'devtools-plugin:setup';
 const HOOK_PLUGIN_SETTINGS_SET = 'plugin:settings:set';
@@ -7162,49 +7162,20 @@ class ApiProxy {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "EffectScope": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.EffectScope),
-/* harmony export */   "ReactiveEffect": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ReactiveEffect),
-/* harmony export */   "customRef": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.customRef),
-/* harmony export */   "effect": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.effect),
-/* harmony export */   "effectScope": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.effectScope),
-/* harmony export */   "getCurrentScope": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.getCurrentScope),
-/* harmony export */   "isProxy": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isProxy),
-/* harmony export */   "isReactive": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isReactive),
-/* harmony export */   "isReadonly": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isReadonly),
-/* harmony export */   "isRef": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isRef),
-/* harmony export */   "isShallow": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isShallow),
-/* harmony export */   "markRaw": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.markRaw),
-/* harmony export */   "onScopeDispose": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.onScopeDispose),
-/* harmony export */   "proxyRefs": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.proxyRefs),
-/* harmony export */   "reactive": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.reactive),
-/* harmony export */   "readonly": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.readonly),
-/* harmony export */   "ref": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref),
-/* harmony export */   "shallowReactive": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.shallowReactive),
-/* harmony export */   "shallowReadonly": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.shallowReadonly),
-/* harmony export */   "shallowRef": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.shallowRef),
-/* harmony export */   "stop": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.stop),
-/* harmony export */   "toRaw": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.toRaw),
-/* harmony export */   "toRef": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.toRef),
-/* harmony export */   "toRefs": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.toRefs),
-/* harmony export */   "triggerRef": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.triggerRef),
-/* harmony export */   "unref": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.unref),
-/* harmony export */   "camelize": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.camelize),
-/* harmony export */   "capitalize": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.capitalize),
-/* harmony export */   "normalizeClass": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.normalizeClass),
-/* harmony export */   "normalizeProps": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.normalizeProps),
-/* harmony export */   "normalizeStyle": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.normalizeStyle),
-/* harmony export */   "toDisplayString": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.toDisplayString),
-/* harmony export */   "toHandlerKey": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.toHandlerKey),
 /* harmony export */   "BaseTransition": () => (/* binding */ BaseTransition),
 /* harmony export */   "Comment": () => (/* binding */ Comment),
+/* harmony export */   "EffectScope": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.EffectScope),
 /* harmony export */   "Fragment": () => (/* binding */ Fragment),
 /* harmony export */   "KeepAlive": () => (/* binding */ KeepAlive),
+/* harmony export */   "ReactiveEffect": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ReactiveEffect),
 /* harmony export */   "Static": () => (/* binding */ Static),
 /* harmony export */   "Suspense": () => (/* binding */ Suspense),
 /* harmony export */   "Teleport": () => (/* binding */ Teleport),
 /* harmony export */   "Text": () => (/* binding */ Text),
 /* harmony export */   "callWithAsyncErrorHandling": () => (/* binding */ callWithAsyncErrorHandling),
 /* harmony export */   "callWithErrorHandling": () => (/* binding */ callWithErrorHandling),
+/* harmony export */   "camelize": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.camelize),
+/* harmony export */   "capitalize": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.capitalize),
 /* harmony export */   "cloneVNode": () => (/* binding */ cloneVNode),
 /* harmony export */   "compatUtils": () => (/* binding */ compatUtils),
 /* harmony export */   "computed": () => (/* binding */ computed),
@@ -7219,13 +7190,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createStaticVNode": () => (/* binding */ createStaticVNode),
 /* harmony export */   "createTextVNode": () => (/* binding */ createTextVNode),
 /* harmony export */   "createVNode": () => (/* binding */ createVNode),
+/* harmony export */   "customRef": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.customRef),
 /* harmony export */   "defineAsyncComponent": () => (/* binding */ defineAsyncComponent),
 /* harmony export */   "defineComponent": () => (/* binding */ defineComponent),
 /* harmony export */   "defineEmits": () => (/* binding */ defineEmits),
 /* harmony export */   "defineExpose": () => (/* binding */ defineExpose),
 /* harmony export */   "defineProps": () => (/* binding */ defineProps),
 /* harmony export */   "devtools": () => (/* binding */ devtools),
+/* harmony export */   "effect": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.effect),
+/* harmony export */   "effectScope": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.effectScope),
 /* harmony export */   "getCurrentInstance": () => (/* binding */ getCurrentInstance),
+/* harmony export */   "getCurrentScope": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.getCurrentScope),
 /* harmony export */   "getTransitionRawChildren": () => (/* binding */ getTransitionRawChildren),
 /* harmony export */   "guardReactiveProps": () => (/* binding */ guardReactiveProps),
 /* harmony export */   "h": () => (/* binding */ h),
@@ -7233,11 +7208,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "initCustomFormatter": () => (/* binding */ initCustomFormatter),
 /* harmony export */   "inject": () => (/* binding */ inject),
 /* harmony export */   "isMemoSame": () => (/* binding */ isMemoSame),
+/* harmony export */   "isProxy": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isProxy),
+/* harmony export */   "isReactive": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isReactive),
+/* harmony export */   "isReadonly": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isReadonly),
+/* harmony export */   "isRef": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isRef),
 /* harmony export */   "isRuntimeOnly": () => (/* binding */ isRuntimeOnly),
+/* harmony export */   "isShallow": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.isShallow),
 /* harmony export */   "isVNode": () => (/* binding */ isVNode),
+/* harmony export */   "markRaw": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.markRaw),
 /* harmony export */   "mergeDefaults": () => (/* binding */ mergeDefaults),
 /* harmony export */   "mergeProps": () => (/* binding */ mergeProps),
 /* harmony export */   "nextTick": () => (/* binding */ nextTick),
+/* harmony export */   "normalizeClass": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.normalizeClass),
+/* harmony export */   "normalizeProps": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.normalizeProps),
+/* harmony export */   "normalizeStyle": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.normalizeStyle),
 /* harmony export */   "onActivated": () => (/* binding */ onActivated),
 /* harmony export */   "onBeforeMount": () => (/* binding */ onBeforeMount),
 /* harmony export */   "onBeforeUnmount": () => (/* binding */ onBeforeUnmount),
@@ -7247,14 +7231,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "onMounted": () => (/* binding */ onMounted),
 /* harmony export */   "onRenderTracked": () => (/* binding */ onRenderTracked),
 /* harmony export */   "onRenderTriggered": () => (/* binding */ onRenderTriggered),
+/* harmony export */   "onScopeDispose": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.onScopeDispose),
 /* harmony export */   "onServerPrefetch": () => (/* binding */ onServerPrefetch),
 /* harmony export */   "onUnmounted": () => (/* binding */ onUnmounted),
 /* harmony export */   "onUpdated": () => (/* binding */ onUpdated),
 /* harmony export */   "openBlock": () => (/* binding */ openBlock),
 /* harmony export */   "popScopeId": () => (/* binding */ popScopeId),
 /* harmony export */   "provide": () => (/* binding */ provide),
+/* harmony export */   "proxyRefs": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.proxyRefs),
 /* harmony export */   "pushScopeId": () => (/* binding */ pushScopeId),
 /* harmony export */   "queuePostFlushCb": () => (/* binding */ queuePostFlushCb),
+/* harmony export */   "reactive": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.reactive),
+/* harmony export */   "readonly": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.readonly),
+/* harmony export */   "ref": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref),
 /* harmony export */   "registerRuntimeCompiler": () => (/* binding */ registerRuntimeCompiler),
 /* harmony export */   "renderList": () => (/* binding */ renderList),
 /* harmony export */   "renderSlot": () => (/* binding */ renderSlot),
@@ -7266,10 +7255,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "setBlockTracking": () => (/* binding */ setBlockTracking),
 /* harmony export */   "setDevtoolsHook": () => (/* binding */ setDevtoolsHook),
 /* harmony export */   "setTransitionHooks": () => (/* binding */ setTransitionHooks),
+/* harmony export */   "shallowReactive": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.shallowReactive),
+/* harmony export */   "shallowReadonly": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.shallowReadonly),
+/* harmony export */   "shallowRef": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.shallowRef),
 /* harmony export */   "ssrContextKey": () => (/* binding */ ssrContextKey),
 /* harmony export */   "ssrUtils": () => (/* binding */ ssrUtils),
+/* harmony export */   "stop": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.stop),
+/* harmony export */   "toDisplayString": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.toDisplayString),
+/* harmony export */   "toHandlerKey": () => (/* reexport safe */ _vue_shared__WEBPACK_IMPORTED_MODULE_1__.toHandlerKey),
 /* harmony export */   "toHandlers": () => (/* binding */ toHandlers),
+/* harmony export */   "toRaw": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.toRaw),
+/* harmony export */   "toRef": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.toRef),
+/* harmony export */   "toRefs": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.toRefs),
 /* harmony export */   "transformVNodeArgs": () => (/* binding */ transformVNodeArgs),
+/* harmony export */   "triggerRef": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.triggerRef),
+/* harmony export */   "unref": () => (/* reexport safe */ _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.unref),
 /* harmony export */   "useAttrs": () => (/* binding */ useAttrs),
 /* harmony export */   "useSSRContext": () => (/* binding */ useSSRContext),
 /* harmony export */   "useSlots": () => (/* binding */ useSlots),
@@ -11458,7 +11458,8 @@ function createHydrationFunctions(rendererInternals) {
         // e.g. <option :value="obj">, <input type="checkbox" :true-value="1">
         const forcePatchValue = (type === 'input' && dirs) || type === 'option';
         // skip props & children if this is hoisted static nodes
-        if (forcePatchValue || patchFlag !== -1 /* HOISTED */) {
+        // #5405 in dev, always hydrate children for HMR
+        if (true /* HOISTED */) {
             if (dirs) {
                 invokeDirectiveHook(vnode, null, parentComponent, 'created');
             }
@@ -14028,9 +14029,11 @@ const PublicInstanceProxyHandlers = {
         const { data, setupState, ctx } = instance;
         if (setupState !== _vue_shared__WEBPACK_IMPORTED_MODULE_1__.EMPTY_OBJ && (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.hasOwn)(setupState, key)) {
             setupState[key] = value;
+            return true;
         }
         else if (data !== _vue_shared__WEBPACK_IMPORTED_MODULE_1__.EMPTY_OBJ && (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.hasOwn)(data, key)) {
             data[key] = value;
+            return true;
         }
         else if ((0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.hasOwn)(instance.props, key)) {
             ( true) &&
@@ -14066,6 +14069,15 @@ const PublicInstanceProxyHandlers = {
             (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.hasOwn)(ctx, key) ||
             (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.hasOwn)(publicPropertiesMap, key) ||
             (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.hasOwn)(appContext.config.globalProperties, key));
+    },
+    defineProperty(target, key, descriptor) {
+        if (descriptor.get != null) {
+            this.set(target, key, descriptor.get(), null);
+        }
+        else if (descriptor.value != null) {
+            this.set(target, key, descriptor.value, null);
+        }
+        return Reflect.defineProperty(target, key, descriptor);
     }
 };
 if (true) {
@@ -14953,7 +14965,7 @@ function isMemoSame(cached, memo) {
 }
 
 // Core API ------------------------------------------------------------------
-const version = "3.2.30";
+const version = "3.2.31";
 const _ssrUtils = {
     createComponentInstance,
     setupComponent,
@@ -16908,6 +16920,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Suspense": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.Suspense),
 /* harmony export */   "Teleport": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.Teleport),
 /* harmony export */   "Text": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.Text),
+/* harmony export */   "Transition": () => (/* binding */ Transition),
+/* harmony export */   "TransitionGroup": () => (/* binding */ TransitionGroup),
+/* harmony export */   "VueElement": () => (/* binding */ VueElement),
 /* harmony export */   "callWithAsyncErrorHandling": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.callWithAsyncErrorHandling),
 /* harmony export */   "callWithErrorHandling": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.callWithErrorHandling),
 /* harmony export */   "camelize": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.camelize),
@@ -16915,6 +16930,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "cloneVNode": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.cloneVNode),
 /* harmony export */   "compatUtils": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.compatUtils),
 /* harmony export */   "computed": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.computed),
+/* harmony export */   "createApp": () => (/* binding */ createApp),
 /* harmony export */   "createBlock": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.createBlock),
 /* harmony export */   "createCommentVNode": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode),
 /* harmony export */   "createElementBlock": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.createElementBlock),
@@ -16922,6 +16938,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createHydrationRenderer": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.createHydrationRenderer),
 /* harmony export */   "createPropsRestProxy": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.createPropsRestProxy),
 /* harmony export */   "createRenderer": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.createRenderer),
+/* harmony export */   "createSSRApp": () => (/* binding */ createSSRApp),
 /* harmony export */   "createSlots": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.createSlots),
 /* harmony export */   "createStaticVNode": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode),
 /* harmony export */   "createTextVNode": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.createTextVNode),
@@ -16929,9 +16946,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "customRef": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.customRef),
 /* harmony export */   "defineAsyncComponent": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.defineAsyncComponent),
 /* harmony export */   "defineComponent": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.defineComponent),
+/* harmony export */   "defineCustomElement": () => (/* binding */ defineCustomElement),
 /* harmony export */   "defineEmits": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.defineEmits),
 /* harmony export */   "defineExpose": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.defineExpose),
 /* harmony export */   "defineProps": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.defineProps),
+/* harmony export */   "defineSSRCustomElement": () => (/* binding */ defineSSRCustomElement),
 /* harmony export */   "devtools": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.devtools),
 /* harmony export */   "effect": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.effect),
 /* harmony export */   "effectScope": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.effectScope),
@@ -16941,7 +16960,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "guardReactiveProps": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps),
 /* harmony export */   "h": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.h),
 /* harmony export */   "handleError": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.handleError),
+/* harmony export */   "hydrate": () => (/* binding */ hydrate),
 /* harmony export */   "initCustomFormatter": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.initCustomFormatter),
+/* harmony export */   "initDirectivesForSSR": () => (/* binding */ initDirectivesForSSR),
 /* harmony export */   "inject": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.inject),
 /* harmony export */   "isMemoSame": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.isMemoSame),
 /* harmony export */   "isProxy": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.isProxy),
@@ -16981,6 +17002,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "readonly": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.readonly),
 /* harmony export */   "ref": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.ref),
 /* harmony export */   "registerRuntimeCompiler": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.registerRuntimeCompiler),
+/* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "renderList": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.renderList),
 /* harmony export */   "renderSlot": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.renderSlot),
 /* harmony export */   "resolveComponent": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.resolveComponent),
@@ -17007,9 +17029,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "triggerRef": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.triggerRef),
 /* harmony export */   "unref": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.unref),
 /* harmony export */   "useAttrs": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.useAttrs),
+/* harmony export */   "useCssModule": () => (/* binding */ useCssModule),
+/* harmony export */   "useCssVars": () => (/* binding */ useCssVars),
 /* harmony export */   "useSSRContext": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.useSSRContext),
 /* harmony export */   "useSlots": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.useSlots),
 /* harmony export */   "useTransitionState": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.useTransitionState),
+/* harmony export */   "vModelCheckbox": () => (/* binding */ vModelCheckbox),
+/* harmony export */   "vModelDynamic": () => (/* binding */ vModelDynamic),
+/* harmony export */   "vModelRadio": () => (/* binding */ vModelRadio),
+/* harmony export */   "vModelSelect": () => (/* binding */ vModelSelect),
+/* harmony export */   "vModelText": () => (/* binding */ vModelText),
+/* harmony export */   "vShow": () => (/* binding */ vShow),
 /* harmony export */   "version": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.version),
 /* harmony export */   "warn": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.warn),
 /* harmony export */   "watch": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.watch),
@@ -17020,28 +17050,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "withCtx": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.withCtx),
 /* harmony export */   "withDefaults": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.withDefaults),
 /* harmony export */   "withDirectives": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.withDirectives),
-/* harmony export */   "withMemo": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.withMemo),
-/* harmony export */   "withScopeId": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.withScopeId),
-/* harmony export */   "Transition": () => (/* binding */ Transition),
-/* harmony export */   "TransitionGroup": () => (/* binding */ TransitionGroup),
-/* harmony export */   "VueElement": () => (/* binding */ VueElement),
-/* harmony export */   "createApp": () => (/* binding */ createApp),
-/* harmony export */   "createSSRApp": () => (/* binding */ createSSRApp),
-/* harmony export */   "defineCustomElement": () => (/* binding */ defineCustomElement),
-/* harmony export */   "defineSSRCustomElement": () => (/* binding */ defineSSRCustomElement),
-/* harmony export */   "hydrate": () => (/* binding */ hydrate),
-/* harmony export */   "initDirectivesForSSR": () => (/* binding */ initDirectivesForSSR),
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "useCssModule": () => (/* binding */ useCssModule),
-/* harmony export */   "useCssVars": () => (/* binding */ useCssVars),
-/* harmony export */   "vModelCheckbox": () => (/* binding */ vModelCheckbox),
-/* harmony export */   "vModelDynamic": () => (/* binding */ vModelDynamic),
-/* harmony export */   "vModelRadio": () => (/* binding */ vModelRadio),
-/* harmony export */   "vModelSelect": () => (/* binding */ vModelSelect),
-/* harmony export */   "vModelText": () => (/* binding */ vModelText),
-/* harmony export */   "vShow": () => (/* binding */ vShow),
 /* harmony export */   "withKeys": () => (/* binding */ withKeys),
-/* harmony export */   "withModifiers": () => (/* binding */ withModifiers)
+/* harmony export */   "withMemo": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.withMemo),
+/* harmony export */   "withModifiers": () => (/* binding */ withModifiers),
+/* harmony export */   "withScopeId": () => (/* reexport safe */ _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.withScopeId)
 /* harmony export */ });
 /* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vue/runtime-core */ "./node_modules/@vue/runtime-core/node_modules/@vue/shared/dist/shared.esm-bundler.js");
 /* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/runtime-core */ "./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js");
@@ -20669,10 +20681,9 @@ function queueJob(job) {
   queueFlush();
 }
 function dequeueJob(job) {
-  const index = queue.indexOf(job);
-  if (index !== -1) {
+  let index = queue.indexOf(job);
+  if (index !== -1)
     queue.splice(index, 1);
-  }
 }
 function queueFlush() {
   if (!flushing && !flushPending) {
@@ -20747,8 +20758,15 @@ var onElAddeds = [];
 function onElAdded(callback) {
   onElAddeds.push(callback);
 }
-function onElRemoved(callback) {
-  onElRemoveds.push(callback);
+function onElRemoved(el, callback) {
+  if (typeof callback === "function") {
+    if (!el._x_cleanups)
+      el._x_cleanups = [];
+    el._x_cleanups.push(callback);
+  } else {
+    callback = el;
+    onElRemoveds.push(callback);
+  }
 }
 function onAttributesAdded(callback) {
   onAttributeAddeds.push(callback);
@@ -20865,6 +20883,10 @@ function onMutate(mutations) {
     if (addedNodes.includes(node))
       continue;
     onElRemoveds.forEach((i) => i(node));
+    if (node._x_cleanups) {
+      while (node._x_cleanups.length)
+        node._x_cleanups.pop()();
+    }
   }
   addedNodes.forEach((node) => {
     node._x_ignoreSelf = true;
@@ -21039,7 +21061,10 @@ function injectMagics(obj, el) {
   Object.entries(magics).forEach(([name, callback]) => {
     Object.defineProperty(obj, `$${name}`, {
       get() {
-        return callback(el, {Alpine: alpine_default, interceptor});
+        let [utilities, cleanup] = getElementBoundUtilities(el);
+        utilities = {interceptor, ...utilities};
+        onElRemoved(el, cleanup);
+        return callback(el, utilities);
       },
       enumerable: false
     });
@@ -21190,10 +21215,7 @@ function deferHandlingDirectives(callback) {
   callback(flushHandlers);
   stopDeferring();
 }
-function getDirectiveHandler(el, directive2) {
-  let noop = () => {
-  };
-  let handler3 = directiveHandlers[directive2.type] || noop;
+function getElementBoundUtilities(el) {
   let cleanups = [];
   let cleanup = (callback) => cleanups.push(callback);
   let [effect3, cleanupEffect] = elementBoundEffect(el);
@@ -21206,7 +21228,14 @@ function getDirectiveHandler(el, directive2) {
     evaluate: evaluate.bind(evaluate, el)
   };
   let doCleanup = () => cleanups.forEach((i) => i());
-  onAttributeRemoved(el, directive2.original, doCleanup);
+  return [utilities, doCleanup];
+}
+function getDirectiveHandler(el, directive2) {
+  let noop = () => {
+  };
+  let handler3 = directiveHandlers[directive2.type] || noop;
+  let [utilities, cleanup] = getElementBoundUtilities(el);
+  onAttributeRemoved(el, directive2.original, cleanup);
   let fullHandler = () => {
     if (el._x_ignore || el._x_ignoreSelf)
       return;
@@ -21214,7 +21243,7 @@ function getDirectiveHandler(el, directive2) {
     handler3 = handler3.bind(handler3, el, directive2, utilities);
     isDeferringHandlers ? directiveHandlerStacks.get(currentHandlerStackKey).push(handler3) : handler3();
   };
-  fullHandler.runCleanups = doCleanup;
+  fullHandler.runCleanups = cleanup;
   return fullHandler;
 }
 var startingWith = (subject, replacement) => ({name, value}) => {
@@ -22048,7 +22077,7 @@ var Alpine = {
   get raw() {
     return raw;
   },
-  version: "3.9.0",
+  version: "3.9.1",
   flushAndStopDeferringMutations,
   disableEffectScheduling,
   setReactivityEngine,
@@ -22089,7 +22118,7 @@ var Alpine = {
 var alpine_default = Alpine;
 
 // packages/alpinejs/src/index.js
-var import_reactivity9 = __toModule(require_reactivity());
+var import_reactivity8 = __toModule(require_reactivity());
 
 // packages/alpinejs/src/magics/$nextTick.js
 magic("nextTick", () => nextTick);
@@ -22098,11 +22127,11 @@ magic("nextTick", () => nextTick);
 magic("dispatch", (el) => dispatch.bind(dispatch, el));
 
 // packages/alpinejs/src/magics/$watch.js
-magic("watch", (el) => (key, callback) => {
-  let evaluate2 = evaluateLater(el, key);
+magic("watch", (el, {evaluateLater: evaluateLater2, effect: effect3}) => (key, callback) => {
+  let evaluate2 = evaluateLater2(key);
   let firstTime = true;
   let oldValue;
-  effect(() => evaluate2((value) => {
+  effect3(() => evaluate2((value) => {
     JSON.stringify(value);
     if (!firstTime) {
       queueMicrotask(() => {
@@ -22470,11 +22499,11 @@ directive("cloak", (el) => queueMicrotask(() => mutateDom(() => el.removeAttribu
 
 // packages/alpinejs/src/directives/x-init.js
 addInitSelector(() => `[${prefix("init")}]`);
-directive("init", skipDuringClone((el, {expression}) => {
+directive("init", skipDuringClone((el, {expression}, {evaluate: evaluate2}) => {
   if (typeof expression === "string") {
-    return !!expression.trim() && evaluate(el, expression, {}, false);
+    return !!expression.trim() && evaluate2(expression, {}, false);
   }
-  return evaluate(el, expression, {}, false);
+  return evaluate2(expression, {}, false);
 }));
 
 // packages/alpinejs/src/directives/x-text.js
@@ -22838,7 +22867,7 @@ directive("on", skipDuringClone((el, {value, modifiers, expression}, {cleanup}) 
 
 // packages/alpinejs/src/index.js
 alpine_default.setEvaluator(normalEvaluator);
-alpine_default.setReactivityEngine({reactive: import_reactivity9.reactive, effect: import_reactivity9.effect, release: import_reactivity9.stop, raw: import_reactivity9.toRaw});
+alpine_default.setReactivityEngine({reactive: import_reactivity8.reactive, effect: import_reactivity8.effect, release: import_reactivity8.stop, raw: import_reactivity8.toRaw});
 var src_default = alpine_default;
 
 // packages/alpinejs/builds/module.js
@@ -44308,7 +44337,7 @@ try {
 /***/ (function(module) {
 
 /*!
-* sweetalert2 v11.4.0
+* sweetalert2 v11.4.4
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -44620,7 +44649,7 @@ try {
     return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements)).filter(el => isVisible(el));
   };
   const isModal = () => {
-    return !hasClass(document.body, swalClasses['toast-shown']) && !hasClass(document.body, swalClasses['no-backdrop']);
+    return hasClass(document.body, swalClasses.shown) && !hasClass(document.body, swalClasses['toast-shown']) && !hasClass(document.body, swalClasses['no-backdrop']);
   };
   const isToast = () => {
     return getPopup() && hasClass(getPopup(), swalClasses.toast);
@@ -46498,565 +46527,6 @@ try {
     return inputValue && inputValue.toString() === optionValue.toString();
   };
 
-  const handleConfirmButtonClick = instance => {
-    const innerParams = privateProps.innerParams.get(instance);
-    instance.disableButtons();
-
-    if (innerParams.input) {
-      handleConfirmOrDenyWithInput(instance, 'confirm');
-    } else {
-      confirm(instance, true);
-    }
-  };
-  const handleDenyButtonClick = instance => {
-    const innerParams = privateProps.innerParams.get(instance);
-    instance.disableButtons();
-
-    if (innerParams.returnInputValueOnDeny) {
-      handleConfirmOrDenyWithInput(instance, 'deny');
-    } else {
-      deny(instance, false);
-    }
-  };
-  const handleCancelButtonClick = (instance, dismissWith) => {
-    instance.disableButtons();
-    dismissWith(DismissReason.cancel);
-  };
-
-  const handleConfirmOrDenyWithInput = (instance, type
-  /* 'confirm' | 'deny' */
-  ) => {
-    const innerParams = privateProps.innerParams.get(instance);
-
-    if (!innerParams.input) {
-      return error("The \"input\" parameter is needed to be set when using returnInputValueOn".concat(capitalizeFirstLetter(type)));
-    }
-
-    const inputValue = getInputValue(instance, innerParams);
-
-    if (innerParams.inputValidator) {
-      handleInputValidator(instance, inputValue, type);
-    } else if (!instance.getInput().checkValidity()) {
-      instance.enableButtons();
-      instance.showValidationMessage(innerParams.validationMessage);
-    } else if (type === 'deny') {
-      deny(instance, inputValue);
-    } else {
-      confirm(instance, inputValue);
-    }
-  };
-
-  const handleInputValidator = (instance, inputValue, type
-  /* 'confirm' | 'deny' */
-  ) => {
-    const innerParams = privateProps.innerParams.get(instance);
-    instance.disableInput();
-    const validationPromise = Promise.resolve().then(() => asPromise(innerParams.inputValidator(inputValue, innerParams.validationMessage)));
-    validationPromise.then(validationMessage => {
-      instance.enableButtons();
-      instance.enableInput();
-
-      if (validationMessage) {
-        instance.showValidationMessage(validationMessage);
-      } else if (type === 'deny') {
-        deny(instance, inputValue);
-      } else {
-        confirm(instance, inputValue);
-      }
-    });
-  };
-
-  const deny = (instance, value) => {
-    const innerParams = privateProps.innerParams.get(instance || undefined);
-
-    if (innerParams.showLoaderOnDeny) {
-      showLoading(getDenyButton());
-    }
-
-    if (innerParams.preDeny) {
-      privateProps.awaitingPromise.set(instance || undefined, true); // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preDeny's promise is received
-
-      const preDenyPromise = Promise.resolve().then(() => asPromise(innerParams.preDeny(value, innerParams.validationMessage)));
-      preDenyPromise.then(preDenyValue => {
-        if (preDenyValue === false) {
-          instance.hideLoading();
-        } else {
-          instance.closePopup({
-            isDenied: true,
-            value: typeof preDenyValue === 'undefined' ? value : preDenyValue
-          });
-        }
-      }).catch(error$$1 => rejectWith(instance || undefined, error$$1));
-    } else {
-      instance.closePopup({
-        isDenied: true,
-        value
-      });
-    }
-  };
-
-  const succeedWith = (instance, value) => {
-    instance.closePopup({
-      isConfirmed: true,
-      value
-    });
-  };
-
-  const rejectWith = (instance, error$$1) => {
-    instance.rejectPromise(error$$1);
-  };
-
-  const confirm = (instance, value) => {
-    const innerParams = privateProps.innerParams.get(instance || undefined);
-
-    if (innerParams.showLoaderOnConfirm) {
-      showLoading();
-    }
-
-    if (innerParams.preConfirm) {
-      instance.resetValidationMessage();
-      privateProps.awaitingPromise.set(instance || undefined, true); // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preConfirm's promise is received
-
-      const preConfirmPromise = Promise.resolve().then(() => asPromise(innerParams.preConfirm(value, innerParams.validationMessage)));
-      preConfirmPromise.then(preConfirmValue => {
-        if (isVisible(getValidationMessage()) || preConfirmValue === false) {
-          instance.hideLoading();
-        } else {
-          succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue);
-        }
-      }).catch(error$$1 => rejectWith(instance || undefined, error$$1));
-    } else {
-      succeedWith(instance, value);
-    }
-  };
-
-  const handlePopupClick = (instance, domCache, dismissWith) => {
-    const innerParams = privateProps.innerParams.get(instance);
-
-    if (innerParams.toast) {
-      handleToastClick(instance, domCache, dismissWith);
-    } else {
-      // Ignore click events that had mousedown on the popup but mouseup on the container
-      // This can happen when the user drags a slider
-      handleModalMousedown(domCache); // Ignore click events that had mousedown on the container but mouseup on the popup
-
-      handleContainerMousedown(domCache);
-      handleModalClick(instance, domCache, dismissWith);
-    }
-  };
-
-  const handleToastClick = (instance, domCache, dismissWith) => {
-    // Closing toast by internal click
-    domCache.popup.onclick = () => {
-      const innerParams = privateProps.innerParams.get(instance);
-
-      if (innerParams && (isAnyButtonShown(innerParams) || innerParams.timer || innerParams.input)) {
-        return;
-      }
-
-      dismissWith(DismissReason.close);
-    };
-  };
-  /**
-   * @param {*} innerParams
-   * @returns {boolean}
-   */
-
-
-  const isAnyButtonShown = innerParams => {
-    return innerParams.showConfirmButton || innerParams.showDenyButton || innerParams.showCancelButton || innerParams.showCloseButton;
-  };
-
-  let ignoreOutsideClick = false;
-
-  const handleModalMousedown = domCache => {
-    domCache.popup.onmousedown = () => {
-      domCache.container.onmouseup = function (e) {
-        domCache.container.onmouseup = undefined; // We only check if the mouseup target is the container because usually it doesn't
-        // have any other direct children aside of the popup
-
-        if (e.target === domCache.container) {
-          ignoreOutsideClick = true;
-        }
-      };
-    };
-  };
-
-  const handleContainerMousedown = domCache => {
-    domCache.container.onmousedown = () => {
-      domCache.popup.onmouseup = function (e) {
-        domCache.popup.onmouseup = undefined; // We also need to check if the mouseup target is a child of the popup
-
-        if (e.target === domCache.popup || domCache.popup.contains(e.target)) {
-          ignoreOutsideClick = true;
-        }
-      };
-    };
-  };
-
-  const handleModalClick = (instance, domCache, dismissWith) => {
-    domCache.container.onclick = e => {
-      const innerParams = privateProps.innerParams.get(instance);
-
-      if (ignoreOutsideClick) {
-        ignoreOutsideClick = false;
-        return;
-      }
-
-      if (e.target === domCache.container && callIfFunction(innerParams.allowOutsideClick)) {
-        dismissWith(DismissReason.backdrop);
-      }
-    };
-  };
-
-  /*
-   * Global function to determine if SweetAlert2 popup is shown
-   */
-
-  const isVisible$1 = () => {
-    return isVisible(getPopup());
-  };
-  /*
-   * Global function to click 'Confirm' button
-   */
-
-  const clickConfirm = () => getConfirmButton() && getConfirmButton().click();
-  /*
-   * Global function to click 'Deny' button
-   */
-
-  const clickDeny = () => getDenyButton() && getDenyButton().click();
-  /*
-   * Global function to click 'Cancel' button
-   */
-
-  const clickCancel = () => getCancelButton() && getCancelButton().click();
-
-  const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
-    if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
-      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
-        capture: globalState.keydownListenerCapture
-      });
-      globalState.keydownHandlerAdded = false;
-    }
-
-    if (!innerParams.toast) {
-      globalState.keydownHandler = e => keydownHandler(instance, e, dismissWith);
-
-      globalState.keydownTarget = innerParams.keydownListenerCapture ? window : getPopup();
-      globalState.keydownListenerCapture = innerParams.keydownListenerCapture;
-      globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, {
-        capture: globalState.keydownListenerCapture
-      });
-      globalState.keydownHandlerAdded = true;
-    }
-  }; // Focus handling
-
-  const setFocus = (innerParams, index, increment) => {
-    const focusableElements = getFocusableElements(); // search for visible elements and select the next possible match
-
-    if (focusableElements.length) {
-      index = index + increment; // rollover to first item
-
-      if (index === focusableElements.length) {
-        index = 0; // go to last item
-      } else if (index === -1) {
-        index = focusableElements.length - 1;
-      }
-
-      return focusableElements[index].focus();
-    } // no visible focusable elements, focus the popup
-
-
-    getPopup().focus();
-  };
-  const arrowKeysNextButton = ['ArrowRight', 'ArrowDown'];
-  const arrowKeysPreviousButton = ['ArrowLeft', 'ArrowUp'];
-
-  const keydownHandler = (instance, e, dismissWith) => {
-    const innerParams = privateProps.innerParams.get(instance);
-
-    if (!innerParams) {
-      return; // This instance has already been destroyed
-    }
-
-    if (innerParams.stopKeydownPropagation) {
-      e.stopPropagation();
-    } // ENTER
-
-
-    if (e.key === 'Enter') {
-      handleEnter(instance, e, innerParams);
-    } // TAB
-    else if (e.key === 'Tab') {
-      handleTab(e, innerParams);
-    } // ARROWS - switch focus between buttons
-    else if ([...arrowKeysNextButton, ...arrowKeysPreviousButton].includes(e.key)) {
-      handleArrows(e.key);
-    } // ESC
-    else if (e.key === 'Escape') {
-      handleEsc(e, innerParams, dismissWith);
-    }
-  };
-
-  const handleEnter = (instance, e, innerParams) => {
-    // #2386 #720 #721
-    if (!callIfFunction(innerParams.allowEnterKey) || e.isComposing) {
-      return;
-    }
-
-    if (e.target && instance.getInput() && e.target.outerHTML === instance.getInput().outerHTML) {
-      if (['textarea', 'file'].includes(innerParams.input)) {
-        return; // do not submit
-      }
-
-      clickConfirm();
-      e.preventDefault();
-    }
-  };
-
-  const handleTab = (e, innerParams) => {
-    const targetElement = e.target;
-    const focusableElements = getFocusableElements();
-    let btnIndex = -1;
-
-    for (let i = 0; i < focusableElements.length; i++) {
-      if (targetElement === focusableElements[i]) {
-        btnIndex = i;
-        break;
-      }
-    } // Cycle to the next button
-
-
-    if (!e.shiftKey) {
-      setFocus(innerParams, btnIndex, 1);
-    } // Cycle to the prev button
-    else {
-      setFocus(innerParams, btnIndex, -1);
-    }
-
-    e.stopPropagation();
-    e.preventDefault();
-  };
-
-  const handleArrows = key => {
-    const confirmButton = getConfirmButton();
-    const denyButton = getDenyButton();
-    const cancelButton = getCancelButton();
-
-    if (![confirmButton, denyButton, cancelButton].includes(document.activeElement)) {
-      return;
-    }
-
-    const sibling = arrowKeysNextButton.includes(key) ? 'nextElementSibling' : 'previousElementSibling';
-    const buttonToFocus = document.activeElement[sibling];
-
-    if (buttonToFocus instanceof HTMLElement) {
-      buttonToFocus.focus();
-    }
-  };
-
-  const handleEsc = (e, innerParams, dismissWith) => {
-    if (callIfFunction(innerParams.allowEscapeKey)) {
-      e.preventDefault();
-      dismissWith(DismissReason.esc);
-    }
-  };
-
-  const isJqueryElement = elem => typeof elem === 'object' && elem.jquery;
-
-  const isElement = elem => elem instanceof Element || isJqueryElement(elem);
-
-  const argsToParams = args => {
-    const params = {};
-
-    if (typeof args[0] === 'object' && !isElement(args[0])) {
-      Object.assign(params, args[0]);
-    } else {
-      ['title', 'html', 'icon'].forEach((name, index) => {
-        const arg = args[index];
-
-        if (typeof arg === 'string' || isElement(arg)) {
-          params[name] = arg;
-        } else if (arg !== undefined) {
-          error("Unexpected type of ".concat(name, "! Expected \"string\" or \"Element\", got ").concat(typeof arg));
-        }
-      });
-    }
-
-    return params;
-  };
-
-  function fire() {
-    const Swal = this; // eslint-disable-line @typescript-eslint/no-this-alias
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return new Swal(...args);
-  }
-
-  /**
-   * Returns an extended version of `Swal` containing `params` as defaults.
-   * Useful for reusing Swal configuration.
-   *
-   * For example:
-   *
-   * Before:
-   * const textPromptOptions = { input: 'text', showCancelButton: true }
-   * const {value: firstName} = await Swal.fire({ ...textPromptOptions, title: 'What is your first name?' })
-   * const {value: lastName} = await Swal.fire({ ...textPromptOptions, title: 'What is your last name?' })
-   *
-   * After:
-   * const TextPrompt = Swal.mixin({ input: 'text', showCancelButton: true })
-   * const {value: firstName} = await TextPrompt('What is your first name?')
-   * const {value: lastName} = await TextPrompt('What is your last name?')
-   *
-   * @param mixinParams
-   */
-  function mixin(mixinParams) {
-    class MixinSwal extends this {
-      _main(params, priorityMixinParams) {
-        return super._main(params, Object.assign({}, mixinParams, priorityMixinParams));
-      }
-
-    }
-
-    return MixinSwal;
-  }
-
-  /**
-   * If `timer` parameter is set, returns number of milliseconds of timer remained.
-   * Otherwise, returns undefined.
-   */
-
-  const getTimerLeft = () => {
-    return globalState.timeout && globalState.timeout.getTimerLeft();
-  };
-  /**
-   * Stop timer. Returns number of milliseconds of timer remained.
-   * If `timer` parameter isn't set, returns undefined.
-   */
-
-  const stopTimer = () => {
-    if (globalState.timeout) {
-      stopTimerProgressBar();
-      return globalState.timeout.stop();
-    }
-  };
-  /**
-   * Resume timer. Returns number of milliseconds of timer remained.
-   * If `timer` parameter isn't set, returns undefined.
-   */
-
-  const resumeTimer = () => {
-    if (globalState.timeout) {
-      const remaining = globalState.timeout.start();
-      animateTimerProgressBar(remaining);
-      return remaining;
-    }
-  };
-  /**
-   * Resume timer. Returns number of milliseconds of timer remained.
-   * If `timer` parameter isn't set, returns undefined.
-   */
-
-  const toggleTimer = () => {
-    const timer = globalState.timeout;
-    return timer && (timer.running ? stopTimer() : resumeTimer());
-  };
-  /**
-   * Increase timer. Returns number of milliseconds of an updated timer.
-   * If `timer` parameter isn't set, returns undefined.
-   */
-
-  const increaseTimer = n => {
-    if (globalState.timeout) {
-      const remaining = globalState.timeout.increase(n);
-      animateTimerProgressBar(remaining, true);
-      return remaining;
-    }
-  };
-  /**
-   * Check if timer is running. Returns true if timer is running
-   * or false if timer is paused or stopped.
-   * If `timer` parameter isn't set, returns undefined
-   */
-
-  const isTimerRunning = () => {
-    return globalState.timeout && globalState.timeout.isRunning();
-  };
-
-  let bodyClickListenerAdded = false;
-  const clickHandlers = {};
-  function bindClickHandler() {
-    let attr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'data-swal-template';
-    clickHandlers[attr] = this;
-
-    if (!bodyClickListenerAdded) {
-      document.body.addEventListener('click', bodyClickListener);
-      bodyClickListenerAdded = true;
-    }
-  }
-
-  const bodyClickListener = event => {
-    for (let el = event.target; el && el !== document; el = el.parentNode) {
-      for (const attr in clickHandlers) {
-        const template = el.getAttribute(attr);
-
-        if (template) {
-          clickHandlers[attr].fire({
-            template
-          });
-          return;
-        }
-      }
-    }
-  };
-
-
-
-  var staticMethods = /*#__PURE__*/Object.freeze({
-    isValidParameter: isValidParameter,
-    isUpdatableParameter: isUpdatableParameter,
-    isDeprecatedParameter: isDeprecatedParameter,
-    argsToParams: argsToParams,
-    isVisible: isVisible$1,
-    clickConfirm: clickConfirm,
-    clickDeny: clickDeny,
-    clickCancel: clickCancel,
-    getContainer: getContainer,
-    getPopup: getPopup,
-    getTitle: getTitle,
-    getHtmlContainer: getHtmlContainer,
-    getImage: getImage,
-    getIcon: getIcon,
-    getInputLabel: getInputLabel,
-    getCloseButton: getCloseButton,
-    getActions: getActions,
-    getConfirmButton: getConfirmButton,
-    getDenyButton: getDenyButton,
-    getCancelButton: getCancelButton,
-    getLoader: getLoader,
-    getFooter: getFooter,
-    getTimerProgressBar: getTimerProgressBar,
-    getFocusableElements: getFocusableElements,
-    getValidationMessage: getValidationMessage,
-    isLoading: isLoading,
-    fire: fire,
-    mixin: mixin,
-    showLoading: showLoading,
-    enableLoading: showLoading,
-    getTimerLeft: getTimerLeft,
-    stopTimer: stopTimer,
-    resumeTimer: resumeTimer,
-    toggleTimer: toggleTimer,
-    increaseTimer: increaseTimer,
-    isTimerRunning: isTimerRunning,
-    bindClickHandler: bindClickHandler
-  });
-
   /**
    * Hides loader and shows back the button which was hidden by .showLoading()
    */
@@ -47218,7 +46688,6 @@ try {
       rejectPromise(error);
     }
   }
-
   const handleAwaitingPromise = instance => {
     if (instance.isAwaitingPromise()) {
       privateProps.awaitingPromise.delete(instance); // The instance might have been previously partly destroyed, we must resume the destroy process in this case #2335
@@ -47465,6 +46934,7 @@ try {
     close: close,
     isAwaitingPromise: isAwaitingPromise,
     rejectPromise: rejectPromise,
+    handleAwaitingPromise: handleAwaitingPromise,
     closePopup: close,
     closeModal: close,
     closeToast: close,
@@ -47477,6 +46947,587 @@ try {
     getProgressSteps: getProgressSteps$1,
     update: update,
     _destroy: _destroy
+  });
+
+  const handleConfirmButtonClick = instance => {
+    const innerParams = privateProps.innerParams.get(instance);
+    instance.disableButtons();
+
+    if (innerParams.input) {
+      handleConfirmOrDenyWithInput(instance, 'confirm');
+    } else {
+      confirm(instance, true);
+    }
+  };
+  const handleDenyButtonClick = instance => {
+    const innerParams = privateProps.innerParams.get(instance);
+    instance.disableButtons();
+
+    if (innerParams.returnInputValueOnDeny) {
+      handleConfirmOrDenyWithInput(instance, 'deny');
+    } else {
+      deny(instance, false);
+    }
+  };
+  const handleCancelButtonClick = (instance, dismissWith) => {
+    instance.disableButtons();
+    dismissWith(DismissReason.cancel);
+  };
+
+  const handleConfirmOrDenyWithInput = (instance, type
+  /* 'confirm' | 'deny' */
+  ) => {
+    const innerParams = privateProps.innerParams.get(instance);
+
+    if (!innerParams.input) {
+      return error("The \"input\" parameter is needed to be set when using returnInputValueOn".concat(capitalizeFirstLetter(type)));
+    }
+
+    const inputValue = getInputValue(instance, innerParams);
+
+    if (innerParams.inputValidator) {
+      handleInputValidator(instance, inputValue, type);
+    } else if (!instance.getInput().checkValidity()) {
+      instance.enableButtons();
+      instance.showValidationMessage(innerParams.validationMessage);
+    } else if (type === 'deny') {
+      deny(instance, inputValue);
+    } else {
+      confirm(instance, inputValue);
+    }
+  };
+
+  const handleInputValidator = (instance, inputValue, type
+  /* 'confirm' | 'deny' */
+  ) => {
+    const innerParams = privateProps.innerParams.get(instance);
+    instance.disableInput();
+    const validationPromise = Promise.resolve().then(() => asPromise(innerParams.inputValidator(inputValue, innerParams.validationMessage)));
+    validationPromise.then(validationMessage => {
+      instance.enableButtons();
+      instance.enableInput();
+
+      if (validationMessage) {
+        instance.showValidationMessage(validationMessage);
+      } else if (type === 'deny') {
+        deny(instance, inputValue);
+      } else {
+        confirm(instance, inputValue);
+      }
+    });
+  };
+
+  const deny = (instance, value) => {
+    const innerParams = privateProps.innerParams.get(instance || undefined);
+
+    if (innerParams.showLoaderOnDeny) {
+      showLoading(getDenyButton());
+    }
+
+    if (innerParams.preDeny) {
+      privateProps.awaitingPromise.set(instance || undefined, true); // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preDeny's promise is received
+
+      const preDenyPromise = Promise.resolve().then(() => asPromise(innerParams.preDeny(value, innerParams.validationMessage)));
+      preDenyPromise.then(preDenyValue => {
+        if (preDenyValue === false) {
+          instance.hideLoading();
+          handleAwaitingPromise(instance);
+        } else {
+          instance.closePopup({
+            isDenied: true,
+            value: typeof preDenyValue === 'undefined' ? value : preDenyValue
+          });
+        }
+      }).catch(error$$1 => rejectWith(instance || undefined, error$$1));
+    } else {
+      instance.closePopup({
+        isDenied: true,
+        value
+      });
+    }
+  };
+
+  const succeedWith = (instance, value) => {
+    instance.closePopup({
+      isConfirmed: true,
+      value
+    });
+  };
+
+  const rejectWith = (instance, error$$1) => {
+    instance.rejectPromise(error$$1);
+  };
+
+  const confirm = (instance, value) => {
+    const innerParams = privateProps.innerParams.get(instance || undefined);
+
+    if (innerParams.showLoaderOnConfirm) {
+      showLoading();
+    }
+
+    if (innerParams.preConfirm) {
+      instance.resetValidationMessage();
+      privateProps.awaitingPromise.set(instance || undefined, true); // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preConfirm's promise is received
+
+      const preConfirmPromise = Promise.resolve().then(() => asPromise(innerParams.preConfirm(value, innerParams.validationMessage)));
+      preConfirmPromise.then(preConfirmValue => {
+        if (isVisible(getValidationMessage()) || preConfirmValue === false) {
+          instance.hideLoading();
+          handleAwaitingPromise(instance);
+        } else {
+          succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue);
+        }
+      }).catch(error$$1 => rejectWith(instance || undefined, error$$1));
+    } else {
+      succeedWith(instance, value);
+    }
+  };
+
+  const handlePopupClick = (instance, domCache, dismissWith) => {
+    const innerParams = privateProps.innerParams.get(instance);
+
+    if (innerParams.toast) {
+      handleToastClick(instance, domCache, dismissWith);
+    } else {
+      // Ignore click events that had mousedown on the popup but mouseup on the container
+      // This can happen when the user drags a slider
+      handleModalMousedown(domCache); // Ignore click events that had mousedown on the container but mouseup on the popup
+
+      handleContainerMousedown(domCache);
+      handleModalClick(instance, domCache, dismissWith);
+    }
+  };
+
+  const handleToastClick = (instance, domCache, dismissWith) => {
+    // Closing toast by internal click
+    domCache.popup.onclick = () => {
+      const innerParams = privateProps.innerParams.get(instance);
+
+      if (innerParams && (isAnyButtonShown(innerParams) || innerParams.timer || innerParams.input)) {
+        return;
+      }
+
+      dismissWith(DismissReason.close);
+    };
+  };
+  /**
+   * @param {*} innerParams
+   * @returns {boolean}
+   */
+
+
+  const isAnyButtonShown = innerParams => {
+    return innerParams.showConfirmButton || innerParams.showDenyButton || innerParams.showCancelButton || innerParams.showCloseButton;
+  };
+
+  let ignoreOutsideClick = false;
+
+  const handleModalMousedown = domCache => {
+    domCache.popup.onmousedown = () => {
+      domCache.container.onmouseup = function (e) {
+        domCache.container.onmouseup = undefined; // We only check if the mouseup target is the container because usually it doesn't
+        // have any other direct children aside of the popup
+
+        if (e.target === domCache.container) {
+          ignoreOutsideClick = true;
+        }
+      };
+    };
+  };
+
+  const handleContainerMousedown = domCache => {
+    domCache.container.onmousedown = () => {
+      domCache.popup.onmouseup = function (e) {
+        domCache.popup.onmouseup = undefined; // We also need to check if the mouseup target is a child of the popup
+
+        if (e.target === domCache.popup || domCache.popup.contains(e.target)) {
+          ignoreOutsideClick = true;
+        }
+      };
+    };
+  };
+
+  const handleModalClick = (instance, domCache, dismissWith) => {
+    domCache.container.onclick = e => {
+      const innerParams = privateProps.innerParams.get(instance);
+
+      if (ignoreOutsideClick) {
+        ignoreOutsideClick = false;
+        return;
+      }
+
+      if (e.target === domCache.container && callIfFunction(innerParams.allowOutsideClick)) {
+        dismissWith(DismissReason.backdrop);
+      }
+    };
+  };
+
+  /*
+   * Global function to determine if SweetAlert2 popup is shown
+   */
+
+  const isVisible$1 = () => {
+    return isVisible(getPopup());
+  };
+  /*
+   * Global function to click 'Confirm' button
+   */
+
+  const clickConfirm = () => getConfirmButton() && getConfirmButton().click();
+  /*
+   * Global function to click 'Deny' button
+   */
+
+  const clickDeny = () => getDenyButton() && getDenyButton().click();
+  /*
+   * Global function to click 'Cancel' button
+   */
+
+  const clickCancel = () => getCancelButton() && getCancelButton().click();
+
+  const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
+    if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
+      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
+        capture: globalState.keydownListenerCapture
+      });
+      globalState.keydownHandlerAdded = false;
+    }
+
+    if (!innerParams.toast) {
+      globalState.keydownHandler = e => keydownHandler(instance, e, dismissWith);
+
+      globalState.keydownTarget = innerParams.keydownListenerCapture ? window : getPopup();
+      globalState.keydownListenerCapture = innerParams.keydownListenerCapture;
+      globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, {
+        capture: globalState.keydownListenerCapture
+      });
+      globalState.keydownHandlerAdded = true;
+    }
+  }; // Focus handling
+
+  const setFocus = (innerParams, index, increment) => {
+    const focusableElements = getFocusableElements(); // search for visible elements and select the next possible match
+
+    if (focusableElements.length) {
+      index = index + increment; // rollover to first item
+
+      if (index === focusableElements.length) {
+        index = 0; // go to last item
+      } else if (index === -1) {
+        index = focusableElements.length - 1;
+      }
+
+      return focusableElements[index].focus();
+    } // no visible focusable elements, focus the popup
+
+
+    getPopup().focus();
+  };
+  const arrowKeysNextButton = ['ArrowRight', 'ArrowDown'];
+  const arrowKeysPreviousButton = ['ArrowLeft', 'ArrowUp'];
+
+  const keydownHandler = (instance, e, dismissWith) => {
+    const innerParams = privateProps.innerParams.get(instance);
+
+    if (!innerParams) {
+      return; // This instance has already been destroyed
+    } // Ignore keydown during IME composition
+    // https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event#ignoring_keydown_during_ime_composition
+    // https://github.com/sweetalert2/sweetalert2/issues/720
+    // https://github.com/sweetalert2/sweetalert2/issues/2406
+
+
+    if (e.isComposing || e.keyCode === 229) {
+      return;
+    }
+
+    if (innerParams.stopKeydownPropagation) {
+      e.stopPropagation();
+    } // ENTER
+
+
+    if (e.key === 'Enter') {
+      handleEnter(instance, e, innerParams);
+    } // TAB
+    else if (e.key === 'Tab') {
+      handleTab(e, innerParams);
+    } // ARROWS - switch focus between buttons
+    else if ([...arrowKeysNextButton, ...arrowKeysPreviousButton].includes(e.key)) {
+      handleArrows(e.key);
+    } // ESC
+    else if (e.key === 'Escape') {
+      handleEsc(e, innerParams, dismissWith);
+    }
+  };
+
+  const handleEnter = (instance, e, innerParams) => {
+    // https://github.com/sweetalert2/sweetalert2/issues/2386
+    if (!callIfFunction(innerParams.allowEnterKey)) {
+      return;
+    }
+
+    if (e.target && instance.getInput() && e.target.outerHTML === instance.getInput().outerHTML) {
+      if (['textarea', 'file'].includes(innerParams.input)) {
+        return; // do not submit
+      }
+
+      clickConfirm();
+      e.preventDefault();
+    }
+  };
+
+  const handleTab = (e, innerParams) => {
+    const targetElement = e.target;
+    const focusableElements = getFocusableElements();
+    let btnIndex = -1;
+
+    for (let i = 0; i < focusableElements.length; i++) {
+      if (targetElement === focusableElements[i]) {
+        btnIndex = i;
+        break;
+      }
+    } // Cycle to the next button
+
+
+    if (!e.shiftKey) {
+      setFocus(innerParams, btnIndex, 1);
+    } // Cycle to the prev button
+    else {
+      setFocus(innerParams, btnIndex, -1);
+    }
+
+    e.stopPropagation();
+    e.preventDefault();
+  };
+
+  const handleArrows = key => {
+    const confirmButton = getConfirmButton();
+    const denyButton = getDenyButton();
+    const cancelButton = getCancelButton();
+
+    if (![confirmButton, denyButton, cancelButton].includes(document.activeElement)) {
+      return;
+    }
+
+    const sibling = arrowKeysNextButton.includes(key) ? 'nextElementSibling' : 'previousElementSibling';
+    let buttonToFocus = document.activeElement;
+
+    for (let i = 0; i < getActions().children.length; i++) {
+      buttonToFocus = buttonToFocus[sibling];
+
+      if (!buttonToFocus) {
+        return;
+      }
+
+      if (isVisible(buttonToFocus) && buttonToFocus instanceof HTMLButtonElement) {
+        break;
+      }
+    }
+
+    if (buttonToFocus instanceof HTMLButtonElement) {
+      buttonToFocus.focus();
+    }
+  };
+
+  const handleEsc = (e, innerParams, dismissWith) => {
+    if (callIfFunction(innerParams.allowEscapeKey)) {
+      e.preventDefault();
+      dismissWith(DismissReason.esc);
+    }
+  };
+
+  const isJqueryElement = elem => typeof elem === 'object' && elem.jquery;
+
+  const isElement = elem => elem instanceof Element || isJqueryElement(elem);
+
+  const argsToParams = args => {
+    const params = {};
+
+    if (typeof args[0] === 'object' && !isElement(args[0])) {
+      Object.assign(params, args[0]);
+    } else {
+      ['title', 'html', 'icon'].forEach((name, index) => {
+        const arg = args[index];
+
+        if (typeof arg === 'string' || isElement(arg)) {
+          params[name] = arg;
+        } else if (arg !== undefined) {
+          error("Unexpected type of ".concat(name, "! Expected \"string\" or \"Element\", got ").concat(typeof arg));
+        }
+      });
+    }
+
+    return params;
+  };
+
+  function fire() {
+    const Swal = this; // eslint-disable-line @typescript-eslint/no-this-alias
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return new Swal(...args);
+  }
+
+  /**
+   * Returns an extended version of `Swal` containing `params` as defaults.
+   * Useful for reusing Swal configuration.
+   *
+   * For example:
+   *
+   * Before:
+   * const textPromptOptions = { input: 'text', showCancelButton: true }
+   * const {value: firstName} = await Swal.fire({ ...textPromptOptions, title: 'What is your first name?' })
+   * const {value: lastName} = await Swal.fire({ ...textPromptOptions, title: 'What is your last name?' })
+   *
+   * After:
+   * const TextPrompt = Swal.mixin({ input: 'text', showCancelButton: true })
+   * const {value: firstName} = await TextPrompt('What is your first name?')
+   * const {value: lastName} = await TextPrompt('What is your last name?')
+   *
+   * @param mixinParams
+   */
+  function mixin(mixinParams) {
+    class MixinSwal extends this {
+      _main(params, priorityMixinParams) {
+        return super._main(params, Object.assign({}, mixinParams, priorityMixinParams));
+      }
+
+    }
+
+    return MixinSwal;
+  }
+
+  /**
+   * If `timer` parameter is set, returns number of milliseconds of timer remained.
+   * Otherwise, returns undefined.
+   */
+
+  const getTimerLeft = () => {
+    return globalState.timeout && globalState.timeout.getTimerLeft();
+  };
+  /**
+   * Stop timer. Returns number of milliseconds of timer remained.
+   * If `timer` parameter isn't set, returns undefined.
+   */
+
+  const stopTimer = () => {
+    if (globalState.timeout) {
+      stopTimerProgressBar();
+      return globalState.timeout.stop();
+    }
+  };
+  /**
+   * Resume timer. Returns number of milliseconds of timer remained.
+   * If `timer` parameter isn't set, returns undefined.
+   */
+
+  const resumeTimer = () => {
+    if (globalState.timeout) {
+      const remaining = globalState.timeout.start();
+      animateTimerProgressBar(remaining);
+      return remaining;
+    }
+  };
+  /**
+   * Resume timer. Returns number of milliseconds of timer remained.
+   * If `timer` parameter isn't set, returns undefined.
+   */
+
+  const toggleTimer = () => {
+    const timer = globalState.timeout;
+    return timer && (timer.running ? stopTimer() : resumeTimer());
+  };
+  /**
+   * Increase timer. Returns number of milliseconds of an updated timer.
+   * If `timer` parameter isn't set, returns undefined.
+   */
+
+  const increaseTimer = n => {
+    if (globalState.timeout) {
+      const remaining = globalState.timeout.increase(n);
+      animateTimerProgressBar(remaining, true);
+      return remaining;
+    }
+  };
+  /**
+   * Check if timer is running. Returns true if timer is running
+   * or false if timer is paused or stopped.
+   * If `timer` parameter isn't set, returns undefined
+   */
+
+  const isTimerRunning = () => {
+    return globalState.timeout && globalState.timeout.isRunning();
+  };
+
+  let bodyClickListenerAdded = false;
+  const clickHandlers = {};
+  function bindClickHandler() {
+    let attr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'data-swal-template';
+    clickHandlers[attr] = this;
+
+    if (!bodyClickListenerAdded) {
+      document.body.addEventListener('click', bodyClickListener);
+      bodyClickListenerAdded = true;
+    }
+  }
+
+  const bodyClickListener = event => {
+    for (let el = event.target; el && el !== document; el = el.parentNode) {
+      for (const attr in clickHandlers) {
+        const template = el.getAttribute(attr);
+
+        if (template) {
+          clickHandlers[attr].fire({
+            template
+          });
+          return;
+        }
+      }
+    }
+  };
+
+
+
+  var staticMethods = /*#__PURE__*/Object.freeze({
+    isValidParameter: isValidParameter,
+    isUpdatableParameter: isUpdatableParameter,
+    isDeprecatedParameter: isDeprecatedParameter,
+    argsToParams: argsToParams,
+    isVisible: isVisible$1,
+    clickConfirm: clickConfirm,
+    clickDeny: clickDeny,
+    clickCancel: clickCancel,
+    getContainer: getContainer,
+    getPopup: getPopup,
+    getTitle: getTitle,
+    getHtmlContainer: getHtmlContainer,
+    getImage: getImage,
+    getIcon: getIcon,
+    getInputLabel: getInputLabel,
+    getCloseButton: getCloseButton,
+    getActions: getActions,
+    getConfirmButton: getConfirmButton,
+    getDenyButton: getDenyButton,
+    getCancelButton: getCancelButton,
+    getLoader: getLoader,
+    getFooter: getFooter,
+    getTimerProgressBar: getTimerProgressBar,
+    getFocusableElements: getFocusableElements,
+    getValidationMessage: getValidationMessage,
+    isLoading: isLoading,
+    fire: fire,
+    mixin: mixin,
+    showLoading: showLoading,
+    enableLoading: showLoading,
+    getTimerLeft: getTimerLeft,
+    stopTimer: stopTimer,
+    resumeTimer: resumeTimer,
+    toggleTimer: toggleTimer,
+    increaseTimer: increaseTimer,
+    isTimerRunning: isTimerRunning,
+    bindClickHandler: bindClickHandler
   });
 
   let currentInstance;
@@ -47687,7 +47738,7 @@ try {
     };
   });
   SweetAlert.DismissReason = DismissReason;
-  SweetAlert.version = '11.4.0';
+  SweetAlert.version = '11.4.4';
 
   const Swal = SweetAlert; // @ts-ignore
 
@@ -47737,13 +47788,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _CartIndex_vue_vue_type_template_id_e6720264__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CartIndex.vue?vue&type=template&id=e6720264 */ "./resources/js/components/cart/CartIndex.vue?vue&type=template&id=e6720264");
 /* harmony import */ var _CartIndex_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CartIndex.vue?vue&type=script&lang=js */ "./resources/js/components/cart/CartIndex.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_jomgarciaro_Evertec_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_jomga_Desktop_evertec_laravel_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_jomgarciaro_Evertec_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_CartIndex_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CartIndex_vue_vue_type_template_id_e6720264__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/cart/CartIndex.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_jomga_Desktop_evertec_laravel_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_CartIndex_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CartIndex_vue_vue_type_template_id_e6720264__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/cart/CartIndex.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -47765,13 +47816,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _OrdersIndex_vue_vue_type_template_id_17636ea4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrdersIndex.vue?vue&type=template&id=17636ea4 */ "./resources/js/components/orders/OrdersIndex.vue?vue&type=template&id=17636ea4");
 /* harmony import */ var _OrdersIndex_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OrdersIndex.vue?vue&type=script&lang=js */ "./resources/js/components/orders/OrdersIndex.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_jomgarciaro_Evertec_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_jomga_Desktop_evertec_laravel_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_jomgarciaro_Evertec_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_OrdersIndex_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_OrdersIndex_vue_vue_type_template_id_17636ea4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/orders/OrdersIndex.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_jomga_Desktop_evertec_laravel_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_OrdersIndex_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_OrdersIndex_vue_vue_type_template_id_17636ea4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/orders/OrdersIndex.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -47793,13 +47844,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _OrdersShow_vue_vue_type_template_id_99c86f5e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrdersShow.vue?vue&type=template&id=99c86f5e */ "./resources/js/components/orders/OrdersShow.vue?vue&type=template&id=99c86f5e");
 /* harmony import */ var _OrdersShow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OrdersShow.vue?vue&type=script&lang=js */ "./resources/js/components/orders/OrdersShow.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_jomgarciaro_Evertec_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_jomga_Desktop_evertec_laravel_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_jomgarciaro_Evertec_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_OrdersShow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_OrdersShow_vue_vue_type_template_id_99c86f5e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/orders/OrdersShow.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_jomga_Desktop_evertec_laravel_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_OrdersShow_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_OrdersShow_vue_vue_type_template_id_99c86f5e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/orders/OrdersShow.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -47821,13 +47872,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ProductsIndex_vue_vue_type_template_id_7ac31ece__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProductsIndex.vue?vue&type=template&id=7ac31ece */ "./resources/js/components/products/ProductsIndex.vue?vue&type=template&id=7ac31ece");
 /* harmony import */ var _ProductsIndex_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductsIndex.vue?vue&type=script&lang=js */ "./resources/js/components/products/ProductsIndex.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_jomgarciaro_Evertec_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_Users_jomga_Desktop_evertec_laravel_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_jomgarciaro_Evertec_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ProductsIndex_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ProductsIndex_vue_vue_type_template_id_7ac31ece__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/products/ProductsIndex.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_Users_jomga_Desktop_evertec_laravel_mercatodo_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ProductsIndex_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ProductsIndex_vue_vue_type_template_id_7ac31ece__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/products/ProductsIndex.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -47999,8 +48050,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _vue_devtools_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/devtools-api */ "./node_modules/@vue/devtools-api/lib/esm/index.js");
 /*!
-  * vue-router v4.0.12
-  * (c) 2021 Eduardo San Martin Morote
+  * vue-router v4.0.13
+  * (c) 2022 Eduardo San Martin Morote
   * @license MIT
   */
 
@@ -48524,7 +48575,7 @@ function useHistoryStateNavigation(base) {
          * if a base tag is provided and we are on a normal domain, we have to
          * respect the provided `base` attribute because pushState() will use it and
          * potentially erase anything before the `#` like at
-         * https://github.com/vuejs/vue-router-next/issues/685 where a base of
+         * https://github.com/vuejs/router/issues/685 where a base of
          * `/folder/#` but a base of `/` would erase the `/folder/` section. If
          * there is no host, the `<base>` tag makes no sense and if there isn't a
          * base tag we can just use everything after the `#`.
@@ -48563,7 +48614,7 @@ function useHistoryStateNavigation(base) {
         const currentState = assign({}, 
         // use current history state to gracefully handle a wrong call to
         // history.replaceState
-        // https://github.com/vuejs/vue-router-next/issues/366
+        // https://github.com/vuejs/router/issues/366
         historyState.value, history.state, {
             forward: to,
             scroll: computeScrollPosition(),
@@ -49384,12 +49435,13 @@ function createRouterMatcher(routes, globalOptions) {
     }
     function insertMatcher(matcher) {
         let i = 0;
-        // console.log('i is', { i })
         while (i < matchers.length &&
-            comparePathParserScore(matcher, matchers[i]) >= 0)
+            comparePathParserScore(matcher, matchers[i]) >= 0 &&
+            // Adding children with empty path should still appear before the parent
+            // https://github.com/vuejs/router/issues/1124
+            (matcher.record.path !== matchers[i].record.path ||
+                !isRecordChildOf(matcher, matchers[i])))
             i++;
-        // console.log('END i is', { i })
-        // while (i < matchers.length && matcher.score <= matchers[i].score) i++
         matchers.splice(i, 0, matcher);
         // only add the original record to the name map
         if (matcher.record.name && !isAliasRecord(matcher))
@@ -49421,7 +49473,7 @@ function createRouterMatcher(routes, globalOptions) {
             // this also allows the user to control the encoding
             path = location.path;
             if (( true) && !path.startsWith('/')) {
-                warn(`The Matcher cannot resolve relative paths but received "${path}". Unless you directly called \`matcher.resolve("${path}")\`, this is probably a bug in vue-router. Please open an issue at https://new-issue.vuejs.org/?repo=vuejs/vue-router-next.`);
+                warn(`The Matcher cannot resolve relative paths but received "${path}". Unless you directly called \`matcher.resolve("${path}")\`, this is probably a bug in vue-router. Please open an issue at https://new-issue.vuejs.org/?repo=vuejs/router.`);
             }
             matcher = matchers.find(m => m.re.test(path));
             // matcher should have a value after the loop
@@ -49574,6 +49626,9 @@ function checkMissingParamsInAbsolutePath(record, parent) {
         if (!record.keys.find(isSameParam.bind(null, key)))
             return warn(`Absolute path "${record.record.path}" should have the exact same param named "${key.name}" as its parent "${parent.record.path}".`);
     }
+}
+function isRecordChildOf(record, parent) {
+    return parent.children.some(child => child === record || isRecordChildOf(record, child));
 }
 
 /**
@@ -50399,8 +50454,8 @@ function addDevtools(app, router, matcher) {
         id: 'org.vuejs.router' + (id ? '.' + id : ''),
         label: 'Vue Router',
         packageName: 'vue-router',
-        homepage: 'https://next.router.vuejs.org/',
-        logo: 'https://vuejs.org/images/icons/favicon-96x96.png',
+        homepage: 'https://router.vuejs.org',
+        logo: 'https://router.vuejs.org/logo.png',
         componentStateTypes: ['Routing'],
         app,
     }, api => {
@@ -50929,7 +50984,7 @@ function createRouter(options) {
             // nested objects, so we keep the query as is, meaning it can contain
             // numbers at `$route.query`, but at the point, the user will have to
             // use their own type anyway.
-            // https://github.com/vuejs/vue-router-next/issues/328#issuecomment-649481567
+            // https://github.com/vuejs/router/issues/328#issuecomment-649481567
             stringifyQuery$1 === stringifyQuery
                 ? normalizeQuery(rawLocation.query)
                 : (rawLocation.query || {}),
@@ -51018,7 +51073,10 @@ function createRouter(options) {
         }
         return (failure ? Promise.resolve(failure) : navigate(toLocation, from))
             .catch((error) => isNavigationFailure(error)
-            ? error
+            ? // navigation redirects still mark the router as ready
+                isNavigationFailure(error, 2 /* NAVIGATION_GUARD_REDIRECT */)
+                    ? error
+                    : markAsReady(error) // also returns the error
             : // reject any unknown error
                 triggerError(error, toLocation, from))
             .then((failure) => {
@@ -51296,20 +51354,17 @@ function createRouter(options) {
             readyHandlers.add([resolve, reject]);
         });
     }
-    /**
-     * Mark the router as ready, resolving the promised returned by isReady(). Can
-     * only be called once, otherwise does nothing.
-     * @param err - optional error
-     */
     function markAsReady(err) {
-        if (ready)
-            return;
-        ready = true;
-        setupListeners();
-        readyHandlers
-            .list()
-            .forEach(([resolve, reject]) => (err ? reject(err) : resolve()));
-        readyHandlers.reset();
+        if (!ready) {
+            // still not ready if an error happened
+            ready = !err;
+            setupListeners();
+            readyHandlers
+                .list()
+                .forEach(([resolve, reject]) => (err ? reject(err) : resolve()));
+            readyHandlers.reset();
+        }
+        return err;
     }
     // Scroll behavior
     function handleScroll(to, from, isPush, isFirstNavigation) {
@@ -51476,6 +51531,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "capitalize": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.capitalize),
 /* harmony export */   "cloneVNode": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.cloneVNode),
 /* harmony export */   "compatUtils": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.compatUtils),
+/* harmony export */   "compile": () => (/* binding */ compileToFunction),
 /* harmony export */   "computed": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.computed),
 /* harmony export */   "createApp": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.createApp),
 /* harmony export */   "createBlock": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.createBlock),
@@ -51600,8 +51656,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "withKeys": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.withKeys),
 /* harmony export */   "withMemo": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.withMemo),
 /* harmony export */   "withModifiers": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.withModifiers),
-/* harmony export */   "withScopeId": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.withScopeId),
-/* harmony export */   "compile": () => (/* binding */ compileToFunction)
+/* harmony export */   "withScopeId": () => (/* reexport safe */ _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__.withScopeId)
 /* harmony export */ });
 /* harmony import */ var _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/runtime-dom */ "./node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js");
 /* harmony import */ var _vue_runtime_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vue/runtime-dom */ "./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js");

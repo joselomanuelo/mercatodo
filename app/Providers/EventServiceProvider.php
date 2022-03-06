@@ -13,6 +13,9 @@ use App\Listeners\AddDeleteToUserLogsTable;
 use App\Listeners\AddLoginToUsersLogsTable;
 use App\Listeners\AddLogoutToUsersLogsTable;
 use App\Listeners\AddUpdateToUserLogsTable;
+use App\Listeners\OrderApprovedListener;
+use App\Listeners\OrderCreatedListener;
+use App\Listeners\OrderRejectedListener;
 use App\Listeners\SendOrderEmail;
 use App\Listeners\UpdateProductStock;
 use Illuminate\Auth\Events\Registered;
@@ -44,15 +47,13 @@ class EventServiceProvider extends ServiceProvider
             AddDeleteToUserLogsTable::class,
         ],
         OrderApproved::class => [
-            UpdateProductStock::class,
-            SendOrderEmail::class,
+            OrderApprovedListener::class
         ],
         OrderCreated::class => [
-            UpdateProductStock::class,
+            OrderCreatedListener::class,
         ],
         OrderRejected::class => [
-            UpdateProductStock::class,
-            SendOrderEmail::class,
+            OrderRejectedListener::class,
         ],
     ];
 
