@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Actions\Orders\StoreOrUpdateAction;
+use App\Actions\Orders\StoreOrRetryAction;
 use App\Helpers\PlacetoPayHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Orders\OrderRetryRequest;
@@ -20,7 +20,7 @@ class OrdersController extends Controller
 
     public function store(OrderStoreRequest $request): OrdersResource
     {
-        $order = StoreOrUpdateAction::execute($request);
+        $order = StoreOrRetryAction::execute($request);
 
         PlacetoPayHelper::attempPayment($order);
 
@@ -38,7 +38,7 @@ class OrdersController extends Controller
 
     public function retry(OrderRetryRequest $request): OrdersResource
     {
-        $order = StoreOrUpdateAction::execute($request);
+        $order = StoreOrRetryAction::execute($request);
 
         PlacetoPayHelper::attempPayment($order);
 

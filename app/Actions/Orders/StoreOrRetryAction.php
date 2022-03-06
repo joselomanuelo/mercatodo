@@ -2,6 +2,8 @@
 
 namespace App\Actions\Orders;
 
+use App\Actions\Products\UpdateProductStockAction;
+use App\Actions\Products\UpdateStockAction;
 use App\Constants\OrderConstants;
 use App\Contracts\Orders\StoreOrUpdateAction as Action;
 use App\Models\Order;
@@ -11,7 +13,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class StoreOrUpdateAction extends Action
+class StoreOrRetryAction extends Action
 {
     public static function execute(Request $request): Order
     {
@@ -23,8 +25,6 @@ class StoreOrUpdateAction extends Action
             $apiOrder = json_decode($request->order, true);
             $apiPrice = json_decode($request->price);
         }
-
-
 
         $order = new Order();
         $order->reference = Str::uuid()->toString();
@@ -42,6 +42,8 @@ class StoreOrUpdateAction extends Action
             $orderProduct->price = Arr::get($item, 'amount') * Arr::get($item, 'price');
             $orderProduct->save();
         }
+
+        UpdateProductStockAction::orderCreated($order);
 
         return $order;
     }

@@ -11,6 +11,8 @@ class ProductsController extends Controller
 {
     public function index(): AnonymousResourceCollection
     {
-        return ProductsResource::collection(Product::all());
+        $products = Product::where('stock', '>', 0)->get();
+
+        return ProductsResource::collection($products);
     }
 }
