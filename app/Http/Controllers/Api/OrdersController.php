@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Actions\Orders\StoreOrRetryAction;
+use App\Constants\OrderConstants;
+use App\Events\OrderCreated;
 use App\Helpers\PlacetoPayHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Orders\OrderRetryRequest;
@@ -24,6 +26,8 @@ class OrdersController extends Controller
 
         PlacetoPayHelper::attempPayment($order);
 
+        event(new OrderCreated($order));
+
         return new OrdersResource($order);
     }
 
@@ -31,7 +35,9 @@ class OrdersController extends Controller
     {
         $order = Order::findOrFail($reference);
 
-        PlacetoPayHelper::statusPayment($order);
+        if ($order->status == OrderConstants::PENDING) {
+            PlacetoPayHelper::statusPayment($order);
+        }
 
         return new OrdersResource($order);
     }

@@ -2,8 +2,6 @@
 
 namespace App\Actions\Orders;
 
-use App\Actions\Products\UpdateProductStockAction;
-use App\Actions\Products\UpdateStockAction;
 use App\Constants\OrderConstants;
 use App\Contracts\Orders\StoreOrUpdateAction as Action;
 use App\Models\Order;
@@ -42,8 +40,6 @@ class StoreOrRetryAction extends Action
             $orderProduct->price = Arr::get($item, 'amount') * Arr::get($item, 'price');
             $orderProduct->save();
         }
-
-        UpdateProductStockAction::orderCreated($order);
 
         return $order;
     }

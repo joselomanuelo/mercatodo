@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Events\OrderApproved;
 use App\Events\UserDeleted;
 use App\Events\UserLoged;
 use App\Events\UserLogouted;
@@ -37,6 +38,8 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserDeleted::class => [
             AddDeleteToUserLogsTable::class,
+        ],
+        OrderApproved::class => [
         ],
     ];
 
