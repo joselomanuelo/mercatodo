@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-class UpdateProductStock
+class SendOrderEmail
 {
     /**
      * Create the event listener.

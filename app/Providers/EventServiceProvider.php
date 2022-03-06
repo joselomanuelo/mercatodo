@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Events\OrderApproved;
+use App\Events\OrderCreated;
+use App\Events\OrderRejected;
 use App\Events\UserDeleted;
 use App\Events\UserLoged;
 use App\Events\UserLogouted;
@@ -11,6 +13,8 @@ use App\Listeners\AddDeleteToUserLogsTable;
 use App\Listeners\AddLoginToUsersLogsTable;
 use App\Listeners\AddLogoutToUsersLogsTable;
 use App\Listeners\AddUpdateToUserLogsTable;
+use App\Listeners\SendOrderEmail;
+use App\Listeners\UpdateProductStock;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -40,6 +44,15 @@ class EventServiceProvider extends ServiceProvider
             AddDeleteToUserLogsTable::class,
         ],
         OrderApproved::class => [
+            UpdateProductStock::class,
+            SendOrderEmail::class,
+        ],
+        OrderCreated::class => [
+            UpdateProductStock::class,
+        ],
+        OrderRejected::class => [
+            UpdateProductStock::class,
+            SendOrderEmail::class,
         ],
     ];
 
