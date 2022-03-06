@@ -22,9 +22,6 @@ class CheckPendingOrders extends Command
 
         foreach ($orders as $order) {
             PlacetoPayHelper::statusPayment($order);
-            if ($order->status == OrderConstants::APPROVED) {
-                event(new OrderApproved($order));
-            } 
         }
     }
 }
