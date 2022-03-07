@@ -39,7 +39,7 @@ export default function useOrders() {
 
     const retryOrders = async() => {
         await axios
-            .post("/api/orders/retry", {
+            .post("/api/orders/store", {
                 order_id: order.value.id
             })
             .then((response) => {

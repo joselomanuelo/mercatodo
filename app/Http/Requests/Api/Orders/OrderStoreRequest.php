@@ -13,9 +13,15 @@ class OrderStoreRequest extends FormRequest
 
     public function rules(): array
     {
-        return [
-            'order' => ['required', 'string'],
-            'price' => ['required', 'numeric'],
-        ];
+        if ($this->has('order_id')) {
+            return [
+                'order_id' => ['required', 'numeric'],
+            ];
+        } else {
+            return [
+                'order' => ['required', 'string'],
+                'price' => ['required', 'numeric'],
+            ];
+        }
     }
 }

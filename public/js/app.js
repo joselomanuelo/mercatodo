@@ -25986,7 +25986,7 @@ function useOrders() {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/orders/retry", {
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/orders/store", {
                 order_id: order.value.id
               }).then(function (response) {
                 window.location.href = response.data.data.process_url;
