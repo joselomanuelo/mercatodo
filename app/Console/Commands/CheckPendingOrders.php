@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Constants\OrderConstants;
-use App\Events\OrderApproved;
 use App\Helpers\PlacetoPayHelper;
 use App\Models\Order;
 use Illuminate\Console\Command;
