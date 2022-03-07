@@ -26014,7 +26014,7 @@ function useOrders() {
   var loadCartIndexes = function loadCartIndexes() {
     if (localStorage.getItem('shoppingCart')) {
       cartIndexes.value = JSON.parse(localStorage.getItem('shoppingCart')).map(function (item) {
-        return item.id;
+        return item.product_id;
       });
     }
   };

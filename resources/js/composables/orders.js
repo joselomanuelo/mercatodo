@@ -57,7 +57,7 @@ export default function useOrders() {
 
     const loadCartIndexes = () => {
         if (localStorage.getItem('shoppingCart')) {
-            cartIndexes.value = JSON.parse(localStorage.getItem('shoppingCart')).map(item => item.id);
+            cartIndexes.value = JSON.parse(localStorage.getItem('shoppingCart')).map(item => item.product_id);
         }
     };
 
