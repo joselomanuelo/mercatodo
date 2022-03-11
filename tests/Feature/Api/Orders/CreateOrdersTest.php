@@ -15,10 +15,8 @@ class CreateOrdersTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testOrderCanBeCreated(): void
+    public function testOrderCanBeCreated(): string
     {
-        //$this->withoutExceptionHandling();
-
         Event::fake();
 
         Product::factory()->create([
@@ -34,7 +32,6 @@ class CreateOrdersTest extends TestCase
         ]);
 
         $user = User::factory()
-            ->has(Order::factory()->count(2))
             ->create([
             'id' => 1,
         ]);
@@ -49,7 +46,7 @@ class CreateOrdersTest extends TestCase
         $response->assertCreated();
 
         $this->assertAuthenticated();
-        $this->assertDatabaseCount('orders', 3);
+        $this->assertDatabaseCount('orders', 1);
         $this->assertDatabaseCount('order_products', 2);
         $this->assertTrue(!is_null($response->json()['data']['process_url']));
         $this->assertTrue(!is_null($response->json()['data']['request_id']));
@@ -63,5 +60,31 @@ class CreateOrdersTest extends TestCase
             );
 
         Event::assertDispatched(OrderCreated::class);
+
+        $request_id = $response->json()['data']['request_id'];
+
+        return $request_id;
+    }
+
+    /**
+     * @depends testOrderCanBeCreated
+     */
+    public function testOrderCanBeConsulted(string $request_id): void
+    {
+        $user = User::factory()
+            ->create([
+            'id' => 1,
+        ]);
+
+        $order = Order::factory()->create([
+            'request_id' => $request_id,
+        ]);
+
+        $response = $this->actingAs($user, 'api')
+        ->getJson($order->apiShowRoute());
+
+        $response->assertOk();
+
+        $this->assertAuthenticated();
     }
 }

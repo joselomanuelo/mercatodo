@@ -5,7 +5,6 @@ namespace App\Helpers;
 use App\Events\OrderApproved;
 use App\Events\OrderRejected;
 use App\Models\Order;
-use Dnetix\Redirection\Entities\Status;
 use Dnetix\Redirection\PlacetoPay;
 
 class PlacetoPayHelper
@@ -58,12 +57,14 @@ class PlacetoPayHelper
 
         $response = $placetopay->query($order->request_id);
 
-        if ($response->isSuccessful() && $response->status()->status() !== Status::ST_PENDING) {
-            $order->status = $response->status()->status();
-            $order->save();
+        if ($response->isSuccessful()) {
             if ($response->status()->isApproved()) {
+                $order->status = $response->status()->status();
+                $order->save();
                 event(new OrderApproved($order));
-            } else {
+            } elseif ($response->status()->isRejected()) {
+                $order->status = $response->status()->status();
+                $order->save();
                 event(new OrderRejected($order));
             }
         } else {

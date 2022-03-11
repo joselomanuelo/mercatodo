@@ -20,9 +20,4 @@ trait OrderRoutes
     {
         return route(RouteNames::API_STORE_ORDERS);
     }
-
-    public static function ApiRetryRoute(): string
-    {
-        return route(RouteNames::API_RETRY_ORDERS);
-    }
 }
