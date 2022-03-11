@@ -87,4 +87,28 @@ class CreateOrdersTest extends TestCase
 
         $this->assertAuthenticated();
     }
+
+    /**
+     * @depends testOrderCanBeCreated
+     */
+    public function testOrderCanBeRetried(string $request_id): void
+    {
+        $user = User::factory()
+            ->create([
+            'id' => 1,
+        ]);
+
+        $order = Order::factory()->create([
+            'request_id' => $request_id,
+        ]);
+
+        $response = $this->actingAs($user, 'api')
+            ->postJson(Order::ApiStoreRoute(), [
+                'order_id' => $order->id,
+            ]);
+
+        $response->assertCreated();
+
+        $this->assertAuthenticated();
+    }
 }
