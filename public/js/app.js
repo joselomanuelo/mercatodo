@@ -25052,7 +25052,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var _useOrders = (0,_composables_orders__WEBPACK_IMPORTED_MODULE_1__["default"])(),
         shoppingCart = _useOrders.shoppingCart,
         price = _useOrders.price,
-        storeOrders = _useOrders.storeOrders;
+        storeOrders = _useOrders.storeOrders,
+        indexShoppingCart = _useOrders.indexShoppingCart;
 
     var payOrder = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {

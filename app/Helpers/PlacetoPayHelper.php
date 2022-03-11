@@ -6,6 +6,7 @@ use App\Constants\OrderConstants;
 use App\Events\OrderApproved;
 use App\Events\OrderRejected;
 use App\Models\Order;
+use Dnetix\Redirection\Entities\Status;
 use Dnetix\Redirection\PlacetoPay;
 
 class PlacetoPayHelper
@@ -25,7 +26,7 @@ class PlacetoPayHelper
                 'reference' => $reference,
                 'description' => $order->reference,
                 'amount' => [
-                    'currency' => 'COP',
+                    'currency' => config('money.defaultCurrency'),
                     'total' => $order->price,
                 ],
             ],
@@ -58,12 +59,15 @@ class PlacetoPayHelper
 
         $response = $placetopay->query($order->request_id);
 
-        if ($response->isSuccessful()) {
+
+
+        if ($response->isSuccessful() && $response->status()->status() !== Status::ST_PENDING) {
+
             $order->status = $response->status()->status();
             $order->save();
-            if ($order->status == OrderConstants::APPROVED) {
+            if ($response->status()->isApproved()) {
                 event(new OrderApproved($order));
-            } elseif ($order->status == OrderConstants::REJECTED) {
+            } else {
                 event(new OrderRejected($order));
             }
         } else {

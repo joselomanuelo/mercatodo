@@ -10,7 +10,7 @@ class UpdateProductStockAction
     public static function orderCreated(Order $order)
     {
         foreach ($order->orderProducts as $orderProduct) {
-            $product = Product::findOrFail($orderProduct->product_id);
+            $product = $orderProduct->product;
 
             $product->reserved_stock += $orderProduct->amount;
             $product->stock -= $orderProduct->amount;
@@ -22,7 +22,7 @@ class UpdateProductStockAction
     public static function orderApproved(Order $order)
     {
         foreach ($order->orderProducts as $orderProduct) {
-            $product = Product::findOrFail($orderProduct->product_id);
+            $product = $orderProduct->product;
 
             $product->reserved_stock -= $orderProduct->amount;
 
@@ -33,8 +33,8 @@ class UpdateProductStockAction
     public static function orderRejected(Order $order)
     {
         foreach ($order->orderProducts as $orderProduct) {
-            $product = Product::findOrFail($orderProduct->product_id);
-
+            $product = $orderProduct->product;
+            
             $product->reserved_stock -= $orderProduct->amount;
             $product->stock += $orderProduct->amount;
 
