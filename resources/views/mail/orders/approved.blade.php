@@ -1,7 +1,7 @@
 @component('mail::message')
-# Orden Aprovada
+# Orden Aprobada
 
-Tu orden fue aprovada, tu pedido está en camino.
+Tu orden fue aprobada, tu pedido está en camino.
 
 @component('mail::button', ['url' => 'http://localhost:8000/'])
 MercaTodo
