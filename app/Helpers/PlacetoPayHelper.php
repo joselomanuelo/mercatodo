@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-use App\Constants\OrderConstants;
 use App\Events\OrderApproved;
 use App\Events\OrderRejected;
 use App\Models\Order;
@@ -26,7 +25,7 @@ class PlacetoPayHelper
                 'reference' => $reference,
                 'description' => $order->reference,
                 'amount' => [
-                    'currency' => config('money.defaultCurrency'),
+                    'currency' => 'COP',
                     'total' => $order->price,
                 ],
             ],
@@ -59,10 +58,7 @@ class PlacetoPayHelper
 
         $response = $placetopay->query($order->request_id);
 
-
-
         if ($response->isSuccessful() && $response->status()->status() !== Status::ST_PENDING) {
-
             $order->status = $response->status()->status();
             $order->save();
             if ($response->status()->isApproved()) {

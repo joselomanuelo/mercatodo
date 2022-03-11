@@ -3,9 +3,11 @@
 namespace Tests\Feature\Auth;
 
 use App\Constants\RouteNames;
+use App\Events\UserLoged;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
@@ -21,6 +23,8 @@ class AuthenticationTest extends TestCase
 
     public function testUsersCanAuthenticateUsingTheLoginScreen(): void
     {
+        Event::fake();
+
         $user = User::factory()->create();
 
         $response = $this->post(route(RouteNames::LOGIN_ATTEMP), [
@@ -30,6 +34,8 @@ class AuthenticationTest extends TestCase
 
         $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::HOME);
+
+        Event::assertDispatched(UserLoged::class);
     }
 
     public function testUsersCanNotAuthenticateWithInvalidPassword(): void

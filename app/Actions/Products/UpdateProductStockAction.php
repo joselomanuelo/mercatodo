@@ -3,7 +3,6 @@
 namespace App\Actions\Products;
 
 use App\Models\Order;
-use App\Models\Product;
 
 class UpdateProductStockAction
 {
@@ -34,7 +33,7 @@ class UpdateProductStockAction
     {
         foreach ($order->orderProducts as $orderProduct) {
             $product = $orderProduct->product;
-            
+
             $product->reserved_stock -= $orderProduct->amount;
             $product->stock += $orderProduct->amount;
 

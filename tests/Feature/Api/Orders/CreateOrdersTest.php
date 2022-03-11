@@ -2,10 +2,12 @@
 
 namespace Tests\Feature\Api\Orders;
 
+use App\Events\OrderCreated;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
@@ -16,6 +18,8 @@ class CreateOrdersTest extends TestCase
     public function testOrderCanBeCreated(): void
     {
         //$this->withoutExceptionHandling();
+
+        Event::fake();
 
         Product::factory()->create([
             'id' => 1,
@@ -57,5 +61,7 @@ class CreateOrdersTest extends TestCase
                     ->has('data.request_id')
                     ->etc()
             );
+
+        Event::assertDispatched(OrderCreated::class);
     }
 }

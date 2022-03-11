@@ -3,7 +3,9 @@
 namespace Tests\Feature\Auth;
 
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class RegistrationTest extends TestCase
@@ -19,7 +21,8 @@ class RegistrationTest extends TestCase
 
     public function testNewUsersCanRegister(): void
     {
-        //crear rol
+        Event::fake();
+
         $response = $this->post('/register', [
             'name' => 'Test User',
             'email' => 'test@example.com',
@@ -29,5 +32,7 @@ class RegistrationTest extends TestCase
 
         $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::HOME);
+
+        Event::assertDispatched(Registered::class);
     }
 }
