@@ -4,8 +4,10 @@ namespace Tests\Feature\Admin\Users;
 
 use App\Constants\Permissions;
 use App\Constants\Roles;
+use App\Events\UserDeleted;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
@@ -16,6 +18,8 @@ class DeleteUserTest extends TestCase
 
     public function testUserCanBeDelete(): void
     {
+        Event::fake();
+
         $deleteUsersPermission = Permission::create(['name' => Permissions::DELETE_USERS]);
 
         $adminRole = Role::create(['name' => Roles::ADMIN])
@@ -36,6 +40,8 @@ class DeleteUserTest extends TestCase
         $this->assertAuthenticated();
         $this->assertDatabaseCount('users', 1);
         $this->assertDeleted($userToDelete);
+
+        Event::assertDispatched(UserDeleted::class);
     }
 
     public function testNotAdminUserCantDeleteUsers(): void

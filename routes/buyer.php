@@ -15,4 +15,6 @@ Route::prefix('buyer')
         Route::view('/cart', 'buyer.cart.index');
 
         Route::view('/orders/show/{reference}', 'buyer.orders.show');
+
+        Route::view('/orders', 'buyer.orders.index');
     });

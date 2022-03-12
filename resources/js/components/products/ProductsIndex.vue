@@ -102,7 +102,7 @@ export default {
             }).then((result) => {
                 if (result.isConfirmed) {
                     this.shoppingCart.push({
-                        id: product.id,
+                        product_id: product.id,
                         name: product.name,
                         description: product.description,
                         product_image: product.product_image,
@@ -120,7 +120,7 @@ export default {
                 }
             });
         },
-    
+
         currencyCOP(value) {
             const options = { style: "currency", currency: "COP" };
             const numberFormat = new Intl.NumberFormat("es-ES", options);

@@ -11,12 +11,18 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class StoreOrUpdateAction extends Action
+class StoreOrRetryAction extends Action
 {
     public static function execute(Request $request): Order
     {
-        $apiOrder = json_decode($request->order, true);
-        $apiPrice = json_decode($request->price);
+        if ($request->has('order_id')) {
+            $oldOrder = Order::findOrFail($request->order_id);
+            $apiOrder = $oldOrder->orderProducts->toArray();
+            $apiPrice = $oldOrder->price;
+        } else {
+            $apiOrder = json_decode($request->order, true);
+            $apiPrice = json_decode($request->price);
+        }
 
         $order = new Order();
         $order->reference = Str::uuid()->toString();
@@ -28,8 +34,8 @@ class StoreOrUpdateAction extends Action
         foreach ($apiOrder as $item) {
             $orderProduct = new OrderProduct();
             $orderProduct->order_id = $order->id;
-            $orderProduct->product_id = Arr::get($item, 'id');
-            $orderProduct->user_id = '1';
+            $orderProduct->product_id = Arr::get($item, 'product_id');
+            $orderProduct->user_id = Auth::user()->id;
             $orderProduct->amount = Arr::get($item, 'amount');
             $orderProduct->price = Arr::get($item, 'amount') * Arr::get($item, 'price');
             $orderProduct->save();

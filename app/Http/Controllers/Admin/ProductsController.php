@@ -17,6 +17,7 @@ class ProductsController extends Controller
     public function index(SearchRequest $request): View
     {
         $products = Product::search($request->query('search'))
+            ->where('stock', '>', 0)
             ->orderBy('name')
             ->paginate(20);
 

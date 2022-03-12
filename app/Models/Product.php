@@ -21,6 +21,7 @@ class Product extends Model
         'description',
         'price',
         'stock',
+        'reserved_stock',
         'product_image',
     ];
 

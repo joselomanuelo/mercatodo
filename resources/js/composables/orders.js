@@ -19,7 +19,7 @@ export default function useOrders() {
             .post("/api/orders", {
                 order: JSON.stringify(shoppingCart.value.map((item) => {
                     return {
-                        id: item.id,
+                        product_id: item.product_id,
                         price: item.price,
                         amount: item.amount
                     };
@@ -33,8 +33,18 @@ export default function useOrders() {
     };
 
     const showOrders = async (reference) => {
-        let response = await axios.get("/api/orders/show/" + reference);
+        let response = await axios.get("/api/orders/" + reference + "/show");
         order.value = response.data.data;
+    };
+
+    const retryOrders = async() => {
+        await axios
+            .post("/api/orders/store", {
+                order_id: order.value.id
+            })
+            .then((response) => {
+                window.location.href = response.data.data.process_url;
+            });
     };
 
     const indexShoppingCart = () => {
@@ -47,7 +57,7 @@ export default function useOrders() {
 
     const loadCartIndexes = () => {
         if (localStorage.getItem('shoppingCart')) {
-            cartIndexes.value = JSON.parse(localStorage.getItem('shoppingCart')).map(item => item.id);
+            cartIndexes.value = JSON.parse(localStorage.getItem('shoppingCart')).map(item => item.product_id);
         }
     };
 
@@ -62,5 +72,6 @@ export default function useOrders() {
         indexOrders,
         storeOrders,
         showOrders,
+        retryOrders,
     };
 }
