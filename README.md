@@ -1,66 +1,78 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Acerca
 
-## About Laravel
+MercaTodo es un e-commerce hecho en el framework [Laravel](https://laravel.com/) como proyecto de estudio de la Escuela de desarrolladores junior PHP impartido por [Evertec](https://www.evertecinc.com/). Incluye las siguientes funcionalidades:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Gestión de productos y categorias.
+- Administración de usuarios con sus roles y permisos.
+- Carrito de compras.
+- Gestión de ordenes para los clientes.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requerimientos
+- PHP 8.0+ `required`
+- MYSQL 5.7+ `required`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Instalación
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Clone el repositorio:
+```bash
+$ git clone https://github.com/jomgarciaro/mercatodo.git
+```
+- Ingrese a la carpeta del repositorio:
+```bash
+$ cd mercatodo
+```
+- Si quiere acceder a todo el historial del desarrollo use el comando:
+```bash
+$ git fetch --all
+```
+- Instale las dependencias de PHP por medio del gestor [composer](https://getcomposer.org/download/):
+```bash
+$ composer install
+```
+- Instale las dependencias de NodeJS por medio del gestor [npm](https://nodejs.org/es/):
+```bash
+$ npm install
+```
+## Configuración
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Copié el archivo .env.example en .env y env.testing y luego agregue cada variables de entorno:
+`DB_USERNAME` Usuario base de datos.  
+`DB_PASSWORD` Password base de datos.  
+`MAIL_USERNAME` Usuario Mailtrap para pruebas.  
+`MAIL_PASSWORD` Password Mailtrap para pruebas.  
+`MAIL_FROM_ADDRESS` Correo del sistema.  
+`LOGIN_PLACETOPAY` Login de [PlaceToPay](https://docs-gateway.placetopay.com/docs/webcheckout-docs/ZG9jOjQxMjU1Njc-autenticacion).  
+`TRANKEY_PLACETOPAY` Secret Key de PlaceToPay.  
+`BASEURL_PLACETOPAY` Base URL DE PlaceToPay.
 
-## Laravel Sponsors
+- Genere la llave de la aplicación:
+```bash
+$ php artisan key:generate
+```
+- Migre y siembre la base de datos:
+```bash
+$ php artisan migrate --seed
+```
+- Cree la conexión entre public y storage:
+```bash
+$ php artisan storage:link
+```
+- Cree las llaves para autentificación de la API:
+```bash
+$ php artisan passport:keys
+```
+- Corra los test de la aplicación y compruebe si la instalación y la configuración se hicieron correctamente.
+```bash
+$ php artisan test
+```
+## Contribuciones
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Puedes hacer tus contribuciones mediantes pull request. Para cambios importantes primero crear un ISSUE.  
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Asegurate de actualizar los test apropiadamente.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**MercaTodo** es un proyecto bajo la licencia [MIT license](https://opensource.org/licenses/MIT).
