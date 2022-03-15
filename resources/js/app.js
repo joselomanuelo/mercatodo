@@ -6,6 +6,17 @@ Alpine.start();
 
 
 import { createApp } from "vue";
-import router from './router'
+import ProductsIndex from './components/products/ProductsIndex';
+import CartIndex from './components/cart/CartIndex';
+import OrderIndex from './components/orders/OrdersIndex';
+import OrderShow from './components/orders/OrdersShow';
 
-createApp({}).use(router).mount('#app')
+const app = createApp({});
+
+app.component('product-index', ProductsIndex);
+app.component('cart-index', CartIndex);
+app.component('product-index', ProductsIndex);
+app.component('order-index', OrderIndex);
+app.component('order-show', OrderShow);
+
+app.mount('#app');
