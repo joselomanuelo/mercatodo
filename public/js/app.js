@@ -25750,7 +25750,6 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 
 
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({});
-app.component('product-index', _components_products_ProductsIndex__WEBPACK_IMPORTED_MODULE_2__["default"]);
 app.component('cart-index', _components_cart_CartIndex__WEBPACK_IMPORTED_MODULE_3__["default"]);
 app.component('product-index', _components_products_ProductsIndex__WEBPACK_IMPORTED_MODULE_2__["default"]);
 app.component('order-index', _components_orders_OrdersIndex__WEBPACK_IMPORTED_MODULE_4__["default"]);

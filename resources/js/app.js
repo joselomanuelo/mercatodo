@@ -13,7 +13,6 @@ import OrderShow from './components/orders/OrdersShow';
 
 const app = createApp({});
 
-app.component('product-index', ProductsIndex);
 app.component('cart-index', CartIndex);
 app.component('product-index', ProductsIndex);
 app.component('order-index', OrderIndex);
