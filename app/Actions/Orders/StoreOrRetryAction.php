@@ -44,7 +44,6 @@ class StoreOrRetryAction extends Action
 
         event(new OrderCreated($order));
 
-
         return $order;
     }
 }

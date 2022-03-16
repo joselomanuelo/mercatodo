@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Actions\Orders\StoreOrRetryAction;
 use App\Constants\OrderConstants;
-use App\Events\OrderCreated;
 use App\Helpers\PlacetoPayHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Orders\OrderStoreRequest;

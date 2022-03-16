@@ -7,7 +7,7 @@
             <div v-else>
                 <h1>El precio total de la orden es: {{ total() }}</h1>
                 <button
-                    class="justify-center inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150"
+                    class="my-4 justify-center inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150"
                     @click="payOrder()"
                 >
                     Pagar
@@ -111,7 +111,18 @@ export default {
         const { price, storeOrders } = useOrders();
         const { shoppingCart } = useCart();
         const payOrder = async () => {
-            await storeOrders(shoppingCart.value);
+            Swal.fire({
+                title: "¿Desea realizar el pago?",
+                confirmButtonText: "Si",
+                confirmButtonColor: "#1e40af",
+                showCancelButton: true,
+                cancelButtonText: "No",
+                cancelButtonColor: "#dc2626",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    storeOrders(shoppingCart.value);
+                }
+            });
         };
 
         return {
