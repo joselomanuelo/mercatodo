@@ -39,8 +39,18 @@ class RouteNames extends Constant
     //buyers
     public const BUYER_INDEX_PRODUCTS = 'buyer.products.index';
     public const BUYER_SHOW_PRODUCTS = 'buyer.products.show';
+    public const BUYER_INDEX_CART = 'buyer.cart.index';
+    public const BUYER_INDEX_ORDERS = 'buyer.orders.index';
+    public const BUYER_SHOW_ORDERS = 'buyer.orders.show';
 
     //app
     public const DASHBOARD = 'dashboard';
     public const WELCOME = 'welcome';
+
+    //api
+    public const API_CATEGORIES = 'api.categories';
+    public const API_PRODUCTS = 'api.products';
+    public const API_ORDERS = 'api.orders';
+    public const API_STORE_ORDERS = 'api.orders.store';
+    public const API_SHOW_ORDERS = 'api.orders.show';
 }

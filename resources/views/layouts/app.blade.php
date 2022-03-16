@@ -14,17 +14,16 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen ">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
-        <header class="grid grid-cols-2 bg-white shadow">
-            <div class="flex justify-start items-center py-2 pl-16">
+        <header class=" max-w-7xl mx-auto grid grid-cols-2 bg-white shadow">
+            <div class="flex justify-start items-center py-2 pl-10">
                 {{ $header }}
             </div>
             <div class="flex justify-end items-center py-2 pr-10">
@@ -57,6 +56,8 @@
             {{ $slot }}
         </main>
     </div>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>

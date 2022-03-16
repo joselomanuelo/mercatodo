@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin\Products;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProductRequest extends FormRequest
+class ProductRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -19,7 +19,7 @@ class StoreProductRequest extends FormRequest
             'price' => 'required|integer',
             'stock' => 'required|integer',
             'category' => 'required|integer|exists:categories,id',
-            'product_image' => 'file',
+            'product_image' => 'file|mimes:jpeg,bmp,png|size:4000',
         ];
     }
 }

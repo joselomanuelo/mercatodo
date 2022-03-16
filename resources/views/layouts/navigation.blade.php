@@ -20,10 +20,12 @@
                         <x-nav-link :href="route(App\Constants\RouteNames::DASHBOARD)" :active="request()->routeIs(App\Constants\RouteNames::DASHBOARD)">
                             {{ __(trans('navigation.dashboard')) }}
                         </x-nav-link>
+                        <x-nav-link :href="route(App\Constants\RouteNames::BUYER_INDEX_ORDERS)" :active="request()->routeIs(App\Constants\RouteNames::BUYER_INDEX_ORDERS)">
+                            {{ __('Ordenes') }}
+                        </x-nav-link>
                     @endauth
-                    <x-nav-link :href="App\Models\Product::buyerIndexRoute()" :active="request()->routeIs(App\Constants\RouteNames::BUYER_INDEX_PRODUCTS)">
-                        {{ __(trans('navigation.catalog')) }}
-                    </x-nav-link>
+                    
+                                        
                     @can (App\Constants\Permissions::INDEX_USERS)
                         <x-nav-link :href="App\Models\User::indexRoute()" :active="request()->routeIs(App\Constants\RouteNames::INDEX_USERS)">
                             {{ __(trans('navigation.users')) }}

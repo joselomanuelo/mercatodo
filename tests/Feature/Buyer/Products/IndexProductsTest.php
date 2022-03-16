@@ -20,7 +20,5 @@ class IndexProductsTest extends TestCase
         $response->assertOk();
 
         $response->assertViewIs(Product::buyerIndexView());
-
-        
     }
 }

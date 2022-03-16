@@ -18,6 +18,4 @@ trait UserViews
     {
         return 'admin.users.edit';
     }
-
-    
 }

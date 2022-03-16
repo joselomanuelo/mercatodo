@@ -8,9 +8,10 @@ use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail, Authorizable
@@ -38,9 +39,14 @@ class User extends Authenticatable implements MustVerifyEmail, Authorizable
         'email_verified_at' => 'datetime',
     ];
 
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
     public function scopeSearch(Builder $query, ?string $search = null): Builder
     {
-        return $search ? $query->where('name', 'like', '%'.trim($search).'%')
-            ->orWhere('email', 'like', '%'.trim($search).'%') : $query;
+        return $search ? $query->where('name', 'like', '%' . trim($search) . '%')
+            ->orWhere('email', 'like', '%' . trim($search) . '%') : $query;
     }
 }

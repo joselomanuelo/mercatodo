@@ -11,7 +11,7 @@ class RolesSeeder extends Seeder
     public function run(): void
     {
         foreach (Roles::supported() as $role) {
-            Role::create(['name' => $role]);
+            Role::findOrCreate($role);
         }
     }
 }

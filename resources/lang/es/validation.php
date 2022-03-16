@@ -60,7 +60,7 @@ return [
     'image' => ':attribute debe ser una imagen.',
     'in' => ':attribute es inválido.',
     'in_array' => 'El campo :attribute no existe en :other.',
-    'integer' => ':attribute debe ser un número entero.',
+    'integer' => 'El campo :attribute debe ser un número entero.',
     'ip' => ':attribute debe ser una dirección IP válida.',
     'ipv4' => ':attribute debe ser un dirección IPv4 válida.',
     'ipv6' => ':attribute debe ser un dirección IPv6 válida.',
@@ -199,7 +199,6 @@ return [
         'productsImport' => 'El archivo de productos',
         'report_type' => 'Tipo Reporte',
         'from_date' => 'Desde',
-        'until_date' => 'Hasta'
+        'until_date' => 'Hasta',
     ],
-
 ];

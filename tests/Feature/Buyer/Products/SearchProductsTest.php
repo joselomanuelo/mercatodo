@@ -28,19 +28,28 @@ class SearchProductsTest extends TestCase
         $response->assertViewIs(Product::buyerIndexView());
     }
 
-    /* public function testSearchResultsAreCorrect(): void
+    /*public function testSearchResultsAreCorrect(callable $data): void
     {
-        Category::factory()->Has(Product::factory()->count(1000))
+        Category::factory()->Has(Product::factory())
             ->create([
                 'name' => trans('categories.cleaning'),
             ]);
 
-        Category::factory()->Has(Product::factory()->count(1000))
+        Category::factory()->Has(Product::factory())
             ->create([
                 'name' => trans('categories.food'),
             ]);
 
-        $category = Category::where('name', trans('categories.cleaning'))->first();
+        //dd($data());
+
+        $info = $data();
+
+        $data = $info['data'];
+        $productsQuery = $info['products'];
+
+
+        $response = $this->get(route('buyer.products.index', ));
+
 
         $productsQuery1 = Product::search('quidem')
             ->count();
@@ -73,16 +82,17 @@ class SearchProductsTest extends TestCase
             'priceFrom' => '10000',
         ]);
 
-        $response4 = $this->get(route('buyer.products.index'), [
+        $response4 = $this->get(route('buyer.products.index', [
             'search' => 'quidem',
             'category' => '1',
             'priceFrom' => '10000',
             'priceTo' => '20000',
-        ]);
+        ]));
 
-        dd($response1->getOriginalContent()->getData()['products']->total(), $productsQuery2,$productsQuery3,$productsQuery4);
-        $this->assertEquals($productsQuery1, $response1->getOriginalContent()->getData()['products']->getCollection()->count());
-        $this->assertEquals($productsQuery2, $response2->getOriginalContent()->getData()['products']->getCollection()->count());
+        //dd($response1->getOriginalContent()->getData()['products']->total(), $productsQuery2,$productsQuery3,$productsQuery4);
+        //$this->assertEquals($productsQuery1, $response1->getOriginalContent()->getData()['products']->getCollection()->count());
+
+        $this->assertEquals($productsQuery, $response->getOriginalContent()->getData()['products']->getCollection()->count());
         $this->assertEquals($productsQuery3, $response3->getOriginalContent()->getData()['products']->getCollection()->count());
         $this->assertEquals($productsQuery4, $response4->getOriginalContent()->getData()['products']->getCollection()->count());
 
@@ -90,5 +100,32 @@ class SearchProductsTest extends TestCase
         $response2->assertViewIs('buyer.products.index');
         $response3->assertViewIs('buyer.products.index');
         $response4->assertViewIs('buyer.products.index');
-    } */
+    }
+
+    public function searchProductDataProvider(): array
+    {
+        $category = Category::select('id')->where('name', trans('categories.cleaning'))->first();
+        $product = $category->products()->first()->name;
+        dd($category, $product);
+        return [
+            'The category can be filtered' => [
+                function () {
+                    $category = Category::select('id')->where('name', trans('categories.cleaning'))->first();
+                    $product = $category->products()->first()->name;
+                    return [
+                        'data' => [
+                            'search' => $product,
+                            'category' => $category->id,
+                        ],
+                        'products' => Product::search($product)
+                            ->categoryFilter($category->id)
+                            ->count(),
+                    ];
+                }
+
+            ],
+
+
+        ];
+    }*/
 }

@@ -4,8 +4,10 @@ namespace Tests\Feature\Admin\Users;
 
 use App\Constants\Permissions;
 use App\Constants\Roles;
+use App\Events\UserUpdated;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
@@ -54,7 +56,11 @@ class EditUserTest extends TestCase
 
     public function testUserCanBeEdited(): void
     {
+        Event::fake();
+
         $editUsersPermission = Permission::create(['name' => Permissions::UPDATE_USERS]);
+
+        Role::create(['name' => 'buyer']);
 
         $adminRole = Role::create(['name' => Roles::ADMIN])
             ->givePermissionTo($editUsersPermission);
@@ -81,6 +87,8 @@ class EditUserTest extends TestCase
         $this->assertDatabaseCount('users', 2);
         $this->assertEquals('Testing name', $editedUser->name);
         $this->assertEquals('testingemail@example.com', $editedUser->email);
+
+        Event::assertDispatched(UserUpdated::class);
     }
 
     public function testNotAdminUserCantEditUsers(): void
