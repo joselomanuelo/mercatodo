@@ -49,21 +49,18 @@
 <script>
 import useProducts from "../../composables/products";
 import useCategories from "../../composables/categories";
-import useOrders from "../../composables/orders";
+import useCart from "../../composables/useCart";
 import { onMounted } from "vue";
 import Swal from "sweetalert2";
 
 export default {
+    name: 'ProductsIndex',
+
     setup() {
         const { products, indexProducts } = useProducts();
         const { categories, indexCategories } = useCategories();
-        const {
-            shoppingCart,
-            indexShoppingCart,
-            cartIndexes,
-            loadCartIndexes,
-        } = useOrders();
-
+        const { shoppingCart, indexShoppingCart, cartIndexes, loadCartIndexes } = useCart();
+        
         onMounted(
             indexProducts(),
             indexCategories(),

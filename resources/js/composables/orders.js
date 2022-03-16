@@ -3,8 +3,6 @@ import axios from "axios";
 
 export default function useOrders() {
     const orders = ref([]);
-    const shoppingCart = ref([]);
-    const cartIndexes = ref([]);
     const price = ref(0);
     const order = ref({});
 
@@ -14,10 +12,10 @@ export default function useOrders() {
         orders.value = response.data.data;
     };
 
-    const storeOrders = async () => {
+    const storeOrders = async (shoppingCart) => {
         await axios
             .post("/api/orders", {
-                order: JSON.stringify(shoppingCart.value.map((item) => {
+                order: JSON.stringify(shoppingCart.map((item) => {
                     return {
                         product_id: item.product_id,
                         price: item.price,
@@ -28,47 +26,32 @@ export default function useOrders() {
             })
             .then((response) => {
                 localStorage.removeItem("shoppingCart");
+                localStorage.setItem('order_id', response.data.data.id);
                 window.location.href = response.data.data.process_url;
             });
     };
 
     const showOrders = async (reference) => {
         let response = await axios.get("/api/orders/" + reference + "/show");
+        localStorage.setItem('order_id', response.data.data.id);
         order.value = response.data.data;
     };
 
     const retryOrders = async() => {
         await axios
-            .post("/api/orders/store", {
+            .post("/api/orders", {
                 order_id: order.value.id
             })
             .then((response) => {
+                localStorage.setItem('order_id', response.data.data.id);
                 window.location.href = response.data.data.process_url;
             });
-    };
-
-    const indexShoppingCart = () => {
-        if (localStorage.getItem("shoppingCart")) {
-            shoppingCart.value = JSON.parse(
-                localStorage.getItem("shoppingCart")
-            );
-        }
-    };
-
-    const loadCartIndexes = () => {
-        if (localStorage.getItem('shoppingCart')) {
-            cartIndexes.value = JSON.parse(localStorage.getItem('shoppingCart')).map(item => item.product_id);
-        }
     };
 
     return {
         order,
         orders,
-        shoppingCart,
-        cartIndexes,
         price,
-        indexShoppingCart,
-        loadCartIndexes,
         indexOrders,
         storeOrders,
         showOrders,

@@ -104,13 +104,14 @@
 <script>
 import useOrders from "../../composables/orders";
 import Swal from "sweetalert2";
+import useCart from '../../composables/useCart';
 
 export default {
     setup() {
-        const { shoppingCart, price, storeOrders } = useOrders();
-
+        const { price, storeOrders } = useOrders();
+        const { shoppingCart } = useCart();
         const payOrder = async () => {
-            await storeOrders();
+            await storeOrders(shoppingCart.value);
         };
 
         return {
@@ -144,7 +145,7 @@ export default {
             }).then((result) => {
                 if (result.isConfirmed) {
                     this.shoppingCart = this.shoppingCart.filter(
-                        (item) => item.id !== product.id
+                        (item) => item.product_id !== product.id
                     );
                     const parsed = JSON.stringify(this.shoppingCart);
                     localStorage.setItem("shoppingCart", parsed);

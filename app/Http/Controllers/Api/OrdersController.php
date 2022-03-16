@@ -28,8 +28,6 @@ class OrdersController extends Controller
 
         PlacetoPayHelper::attempPayment($order);
 
-        event(new OrderCreated($order));
-
         return new OrdersResource($order);
     }
 

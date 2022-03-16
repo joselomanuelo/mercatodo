@@ -58,6 +58,7 @@ class PlacetoPayHelper
         $response = $placetopay->query($order->request_id);
 
         if ($response->isSuccessful()) {
+
             if ($response->status()->isApproved()) {
                 $order->status = $response->status()->status();
                 $order->save();

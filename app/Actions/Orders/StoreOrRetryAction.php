@@ -4,6 +4,7 @@ namespace App\Actions\Orders;
 
 use App\Constants\OrderConstants;
 use App\Contracts\Orders\StoreOrUpdateAction as Action;
+use App\Events\OrderCreated;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
@@ -40,6 +41,9 @@ class StoreOrRetryAction extends Action
             $orderProduct->price = Arr::get($item, 'amount') * Arr::get($item, 'price');
             $orderProduct->save();
         }
+
+        event(new OrderCreated($order));
+
 
         return $order;
     }

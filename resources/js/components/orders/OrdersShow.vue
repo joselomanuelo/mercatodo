@@ -5,7 +5,7 @@
             cuando el pago esté tramitado.
         </div>
         <div v-else-if="order.status == 'APPROVED'">
-            El pago fue aprovado, tu pedido está en camino.
+            El pago fue aprobado, tu pedido está en camino.
         </div>
         <div v-else-if="order.status == 'REJECTED'">
             <div>El pago fue rechazado, te invitamos a que reintentes el pago.</div>
@@ -25,18 +25,16 @@
 <script>
 import { onMounted } from "vue";
 import useOrders from "../../composables/orders";
-import { useRoute } from "vue-router";
 
 export default {
     setup() {
         const { order, showOrders, retryOrders } = useOrders();
-        const route = useRoute();
 
         const retryPayment = async () => {
             await retryOrders();
         };
 
-        onMounted(showOrders(route.params.reference));
+        onMounted(showOrders(localStorage.getItem('order_id')));
 
         return {
             order,
