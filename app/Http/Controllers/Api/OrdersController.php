@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Actions\Orders\StoreOrRetryAction;
 use App\Constants\OrderConstants;
-use App\Events\OrderCreated;
 use App\Helpers\PlacetoPayHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Orders\OrderStoreRequest;
@@ -27,8 +26,6 @@ class OrdersController extends Controller
         $order = StoreOrRetryAction::execute($request);
 
         PlacetoPayHelper::attempPayment($order);
-
-        event(new OrderCreated($order));
 
         return new OrdersResource($order);
     }

@@ -1,11 +1,9 @@
 <template>
     <div>
-        <div
+        <div v-if="shoppingCart.length !== 0 "
             class="justify-center inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150"
         >
-            <router-link :to="{ name: 'buyer.cart.index' }">
-                Carrito ({{ shoppingCart.length }})</router-link
-            >
+            <a href="/buyer/cart">Carrito {{ '(' + shoppingCart.length + ')' }}</a>
         </div>
         <div class="my-8">
             <div class="container mx-auto px-6">
@@ -51,21 +49,18 @@
 <script>
 import useProducts from "../../composables/products";
 import useCategories from "../../composables/categories";
-import useOrders from "../../composables/orders";
+import useCart from "../../composables/useCart";
 import { onMounted } from "vue";
 import Swal from "sweetalert2";
 
 export default {
+    name: 'ProductsIndex',
+
     setup() {
         const { products, indexProducts } = useProducts();
         const { categories, indexCategories } = useCategories();
-        const {
-            shoppingCart,
-            indexShoppingCart,
-            cartIndexes,
-            loadCartIndexes,
-        } = useOrders();
-
+        const { shoppingCart, indexShoppingCart, cartIndexes, loadCartIndexes } = useCart();
+        
         onMounted(
             indexProducts(),
             indexCategories(),

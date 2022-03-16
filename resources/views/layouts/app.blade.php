@@ -22,8 +22,8 @@
         @include('layouts.navigation')
 
         <!-- Page Heading -->
-        <header class="grid grid-cols-2 bg-white shadow">
-            <div class="flex justify-start items-center py-2 pl-16">
+        <header class=" max-w-7xl mx-auto grid grid-cols-2 bg-white shadow">
+            <div class="flex justify-start items-center py-2 pl-10">
                 {{ $header }}
             </div>
             <div class="flex justify-end items-center py-2 pr-10">

@@ -39,6 +39,9 @@ class RouteNames extends Constant
     //buyers
     public const BUYER_INDEX_PRODUCTS = 'buyer.products.index';
     public const BUYER_SHOW_PRODUCTS = 'buyer.products.show';
+    public const BUYER_INDEX_CART = 'buyer.cart.index';
+    public const BUYER_INDEX_ORDERS = 'buyer.orders.index';
+    public const BUYER_SHOW_ORDERS = 'buyer.orders.show';
 
     //app
     public const DASHBOARD = 'dashboard';
