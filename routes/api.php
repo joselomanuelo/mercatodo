@@ -23,19 +23,19 @@ Route::get('/user', function (Request $request) {
     return response()->json(['user' => $request->user()]);
 });
 Route::middleware(['auth:api'])
-    ->group(function () {
-        Route::get('categories', [CategoriesController::class, 'index'])
-        ->name(RouteNames::API_CATEGORIES);
+->group(function () {
+    Route::get('orders', [OrdersController::class, 'index'])
+    ->name(RouteNames::API_ORDERS);
+    
+    Route::post('orders', [OrdersController::class, 'store'])
+    ->name(RouteNames::API_STORE_ORDERS);
+    
+    Route::get('orders/{reference}/show', [OrdersController::class, 'show'])
+    ->name(RouteNames::API_SHOW_ORDERS);
+});
 
-        Route::get('products', [ProductsController::class, 'index'])
-        ->name(RouteNames::API_PRODUCTS);
+Route::get('categories', [CategoriesController::class, 'index'])
+->name(RouteNames::API_CATEGORIES);
 
-        Route::get('orders', [OrdersController::class, 'index'])
-        ->name(RouteNames::API_ORDERS);
-
-        Route::post('orders', [OrdersController::class, 'store'])
-        ->name(RouteNames::API_STORE_ORDERS);
-
-        Route::get('orders/{reference}/show', [OrdersController::class, 'show'])
-        ->name(RouteNames::API_SHOW_ORDERS);
-    });
+Route::get('products', [ProductsController::class, 'index'])
+->name(RouteNames::API_PRODUCTS);

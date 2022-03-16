@@ -47,37 +47,19 @@
 </template>
 
 <script>
-import useProducts from "../../composables/products";
-import useCategories from "../../composables/categories";
-import useOrders from "../../composables/orders";
-import { onMounted } from "vue";
 import Swal from "sweetalert2";
+import categoriesMixin from '../../mixins/categoriesMixin';
+import productsMixin from '../../mixins/productsMixin';
+import ordersMixin from '../../mixins/ordersMixins'
 
 export default {
-    setup() {
-        const { products, indexProducts } = useProducts();
-        const { categories, indexCategories } = useCategories();
-        const {
-            shoppingCart,
-            indexShoppingCart,
-            cartIndexes,
-            loadCartIndexes,
-        } = useOrders();
-
-        onMounted(
-            indexProducts(),
-            indexCategories(),
-            indexShoppingCart(),
-            loadCartIndexes()
-        );
-
-        return {
-            cartIndexes,
-            shoppingCart,
-            products,
-            categories,
-            loadCartIndexes,
-        };
+    mixins: [categoriesMixin, productsMixin, ordersMixin],
+    
+    mounted() {
+        this.indexCategories(this.categories),
+        this.indexProducts(this.products),
+        this.indexShoppingCart(this.shoppingCart),
+        this.loadCartIndexes(this.cartIndexes)
     },
 
     methods: {

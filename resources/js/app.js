@@ -15,7 +15,6 @@ const app = createApp({});
 
 app.component('product-index', ProductsIndex);
 app.component('cart-index', CartIndex);
-app.component('product-index', ProductsIndex);
 app.component('order-index', OrderIndex);
 app.component('order-show', OrderShow);
 
