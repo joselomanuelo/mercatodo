@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Actions\Products\StoreOrUpdateAction;
+use App\Exports\ProductsExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Products\ProductRequest;
 use App\Http\Requests\Admin\Products\SearchRequest;
@@ -11,6 +12,7 @@ use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductsController extends Controller
 {
@@ -66,5 +68,10 @@ class ProductsController extends Controller
         Storage::disk('public')->delete($product->product_image);
 
         return redirect(Product::indexRoute());
+    }
+
+    public function export()
+    {
+        return Excel::download(new ProductsExport, 'products.xlsx');
     }
 }

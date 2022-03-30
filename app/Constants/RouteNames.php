@@ -20,6 +20,7 @@ class RouteNames extends Constant
     public const CREATE_PRODUCTS = 'admin.products.create';
     public const STORE_PRODUCTS = 'admin.products.store';
     public const EDIT_PRODUCTS = 'admin.products.edit';
+    public const EXPORT_PRODUCTS = 'admin.products.export';
 
     //auth
     public const REGISTER = 'register';

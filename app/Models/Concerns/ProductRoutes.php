@@ -55,4 +55,9 @@ trait ProductRoutes
     {
         return route(RouteNames::API_PRODUCTS);
     }
+
+    public static function exportRoute(): string
+    {
+        return route(RouteNames::EXPORT_PRODUCTS);
+    }
 }

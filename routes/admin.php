@@ -62,4 +62,10 @@ Route::prefix('admin')
         Route::get('/products/{product}', [ProductsController::class, 'show'])
             ->middleware(['permission:' . Permissions::SHOW_PRODUCTS])
             ->name(RouteNames::SHOW_PRODUCTS);
+
+        Route::get('/export/products', [ProductsController::class, 'export'])
+            ->middleware(['permission:' . Permissions::EXPORT_PRODUCTS])
+            ->name(RouteNames::EXPORT_PRODUCTS);
+
+
     });

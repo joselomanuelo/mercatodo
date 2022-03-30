@@ -16,4 +16,5 @@ return [
     'search' => 'Buscar',
     'back' => 'Volver',
     'choose' => 'Seleccione',
+    'export' => 'Exportar',
 ];
