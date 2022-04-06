@@ -31,7 +31,6 @@ class ProductsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
     }
 
     public function map($product): array
-    
     {
         return [
             $product->id,
@@ -41,7 +40,7 @@ class ProductsExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
             $product->stock,
             $product->reserved_stock,
             $product->product_image,
-            $product->category_id
+            $product->category_id,
         ];
     }
 }

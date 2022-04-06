@@ -66,6 +66,4 @@ Route::prefix('admin')
         Route::get('/export/products', [ProductsController::class, 'export'])
             ->middleware(['permission:' . Permissions::EXPORT_PRODUCTS])
             ->name(RouteNames::EXPORT_PRODUCTS);
-
-
     });

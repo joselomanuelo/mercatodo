@@ -8,7 +8,6 @@ use App\Exports\ProductsExport;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -24,7 +23,6 @@ class ExportProductsTest extends TestCase
 
         Product::factory()->count(10)->create();
 
-
         $createProductsPermission = Permission::create([
             'name' => Permissions::EXPORT_PRODUCTS,
         ]);
@@ -39,9 +37,9 @@ class ExportProductsTest extends TestCase
         $this->actingAs($admin)
         ->get(route('admin.products.export'));
 
-        Excel::assertDownloaded('products.xlsx', function(ProductsExport $export) {
+        Excel::assertDownloaded('products.xlsx', function (ProductsExport $export) {
             $products = Product::all();
             return $export->collection()->contains($products->first());
-    });
+        });
     }
 }
