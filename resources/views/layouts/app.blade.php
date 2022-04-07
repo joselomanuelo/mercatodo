@@ -39,6 +39,11 @@
                             {{ __(trans('products.new')) }}
                         </x-button-link>
                     </div>
+                    <form action="{{ App\Models\Product::exportRoute() }}" method="GET">
+                        <x-button class="ml-2">
+                            {{ __(trans('buttons.export')) }}
+                        </x-button>
+                    </form>
                 @endif
                 @if (request()->routeIs(App\Constants\RouteNames::INDEX_USERS))
                     <form action="{{ App\Models\User::indexRoute() }}" method="GET" class="ml-4">

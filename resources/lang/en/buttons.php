@@ -16,4 +16,5 @@ return [
     'search' => 'Search',
     'back' => 'Back',
     'choose' => 'Choose',
+    'export' => 'Export',
 ];
