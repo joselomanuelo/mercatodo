@@ -14,4 +14,5 @@ class Permissions extends Constant
     public const UPDATE_PRODUCTS = 'update products';
     public const DELETE_PRODUCTS = 'delete products';
     public const CREATE_PRODUCTS = 'create products';
+    public const EXPORT_PRODUCTS = 'export products';
 }
