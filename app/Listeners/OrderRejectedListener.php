@@ -3,14 +3,14 @@
 namespace App\Listeners;
 
 use App\Actions\Products\UpdateProductStockAction;
-use App\Events\OrderRejected;
+use App\Events\OrderRejectedEvent;
 use App\Mail\Orders\OrderRejectedMail;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class OrderRejectedListener
 {
-    public function handle(OrderRejected $event)
+    public function handle(OrderRejectedEvent $event)
     {
         UpdateProductStockAction::orderRejected($event->order);
 

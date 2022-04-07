@@ -2,17 +2,17 @@
 
 namespace App\Providers;
 
-use App\Events\OrderApproved;
-use App\Events\OrderCreated;
-use App\Events\OrderRejected;
-use App\Events\UserDeleted;
-use App\Events\UserLoged;
-use App\Events\UserLogouted;
-use App\Events\UserUpdated;
-use App\Listeners\AddDeleteToUserLogsTable;
-use App\Listeners\AddLoginToUsersLogsTable;
-use App\Listeners\AddLogoutToUsersLogsTable;
-use App\Listeners\AddUpdateToUserLogsTable;
+use App\Events\OrderApprovedEvent;
+use App\Events\OrderCreatedEvent;
+use App\Events\OrderRejectedEvent;
+use App\Events\UserDeletedEvent;
+use App\Events\UserLogedEvent;
+use App\Events\UserLogoutedEvent;
+use App\Events\UserUpdatedEvent;
+use App\Listeners\AddDeleteToUserLogsTableListener;
+use App\Listeners\AddLoginToUsersLogsTableListener;
+use App\Listeners\AddLogoutToUsersLogsTableListener;
+use App\Listeners\AddUpdateToUserLogsTableListener;
 use App\Listeners\OrderApprovedListener;
 use App\Listeners\OrderCreatedListener;
 use App\Listeners\OrderRejectedListener;
@@ -32,25 +32,25 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        UserLoged::class => [
-            AddLoginToUsersLogsTable::class,
+        UserLogedEvent::class => [
+            AddLoginToUsersLogsTableListener::class,
         ],
-        UserLogouted::class => [
-            AddLogoutToUsersLogsTable::class,
+        UserLogoutedEvent::class => [
+            AddLogoutToUsersLogsTableListener::class,
         ],
-        UserUpdated::class => [
-            AddUpdateToUserLogsTable::class,
+        UserUpdatedEvent::class => [
+            AddUpdateToUserLogsTableListener::class,
         ],
-        UserDeleted::class => [
-            AddDeleteToUserLogsTable::class,
+        UserDeletedEvent::class => [
+            AddDeleteToUserLogsTableListener::class,
         ],
-        OrderApproved::class => [
+        OrderApprovedEvent::class => [
             OrderApprovedListener::class,
         ],
-        OrderCreated::class => [
+        OrderCreatedEvent::class => [
             OrderCreatedListener::class,
         ],
-        OrderRejected::class => [
+        OrderRejectedEvent::class => [
             OrderRejectedListener::class,
         ],
     ];

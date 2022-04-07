@@ -2,20 +2,21 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UserLoged
+class UserUpdatedEvent
 {
     use Dispatchable;
     use InteractsWithSockets;
     use SerializesModels;
 
-    public $email;
+    public User $user;
 
-    public function __construct(string $email)
+    public function __construct(User $user)
     {
-        $this->email = $email;
+        $this->user = $user;
     }
 }

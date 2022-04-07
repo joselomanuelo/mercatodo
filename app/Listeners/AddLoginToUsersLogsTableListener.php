@@ -3,13 +3,13 @@
 namespace App\Listeners;
 
 use App\Actions\Users\AddInputUserLogs;
-use App\Events\UserLoged;
+use App\Events\UserLogedEvent;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
-class AddLoginToUsersLogsTable
+class AddLoginToUsersLogsTableListener
 {
-    public function handle(UserLoged $event): void
+    public function handle(UserLogedEvent $event): void
     {
         $user = User::where('email', $event->email)
             ->firstOrFail();

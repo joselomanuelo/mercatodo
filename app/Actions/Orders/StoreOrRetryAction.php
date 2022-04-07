@@ -4,7 +4,7 @@ namespace App\Actions\Orders;
 
 use App\Constants\OrderConstants;
 use App\Contracts\Orders\StoreOrUpdateAction as Action;
-use App\Events\OrderCreated;
+use App\Events\OrderCreatedEvent;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 
 class StoreOrRetryAction extends Action
 {
+    /** @noinspection PhpUndefinedFieldInspection */
     public static function execute(Request $request): Order
     {
         if ($request->has('order_id')) {
@@ -42,7 +43,7 @@ class StoreOrRetryAction extends Action
             $orderProduct->save();
         }
 
-        event(new OrderCreated($order));
+        event(new OrderCreatedEvent($order));
 
         return $order;
     }

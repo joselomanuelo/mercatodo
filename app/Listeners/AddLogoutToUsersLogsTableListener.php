@@ -3,12 +3,12 @@
 namespace App\Listeners;
 
 use App\Actions\Users\AddInputUserLogs;
-use App\Events\UserLogouted;
+use App\Events\UserLogoutedEvent;
 use Illuminate\Support\Facades\Log;
 
-class AddLogoutToUsersLogsTable
+class AddLogoutToUsersLogsTableListener
 {
-    public function handle(UserLogouted $event): void
+    public function handle(UserLogoutedEvent $event): void
     {
         AddInputUserLogs::execute($event->user, 'logout');
 

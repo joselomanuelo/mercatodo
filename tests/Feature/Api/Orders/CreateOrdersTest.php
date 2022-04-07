@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Api\Orders;
 
-use App\Events\OrderCreated;
+use App\Events\OrderCreatedEvent;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -15,6 +15,7 @@ class CreateOrdersTest extends TestCase
 {
     use RefreshDatabase;
 
+    /** @noinspection PhpParamsInspection */
     public function testOrderCanBeCreated(): string
     {
         Event::fake();
@@ -59,7 +60,7 @@ class CreateOrdersTest extends TestCase
                     ->etc()
             );
 
-        Event::assertDispatched(OrderCreated::class);
+        Event::assertDispatched(OrderCreatedEvent::class);
 
         $request_id = $response->json()['data']['request_id'];
 

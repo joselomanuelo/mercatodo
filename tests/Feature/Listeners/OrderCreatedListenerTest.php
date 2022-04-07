@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Listeners;
 
-use App\Events\OrderCreated;
+use App\Events\OrderCreatedEvent;
 use App\Listeners\OrderCreatedListener;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
@@ -16,7 +16,7 @@ class OrderCreatedListenerTest extends TestCase
     {
         Event::fake();
         Event::assertListening(
-            OrderCreated::class,
+            OrderCreatedEvent::class,
             OrderCreatedListener::class
         );
     }

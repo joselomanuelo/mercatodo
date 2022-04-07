@@ -3,12 +3,12 @@
 namespace App\Listeners;
 
 use App\Actions\Users\AddInputUserLogs;
-use App\Events\UserUpdated;
+use App\Events\UserUpdatedEvent;
 use Illuminate\Support\Facades\Log;
 
-class AddUpdateToUserLogsTable
+class AddUpdateToUserLogsTableListener
 {
-    public function handle(UserUpdated $event): void
+    public function handle(UserUpdatedEvent $event): void
     {
         AddInputUserLogs::execute($event->user, 'update');
 

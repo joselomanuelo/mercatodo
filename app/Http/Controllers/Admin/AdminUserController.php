@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Actions\Users\StoreOrUpdateAction;
-use App\Events\UserDeleted;
-use App\Events\UserUpdated;
+use App\Events\UserDeletedEvent;
+use App\Events\UserUpdatedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\SearchRequest;
 use App\Http\Requests\Admin\Users\UpdateUserRequest;
@@ -42,7 +42,7 @@ class AdminUserController extends Controller
     {
         $user = StoreOrUpdateAction::execute($request, $user);
 
-        event(new UserUpdated($user));
+        event(new UserUpdatedEvent($user));
 
         return redirect(User::indexRoute());
     }
@@ -51,7 +51,7 @@ class AdminUserController extends Controller
     {
         $user->delete();
 
-        event(new UserDeleted($user));
+        event(new UserDeletedEvent($user));
 
         return redirect(User::indexRoute());
     }

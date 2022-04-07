@@ -3,12 +3,12 @@
 namespace App\Listeners;
 
 use App\Actions\Products\UpdateProductStockAction;
-use App\Events\OrderCreated;
+use App\Events\OrderCreatedEvent;
 use Illuminate\Support\Facades\Log;
 
 class OrderCreatedListener
 {
-    public function handle(OrderCreated $event)
+    public function handle(OrderCreatedEvent $event)
     {
         UpdateProductStockAction::orderCreated($event->order);
 

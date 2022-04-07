@@ -4,7 +4,7 @@ namespace Tests\Feature\Admin\Users;
 
 use App\Constants\Permissions;
 use App\Constants\Roles;
-use App\Events\UserUpdated;
+use App\Events\UserUpdatedEvent;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
@@ -88,7 +88,7 @@ class EditUserTest extends TestCase
         $this->assertEquals('Testing name', $editedUser->name);
         $this->assertEquals('testingemail@example.com', $editedUser->email);
 
-        Event::assertDispatched(UserUpdated::class);
+        Event::assertDispatched(UserUpdatedEvent::class);
     }
 
     public function testNotAdminUserCantEditUsers(): void

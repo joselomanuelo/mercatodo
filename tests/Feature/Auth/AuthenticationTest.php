@@ -3,7 +3,7 @@
 namespace Tests\Feature\Auth;
 
 use App\Constants\RouteNames;
-use App\Events\UserLoged;
+use App\Events\UserLogedEvent;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -35,7 +35,7 @@ class AuthenticationTest extends TestCase
         $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::HOME);
 
-        Event::assertDispatched(UserLoged::class);
+        Event::assertDispatched(UserLogedEvent::class);
     }
 
     public function testUsersCanNotAuthenticateWithInvalidPassword(): void
