@@ -34,6 +34,7 @@ class ExportProductsTest extends TestCase
         ->create()
         ->assignRole($adminRole);
 
+
         $this->actingAs($admin)
         ->get(route('admin.products.export'));
 
@@ -64,5 +65,7 @@ class ExportProductsTest extends TestCase
                 $export->headings() === $headings &&
                 $export->map($product) === $mapping);
         });
+
+        
     }
 }
