@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUndefinedFieldInspection */
 
 namespace App\Http\Controllers\Api;
 
@@ -12,7 +12,7 @@ use App\Models\Order;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Auth;
 
-class OrdersController extends Controller
+class ApiOrderController extends Controller
 {
     public function index(): AnonymousResourceCollection
     {

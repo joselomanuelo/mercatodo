@@ -7,7 +7,7 @@ use App\Http\Resources\CategoriesResource;
 use App\Models\Category;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class CategoriesController extends Controller
+class ApiCategoryController extends Controller
 {
     public function index(): AnonymousResourceCollection
     {

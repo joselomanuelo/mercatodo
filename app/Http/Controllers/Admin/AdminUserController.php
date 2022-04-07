@@ -13,7 +13,7 @@ use App\Models\UserLog;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
-class UsersController extends Controller
+class AdminUserController extends Controller
 {
     public function index(SearchRequest $request): View
     {

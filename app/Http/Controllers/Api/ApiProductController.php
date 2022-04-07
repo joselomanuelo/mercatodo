@@ -7,7 +7,7 @@ use App\Http\Resources\ProductsResource;
 use App\Models\Product;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class ProductsController extends Controller
+class ApiProductController extends Controller
 {
     public function index(): AnonymousResourceCollection
     {

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ProductsController extends Controller
+class AdminProductController extends Controller
 {
     public function index(SearchRequest $request): View
     {
