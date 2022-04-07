@@ -34,12 +34,38 @@ class ExportProductsTest extends TestCase
         ->create()
         ->assignRole($adminRole);
 
+
         $this->actingAs($admin)
         ->get(route('admin.products.export'));
 
         Excel::assertDownloaded('products.xlsx', function (ProductsExport $export) {
             $products = Product::all();
-            return $export->collection()->contains($products->first());
+            $product = Product::first();
+            $headings = [
+                'id',
+                'name',
+                'description',
+                'price',
+                'stock',
+                'reserved_stock',
+                'product_image',
+                'category_id',
+            ];
+            $mapping = [
+                $product->id,
+                $product->name,
+                $product->description,
+                $product->price,
+                $product->stock,
+                $product->reserved_stock,
+                $product->product_image,
+                $product->category_id,
+            ];
+            return $export->collection()->contains($product &&
+                $export->headings() === $headings &&
+                $export->map($product) === $mapping);
         });
+
+        
     }
 }
