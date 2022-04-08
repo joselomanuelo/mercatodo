@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\CheckPendingOrdersJob;
+use App\Constants\OrderConstants;
+use App\Helpers\PlacetoPayHelper;
+use App\Models\Order;
 use Illuminate\Console\Command;
 
 class CheckPendingOrdersCommand extends Command
@@ -13,6 +15,12 @@ class CheckPendingOrdersCommand extends Command
 
     public function handle()
     {
-        dispatch(new CheckPendingOrdersJob());
+        $orders = Order::whereDate('created_at', '>=', now()->subHours(OrderConstants::DURATION + 1))
+            ->where('status', OrderConstants::PENDING)
+            ->get();
+
+        foreach ($orders as $order) {
+            PlacetoPayHelper::statusPayment($order);
+        }
     }
 }
