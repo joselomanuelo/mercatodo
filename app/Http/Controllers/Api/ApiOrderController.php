@@ -4,7 +4,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Actions\Orders\StoreOrRetryAction;
+use App\Actions\Orders\OrderStoreOrRetryActionContract;
 use App\Constants\OrderConstants;
 use App\Helpers\PlacetoPayHelper;
 use App\Http\Controllers\Controller;
@@ -25,7 +25,7 @@ class ApiOrderController extends Controller
 
     public function store(OrderStoreRequest $request): OrdersResource
     {
-        $order = StoreOrRetryAction::execute($request);
+        $order = OrderStoreOrRetryActionContract::execute($request);
 
         PlacetoPayHelper::attempPayment($order);
 

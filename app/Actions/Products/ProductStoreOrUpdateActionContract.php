@@ -2,12 +2,12 @@
 
 namespace App\Actions\Products;
 
-use App\Contracts\StoreOrUpdateAction as Action;
+use App\Contracts\StoreOrUpdateActionContract as Action;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-class StoreOrUpdateAction extends Action
+class ProductStoreOrUpdateActionContract extends Action
 {
     public static function execute(Request $request, ?Model $model = null): Model
     {

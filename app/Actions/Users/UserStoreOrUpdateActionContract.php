@@ -3,13 +3,13 @@
 namespace App\Actions\Users;
 
 use App\Constants\Roles;
-use App\Contracts\StoreOrUpdateAction as Action;
+use App\Contracts\StoreOrUpdateActionContract as Action;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class StoreOrUpdateAction extends Action
+class UserStoreOrUpdateActionContract extends Action
 {
     public static function execute(Request $request, ?Model $model = null): Model
     {
