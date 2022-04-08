@@ -35,7 +35,7 @@ class OrderRejectedListenerTest extends TestCase
 
         $listener->handle($event);
 
-        Mail::assertSent(OrderRejectedMail::class);
+        Mail::assertQueued(OrderRejectedMail::class);
     }
 
     public function testListenerIsAttachedToEvent()

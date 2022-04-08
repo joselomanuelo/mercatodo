@@ -36,7 +36,7 @@ class OrderApprovedListenerTest extends TestCase
 
         $listener->handle($event);
 
-        Mail::assertSent(OrderApprovedMail::class);
+        Mail::assertQueued(OrderApprovedMail::class);
     }
 
     public function testListenerIsAttachedToEvent()
