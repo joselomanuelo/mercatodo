@@ -3,7 +3,7 @@
 namespace App\Actions\Orders;
 
 use App\Constants\OrderConstants;
-use App\Contracts\Orders\StoreOrUpdateAction as Action;
+use App\Contracts\Orders\StoreOrUpdateActionContract as Action;
 use App\Events\OrderCreatedEvent;
 use App\Models\Order;
 use App\Models\OrderProduct;
@@ -12,14 +12,14 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class StoreOrRetryAction extends Action
+class OrderStoreOrRetryActionContract extends Action
 {
     /** @noinspection PhpUndefinedFieldInspection */
     public static function execute(Request $request): Order
     {
         if ($request->has('order_id')) {
             $oldOrder = Order::findOrFail($request->order_id);
-            $apiOrder = $oldOrder->orderProducts->toArray();
+            $apiOrder = $oldOrder->orderProduct->toArray();
             $apiPrice = $oldOrder->price;
         } else {
             $apiOrder = json_decode($request->order, true);

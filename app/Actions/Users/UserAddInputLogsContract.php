@@ -2,11 +2,11 @@
 
 namespace App\Actions\Users;
 
-use App\Contracts\AddInputUserLogs as Action;
+use App\Contracts\AddInputUserLogsContract as Action;
 use App\Models\User;
 use App\Models\UserLog;
 
-class AddInputUserLogs extends Action
+class UserAddInputLogsContract extends Action
 {
     public static function execute(User $user, string $type): void
     {
