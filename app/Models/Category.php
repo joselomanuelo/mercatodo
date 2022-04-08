@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Concerns\CategoriesRoutes;
+use App\Models\Concerns\CategoryRoutes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Cache;
 class Category extends Model
 {
     use HasFactory;
-    use CategoriesRoutes;
+    use CategoryRoutes;
 
     protected $fillable = [
         'name',

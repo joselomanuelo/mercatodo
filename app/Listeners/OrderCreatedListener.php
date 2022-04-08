@@ -2,15 +2,15 @@
 
 namespace App\Listeners;
 
-use App\Actions\Products\UpdateProductStockAction;
-use App\Events\OrderCreated;
+use App\Actions\Products\ProductUpdateStockAction;
+use App\Events\OrderCreatedEvent;
 use Illuminate\Support\Facades\Log;
 
 class OrderCreatedListener
 {
-    public function handle(OrderCreated $event)
+    public function handle(OrderCreatedEvent $event)
     {
-        UpdateProductStockAction::orderCreated($event->order);
+        ProductUpdateStockAction::orderCreated($event->order);
 
         Log::info('The order with Id ' . $event->order->id . ' has been created.');
     }

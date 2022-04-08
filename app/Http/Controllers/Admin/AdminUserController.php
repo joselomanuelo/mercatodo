@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Users\StoreOrUpdateAction;
-use App\Events\UserDeleted;
-use App\Events\UserUpdated;
+use App\Actions\Users\UserStoreOrUpdateActionContract;
+use App\Events\UserDeletedEvent;
+use App\Events\UserUpdatedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\SearchRequest;
 use App\Http\Requests\Admin\Users\UpdateUserRequest;
@@ -13,7 +13,7 @@ use App\Models\UserLog;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
-class UsersController extends Controller
+class AdminUserController extends Controller
 {
     public function index(SearchRequest $request): View
     {
@@ -40,9 +40,9 @@ class UsersController extends Controller
 
     public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
-        $user = StoreOrUpdateAction::execute($request, $user);
+        $user = UserStoreOrUpdateActionContract::execute($request, $user);
 
-        event(new UserUpdated($user));
+        event(new UserUpdatedEvent($user));
 
         return redirect(User::indexRoute());
     }
@@ -51,7 +51,7 @@ class UsersController extends Controller
     {
         $user->delete();
 
-        event(new UserDeleted($user));
+        event(new UserDeletedEvent($user));
 
         return redirect(User::indexRoute());
     }

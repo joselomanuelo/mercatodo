@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Products\StoreOrUpdateAction;
+use App\Actions\Products\ProductStoreOrUpdateActionContract;
 use App\Exports\ProductsExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Products\ProductRequest;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ProductsController extends Controller
+class AdminProductController extends Controller
 {
     public function index(SearchRequest $request): View
     {
@@ -37,7 +37,7 @@ class ProductsController extends Controller
 
     public function store(ProductRequest $request): RedirectResponse
     {
-        StoreOrUpdateAction::execute($request);
+        ProductStoreOrUpdateActionContract::execute($request);
 
         return redirect(Product::indexRoute());
     }
@@ -56,7 +56,7 @@ class ProductsController extends Controller
 
     public function update(ProductRequest $request, Product $product): RedirectResponse
     {
-        StoreOrUpdateAction::execute($request, $product);
+        ProductStoreOrUpdateActionContract::execute($request, $product);
 
         return redirect(Product::indexRoute());
     }

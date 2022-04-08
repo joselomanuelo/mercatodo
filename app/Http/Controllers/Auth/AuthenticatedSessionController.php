@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Events\UserLoged;
-use App\Events\UserLogouted;
+use App\Events\UserLogedEvent;
+use App\Events\UserLogoutedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -25,7 +25,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        event(new UserLoged($request->input('email')));
+        event(new UserLogedEvent($request->input('email')));
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        event(new UserLogouted(Auth::user()));
+        event(new UserLogoutedEvent(Auth::user()));
 
         Auth::guard('web')->logout();
 

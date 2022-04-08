@@ -4,7 +4,7 @@ namespace App\Models\Concerns;
 
 use App\Constants\RouteNames;
 
-trait CategoriesRoutes
+trait CategoryRoutes
 {
     public static function ApiIndexRoute(): string
     {

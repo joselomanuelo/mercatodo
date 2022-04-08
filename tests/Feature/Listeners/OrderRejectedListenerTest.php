@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Listeners;
 
-use App\Events\OrderRejected;
+use App\Events\OrderRejectedEvent;
 use App\Listeners\OrderRejectedListener;
 use App\Mail\Orders\OrderRejectedMail;
 use App\Models\Order;
@@ -30,7 +30,7 @@ class OrderRejectedListenerTest extends TestCase
 
         $order = Order::first();
 
-        $event = new OrderRejected($order);
+        $event = new OrderRejectedEvent($order);
         $listener = new OrderRejectedListener($event);
 
         $listener->handle($event);
@@ -42,7 +42,7 @@ class OrderRejectedListenerTest extends TestCase
     {
         Event::fake();
         Event::assertListening(
-            OrderRejected::class,
+            OrderRejectedEvent::class,
             OrderRejectedListener::class
         );
     }

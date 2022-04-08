@@ -1,9 +1,9 @@
 <?php
 
 use App\Constants\RouteNames;
-use App\Http\Controllers\Api\CategoriesController;
-use App\Http\Controllers\Api\OrdersController;
-use App\Http\Controllers\Api\ProductsController;
+use App\Http\Controllers\Api\ApiCategoryController;
+use App\Http\Controllers\Api\ApiOrderController;
+use App\Http\Controllers\Api\ApiProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\TextUI\XmlConfiguration\Group;
@@ -24,18 +24,18 @@ Route::get('/user', function (Request $request) {
 });
 Route::middleware(['auth:api'])
     ->group(function () {
-        Route::get('orders', [OrdersController::class, 'index'])
+        Route::get('orders', [ApiOrderController::class, 'index'])
         ->name(RouteNames::API_ORDERS);
 
-        Route::post('orders', [OrdersController::class, 'store'])
+        Route::post('orders', [ApiOrderController::class, 'store'])
         ->name(RouteNames::API_STORE_ORDERS);
 
-        Route::get('orders/{reference}/show', [OrdersController::class, 'show'])
+        Route::get('orders/{reference}/show', [ApiOrderController::class, 'show'])
         ->name(RouteNames::API_SHOW_ORDERS);
     });
 
-    Route::get('categories', [CategoriesController::class, 'index'])
+    Route::get('categories', [ApiCategoryController::class, 'index'])
     ->name(RouteNames::API_CATEGORIES);
 
-    Route::get('products', [ProductsController::class, 'index'])
+    Route::get('products', [ApiProductController::class, 'index'])
     ->name(RouteNames::API_PRODUCTS);

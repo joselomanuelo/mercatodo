@@ -2,8 +2,8 @@
 
 namespace App\Helpers;
 
-use App\Events\OrderApproved;
-use App\Events\OrderRejected;
+use App\Events\OrderApprovedEvent;
+use App\Events\OrderRejectedEvent;
 use App\Models\Order;
 use Dnetix\Redirection\PlacetoPay;
 
@@ -61,11 +61,11 @@ class PlacetoPayHelper
             if ($response->status()->isApproved()) {
                 $order->status = $response->status()->status();
                 $order->save();
-                event(new OrderApproved($order));
+                event(new OrderApprovedEvent($order));
             } elseif ($response->status()->isRejected()) {
                 $order->status = $response->status()->status();
                 $order->save();
-                event(new OrderRejected($order));
+                event(new OrderRejectedEvent($order));
             }
         } else {
             dd($response->status()->message());

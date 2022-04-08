@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Listeners;
 
-use App\Events\OrderApproved;
+use App\Events\OrderApprovedEvent;
 use App\Listeners\OrderApprovedListener;
 use App\Mail\Orders\OrderApprovedMail;
 use App\Models\Order;
@@ -31,7 +31,7 @@ class OrderApprovedListenerTest extends TestCase
 
         $order = Order::first();
 
-        $event = new OrderApproved($order);
+        $event = new OrderApprovedEvent($order);
         $listener = new OrderApprovedListener($event);
 
         $listener->handle($event);
@@ -43,7 +43,7 @@ class OrderApprovedListenerTest extends TestCase
     {
         Event::fake();
         Event::assertListening(
-            OrderApproved::class,
+            OrderApprovedEvent::class,
             OrderApprovedListener::class
         );
     }

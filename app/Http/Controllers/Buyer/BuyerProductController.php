@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\View\View;
 
-class BuyerProductsController extends Controller
+class BuyerProductController extends Controller
 {
     public function index(SearchProductsRequest $request): View
     {

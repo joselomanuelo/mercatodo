@@ -4,7 +4,7 @@ namespace Tests\Feature\Admin\Users;
 
 use App\Constants\Permissions;
 use App\Constants\Roles;
-use App\Events\UserDeleted;
+use App\Events\UserDeletedEvent;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
@@ -41,7 +41,7 @@ class DeleteUserTest extends TestCase
         $this->assertDatabaseCount('users', 1);
         $this->assertDeleted($userToDelete);
 
-        Event::assertDispatched(UserDeleted::class);
+        Event::assertDispatched(UserDeletedEvent::class);
     }
 
     public function testNotAdminUserCantDeleteUsers(): void

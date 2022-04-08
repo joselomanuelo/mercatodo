@@ -1,8 +1,10 @@
 <?php
 
+/** @noinspection PhpUndefinedFieldInspection */
+
 namespace App\Http\Controllers\Api;
 
-use App\Actions\Orders\StoreOrRetryAction;
+use App\Actions\Orders\OrderStoreOrRetryActionContract;
 use App\Constants\OrderConstants;
 use App\Helpers\PlacetoPayHelper;
 use App\Http\Controllers\Controller;
@@ -12,7 +14,7 @@ use App\Models\Order;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Auth;
 
-class OrdersController extends Controller
+class ApiOrderController extends Controller
 {
     public function index(): AnonymousResourceCollection
     {
@@ -23,7 +25,7 @@ class OrdersController extends Controller
 
     public function store(OrderStoreRequest $request): OrdersResource
     {
-        $order = StoreOrRetryAction::execute($request);
+        $order = OrderStoreOrRetryActionContract::execute($request);
 
         PlacetoPayHelper::attempPayment($order);
 
