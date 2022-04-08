@@ -7,11 +7,11 @@ use App\Helpers\PlacetoPayHelper;
 use App\Models\Order;
 use Illuminate\Console\Command;
 
-class CheckPendingOrders extends Command
+class CheckPendingOrdersCommand extends Command
 {
     protected $signature = 'orders:pending';
 
-    protected $description = 'Check the pendings orders';
+    protected $description = 'Check pendings orders';
 
     public function handle()
     {
