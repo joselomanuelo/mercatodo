@@ -27,7 +27,7 @@ class ApiOrderController extends Controller
     {
         $order = OrderStoreOrRetryActionContract::execute($request);
 
-        PlacetoPayHelper::attempPayment($order);
+        PlacetoPayHelper::attemptPayment($order);
 
         return new OrdersResource($order);
     }
@@ -37,7 +37,7 @@ class ApiOrderController extends Controller
         $order = Order::findOrFail($reference);
 
         if ($order->status == OrderConstants::PENDING) {
-            PlacetoPayHelper::statusPayment($order);
+            PlacetoPayHelper::checkStatusPayment($order);
         }
 
         return new OrdersResource($order);
