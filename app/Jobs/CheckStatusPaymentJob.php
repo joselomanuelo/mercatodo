@@ -2,22 +2,30 @@
 
 namespace App\Jobs;
 
+use App\Helpers\PlacetoPayHelper;
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Artisan;
 
-class CheckPendingOrdersJob implements ShouldQueue
+class CheckStatusPaymentJob implements ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;
     use Queueable;
     use SerializesModels;
 
-    public function handle(): void
+    private Order $order;
+
+    public function __construct(Order $order)
     {
-        Artisan::call('orders:pending');
+        $this->order = $order;
+    }
+
+    public function handle(Order $order): void
+    {
+        PlacetoPayHelper::checkStatusPayment($order);
     }
 }

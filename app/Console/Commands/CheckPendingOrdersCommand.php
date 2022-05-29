@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Constants\OrderConstants;
-use App\Helpers\PlacetoPayHelper;
+use App\Jobs\CheckStatusPaymentJob;
 use App\Models\Order;
 use Illuminate\Console\Command;
 
@@ -20,7 +20,7 @@ class CheckPendingOrdersCommand extends Command
             ->get();
 
         foreach ($orders as $order) {
-            PlacetoPayHelper::statusPayment($order);
+            dispatch(new CheckStatusPaymentJob($order));
         }
     }
 }
